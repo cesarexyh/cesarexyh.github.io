@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>空博客</title>
   
-  <subtitle>World:&quot;hello.&quot;</subtitle>
+  <subtitle>上帝以痛吻我，要我说个段子</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-28T03:22:00.558Z</updated>
+  <updated>2018-12-29T14:50:56.521Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,26 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>空博客</title>
-    <link href="http://yoursite.com/2018/12/28/%E7%A9%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2018/12/28/空博客/</id>
-    <published>2018-12-28T03:22:00.000Z</published>
-    <updated>2018-12-28T03:22:00.558Z</updated>
+    <title>第一次读稿会和开放麦</title>
+    <link href="http://yoursite.com/2018/12/29/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%BC%80%E6%94%BE%E9%BA%A6/"/>
+    <id>http://yoursite.com/2018/12/29/第一次开放麦/</id>
+    <published>2018-12-29T14:48:50.000Z</published>
+    <updated>2018-12-29T14:50:56.521Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、观众是个大问题，真有你说个铺垫在下面乱接梗的。<br>2、黄段子的确更有效果，能够引发笑声。<br>3、表演有点过于刻意了。<br>4、段子的铺垫出梗的时间间隔不宜过久<br>5、梗一定要短平快</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;1、观众是个大问题，真有你说个铺垫在下面乱接梗的。&lt;br&gt;2、黄段子的确更有效果，能够引发笑声。&lt;br&gt;3、表演有点过于刻意了。&lt;br&gt;4、段子的铺垫出梗的时间间隔不宜过久&lt;br&gt;5、梗一定要短平快&lt;/p&gt;
+
+      
+    
     </summary>
     
+    
+      <category term="开放麦" scheme="http://yoursite.com/tags/%E5%BC%80%E6%94%BE%E9%BA%A6/"/>
     
   </entry>
   

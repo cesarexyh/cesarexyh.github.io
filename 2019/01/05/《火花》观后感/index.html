@@ -488,6 +488,10 @@
           
 
   
+		<div id="gitalk-container"></div>
+
+		
+  
 
 
 
@@ -528,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -798,6 +802,21 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '911ce1fe85a608db48aa',
+          clientSecret: '8a96fb1c33d1d61e8c6d6a6b50def934c81d4cd6',
+          repo: 'cesarexyh.github.io',
+          owner: 'cesarexyh',
+          admin: ['cesarexyh'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 

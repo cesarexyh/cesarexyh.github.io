@@ -90,7 +90,7 @@
 <meta property="og:description" content="主要参考以下几篇文章 Hexo NexT主题中集成gitalk评论系统：可以当教程用，但存在一些问题。 Hexo next 配置 Gitalk 总结：解决了上面那个教程存在的问题。 官方：不是配置文档但因为是官方的所以优先参考。     我参考了上面三个配置方法，整合了一下">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://qmsharing.space/2018/06/16/Setup-gitalk/appSetting.png">
-<meta property="og:updated_time" content="2019-01-06T01:51:39.258Z">
+<meta property="og:updated_time" content="2019-01-06T02:23:49.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+gitalk评论系统配置">
 <meta name="twitter:description" content="主要参考以下几篇文章 Hexo NexT主题中集成gitalk评论系统：可以当教程用，但存在一些问题。 Hexo next 配置 Gitalk 总结：解决了上面那个教程存在的问题。 官方：不是配置文档但因为是官方的所以优先参考。     我参考了上面三个配置方法，整合了一下">
@@ -363,6 +363,9 @@
 <p>填写你自己的内容（这里就需要填写之前 <code>Client ID</code>和 <code>Client Secret</code>）</p>
 <h3 id="其余问题"><a href="#其余问题" class="headerlink" title="其余问题"></a>其余问题</h3><p>1、<strong>Q：</strong>未找到相关的Issues进行评论，请联系xxx初始化创建</p>
 <p>​       <strong>A：</strong>登录github之后刷新页面即可</p>
+<p>2、<strong>Q：</strong>点击评论后不变色</p>
+<p>​      <strong>A：</strong>1）把<code>gitalk.swig</code>中的 <code>distractionFreeMode: false</code>改为 <code>distractionFreeMode: &#39;&#39;</code></p>
+<p>​            2）在主题配置文件 <code>_config.yml</code>中添加 <code>distractionFreeMode: true</code></p>
 
       
     </div>

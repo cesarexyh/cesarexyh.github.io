@@ -8,9 +8,10 @@
          clearTimeout(titleTime);
      }
      else {
-         $('[rel="icon"]').attr('href', "../../images/favicon-16x16-next.png");
-         document.title = '哈哈又被你找到了' + OriginTitle;
+         //$('[rel="icon"]').attr('href', "../../images/favicon-16x16-next.png");
+         document.title = '哈哈又被你找到了';
          titleTime = setTimeout(function () {
+			 $('[rel="icon"]').attr('href', "../../images/favicon-16x16-next.png");
              document.title = OriginTitle;
          }, 2000);
      }

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-26T12:32:00.840Z</updated>
+  <updated>2019-03-01T08:42:57.501Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python爬虫实践001</title>
+    <link href="http://yoursite.com/2019/03/01/Python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B51/"/>
+    <id>http://yoursite.com/2019/03/01/Python爬虫实践1/</id>
+    <published>2019-03-01T08:42:57.000Z</published>
+    <updated>2019-03-01T08:42:57.501Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="项目001：爬取本地html文件"><a href="#项目001：爬取本地html文件" class="headerlink" title="项目001：爬取本地html文件"></a>项目001：爬取本地html文件</h2><h3 id="要求：爬取评分高于4分的文章标题和分类"><a href="#要求：爬取评分高于4分的文章标题和分类" class="headerlink" title="要求：爬取评分高于4分的文章标题和分类"></a>要求：爬取评分高于4分的文章标题和分类</h3><p><img src="https://s2.ax1x.com/2019/02/22/kWLnnP.png" alt=""></p><a id="more"></a><h3 id="解决步骤："><a href="#解决步骤：" class="headerlink" title="解决步骤："></a>解决步骤：</h3><p>step1、用BeautifulSoup解析网页</p><p>step2、查找需要用的tag</p><p>step3、提取tag中有用的信息</p><p>代码如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">data = []</span><br><span class="line">path = <span class="string">'1_2/1_2code_of_video/web/new_index.html'</span> <span class="comment">#vscode的相对路径是对于工程目录而非当前目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用with open() as f的方法比f.open()好，因为前者封装了f.close()，省去了清除内存的麻烦。</span></span><br><span class="line"><span class="keyword">with</span> open(path, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    Soup = BeautifulSoup(f.read(), <span class="string">'lxml'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#这里用select()和find_all()都行</span></span><br><span class="line">    titles = Soup.select(<span class="string">'ul &gt; li &gt; div.article-info &gt; h3 &gt; a'</span>)</span><br><span class="line">    pics = Soup.select(<span class="string">'ul &gt; li &gt; img'</span>)</span><br><span class="line">    descs = Soup.select(<span class="string">'ul &gt; li &gt; div.article-info &gt; p.description'</span>)</span><br><span class="line">    rates = Soup.select(<span class="string">'ul &gt; li &gt; div.rate &gt; span'</span>)</span><br><span class="line">    cates = Soup.select(<span class="string">'ul &gt; li &gt; div.article-info &gt; p.meta-info'</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment">#因为要通过一个tag值来判断，随后返回该tag值对应的另一tag值</span></span><br><span class="line"><span class="comment">#所以这里用dict来处理</span></span><br><span class="line"><span class="keyword">for</span> title, pic, desc, rate, cate <span class="keyword">in</span> zip(titles, pics, descs, rates, cates):</span><br><span class="line">    info = &#123;</span><br><span class="line">        <span class="string">'title'</span>: title.get_text(),</span><br><span class="line">        <span class="string">'pic'</span>: pic.get(<span class="string">'src'</span>),</span><br><span class="line">        <span class="string">'descs'</span>: desc.get_text(),</span><br><span class="line">        <span class="string">'rate'</span>: rate.get_text(),</span><br><span class="line">        <span class="string">'cate'</span>: list(cate.stripped_strings)</span><br><span class="line">    &#125;</span><br><span class="line">    data.append(info)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> data:</span><br><span class="line">    <span class="keyword">if</span> len(i[<span class="string">'rate'</span>]) &gt;= <span class="number">3</span>:</span><br><span class="line">        print(i[<span class="string">'title'</span>], i[<span class="string">'cate'</span>])</span><br></pre></td></tr></table></figure><h3 id="最后输出"><a href="#最后输出" class="headerlink" title="最后输出"></a>最后输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sardinia&apos;s top 10 beaches [&apos;fun&apos;, &apos;Wow&apos;]</span><br><span class="line">How to get tanned [&apos;butt&apos;, &apos;NSFW&apos;]</span><br><span class="line">How to be an Aussie beach bum [&apos;sea&apos;]</span><br><span class="line">Summer&apos;s cheat sheet [&apos;bay&apos;, &apos;boat&apos;, &apos;beach&apos;]</span><br></pre></td></tr></table></figure><h3 id="其余笔记"><a href="#其余笔记" class="headerlink" title="其余笔记"></a>其余笔记</h3><p>1、</p><blockquote><p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: <code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> , <code>Comment</code> .                                                      ——官方手册</p></blockquote><p>2、select()和find_all()</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#find_all()的返回值类型</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">bs4</span>.<span class="title">element</span>.<span class="title">ResultSet</span>'&gt;</span></span><br><span class="line"><span class="class">#<span class="title">select</span><span class="params">()</span>的返回值类型</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">list</span>'&gt;</span></span><br></pre></td></tr></table></figure><p>返回的都是包含标签的<strong>列表</strong>。</p><p>参考资料</p><p>[1] <a href="https://www.cnblogs.com/ymjyqsx/p/6554817.html" target="_blank" rel="noopener">with open() as f和open()的区别</a></p><p>[2] <a href="https://www.jianshu.com/p/9cb390ffec29" target="_blank" rel="noopener">vscode文件路径问题</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;项目001：爬取本地html文件&quot;&gt;&lt;a href=&quot;#项目001：爬取本地html文件&quot; class=&quot;headerlink&quot; title=&quot;项目001：爬取本地html文件&quot;&gt;&lt;/a&gt;项目001：爬取本地html文件&lt;/h2&gt;&lt;h3 id=&quot;要求：爬取评分高于4分的文章标题和分类&quot;&gt;&lt;a href=&quot;#要求：爬取评分高于4分的文章标题和分类&quot; class=&quot;headerlink&quot; title=&quot;要求：爬取评分高于4分的文章标题和分类&quot;&gt;&lt;/a&gt;要求：爬取评分高于4分的文章标题和分类&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/02/22/kWLnnP.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>十分钟世界史</title>
+    <link href="http://yoursite.com/2019/01/31/%E5%8D%81%E5%88%86%E9%92%9F%E4%B8%96%E7%95%8C%E5%8F%B2/"/>
+    <id>http://yoursite.com/2019/01/31/十分钟世界史/</id>
+    <published>2019-01-31T08:21:45.000Z</published>
+    <updated>2019-02-03T15:16:32.140Z</updated>
+    
+    <content type="html"><![CDATA[<p>Crash Coursera：<a href="https://www.bilibili.com/video/av1893599/?p=3" target="_blank" rel="noopener">十分钟世界史</a></p><p>0、农业革命：我们现在所存在的很多问题，都是由农业革命引起的，而这个革命却在不同的文明之间都发生了。尽管很难说清楚，人类不约而同的选择这一步是否正确，但无论如何我们都无法回头了。</p><h2 id="Season-1"><a href="#Season-1" class="headerlink" title="Season 1"></a>Season 1</h2><p>1）印度河谷文明：（2300 BC~1750 BC）挖掘出了遗物，但是文字失传无法翻译。</p><p>2）美索不达米亚文明：（3000 BC~2000 BC）发明了书写和税收，早起的政治形态，还有《汉谟拉比法典》。</p><p>其中著名的王朝有巴比伦和亚述。</p><p>3）古埃及：（3000 BC~332 BC）存在时间非常长，比起两河和恒河，这应该感谢一下尼罗河的温柔。现存的金字塔等都是这个文明遗留下的</p><p>4）古希腊人和波斯人（800 BC~146 BC）古希腊的文明有多灿烂？随便举几个例子，雅典，苏格拉底，奥运…还有那些耳熟能详的战争：马拉松，斯巴达勇士…西方文明的源头之一。波斯帝国了解不多，居鲁士大帝，温泉关战役。</p><p>5）印度（区分于古印度）：（1500 BC~）来自高加索的雅利安人进入印度，婆罗门教诞生，确立种姓制度，认为人死后会轮回，后来释迦摩尼悟出佛道，即经过修行，甚至有可能在这一世就打破轮回。</p><p>7）亚历山大：（356 BC~323 BC）雄才大略的君王，把希腊，埃及，波斯统一麾下，甚至大军打到了印度河流域，可惜英年早逝。</p><p>8）罗马帝国：主要人物凯撒（102 BC~44 BC），早起与庞培、克拉苏组成三头同盟，后打败庞培，成为终身独裁官，公元前44年，遭元老院成员暗杀身亡，后其养子屋大维创立罗马帝国，即奥古斯都大帝。</p><p>基督教：诞生于公元1世纪，最早流行与犹太人之间，所以要杀耶稣也应该是罗马人….395年罗马分裂，东罗马帝国信仰基督教分支东正教。</p><p>东罗马帝国：被历史学家称为“拜占庭帝国”，都城君士坦丁堡（今伊斯坦布尔）。期间首都曾被十字军攻陷，后收回。于1435年灭亡。</p><p>10）伊斯兰教（570 CE ~632 CE）</p><p>夹在拜占庭帝国和萨珊王朝（被亚历山大贡献后重建的波斯帝国）之间的古莱什部落即将迎来一位伟大的先知。</p><p>作为世界三大宗教之一的伊斯兰教，其中最著名的人物是被他们称作“最后的先知”——穆罕默德，与另外两个宗教领袖所不同的是，穆罕默德能打仗，在他的领导下，阿拉伯半岛开始以伊斯兰为核心建立统一的穆斯林国家。他死后，因为继承权问题，伊斯兰教主要分为逊尼和什叶两派，直至今日。</p><p>11）中世纪（公元5世纪~公元15世纪）：开始于西罗马帝国灭亡。</p><p>十字军东征：为了收复落入伊斯兰手中的圣城耶路撒冷，教皇发动的东征，总共9次（第4次是针对拜占庭帝国）</p><p>12）非洲：事实证明古代的非洲并非想象的那样贫穷，也出现过许多盛极一时的帝国，比如：马里帝国。</p><p>13）蒙古帝国（1206 CE~1635 CE）：1206年铁木真被推举为可汗，从此开始他南征北战的一生。东起日本海，西至地中海，北跨西伯利亚，南至波斯湾，蒙古帝国盛极一时，在成吉思汗死后，蒙古帝国分裂成四大汗国，其后各自走向终结</p><p>14）印度洋贸易（公元11世纪~公元13世纪）：有很多小国依靠收取船只停靠费和关税发家，但后来的事实证明，依靠贸易是无法稳固国家的。</p><p>15）威尼斯共和国与奥斯曼帝国：</p><p>威尼斯共和国（681 CE~1791 CE）：由威尼斯总督领导，擅长水上贸易，商人当道的国家。后灭于拿破仑之手。</p><p>奥斯曼帝国（1299 CE~1922年 CE）：土耳其人创立的国家，1435年消灭东罗马帝国，定都君士坦丁堡，15-19世纪唯一能和欧洲基督国家相提并论的伊斯兰国家，一战战败后分裂。</p><p>16)基辅罗斯~俄罗斯：公元882年建立基辅罗斯，11世纪分裂为多个公国，13世纪20年代被蒙古国征服，此后莫斯科公国开始做大做强。</p><p>17）大航海时代（15世纪末~16世纪初）：</p><p>视频里提到了3个人：郑和、达伽马和哥伦布。</p><p>我们非常熟悉的哥伦布其实终其一生都认为他所到达的地方是…印度，直到意大利人亚美利哥到达南美之后，才认定哥伦布发现的是亚欧之外的新大陆。</p><p>美洲大陆的发现影响巨大，物种交换（猪，牛等动物运往美洲）、疾病的传播（欧洲人给印第安人带去了天花，印第安人也回赠了花柳）。当然其中最臭名昭著的是奴隶贸易。</p><p>你无法把奴隶贸易归罪与任何一个团体、人物或者国家。在那个时代里，每个参与者都是肮脏的，欧洲人把非洲黑奴运往美洲，然而他们并非用武力去获得黑奴，相反，用的是贸易。为他们提供黑奴的也是非洲人，这些黑奴的同胞，或者说，领导者。</p><p>18）文艺复兴（14世纪~16世纪）：一场欧洲思想文化运动。</p><p>这是百度百科的说法，并不错误，但容易误导人。（就像笛卡尔用x，y来刻画横纵坐标导致后来的学生始终无法把思维转化过来一样）事实上文艺复兴是一个时间跨度两百年，而在这两百年内，间断性而非连续性发生的。</p><p>而且是精英运动而没有群众基础，毕竟大部分人还是以填饱肚子为主。当然这个时代各行业都出现太多伟大人物了。</p><p>19）七年战争（1754年~1763年）：主要是欧洲国家参战，英国和法国和西班牙在贸易和殖民地问题上的争夺，普鲁士与奥地利的争权，俄罗斯也意图从中取利。最终，英国与普鲁士的联盟取得了胜利，而这次胜利也为英国赢得了大半个北美，为日不落帝国的诞生打下了基础。</p><p>20）独立战争（1775~1783年）：1773年“波士顿倾茶事件”，来自英国的北美殖民者不满英国国会所颁布的法案所导致的冲突。1775年，莱克星顿，打响了武装反抗英国统治的第一枪，1776年大陆会议通过了《独立宣言》。</p><p>尽管不否认独立战争带来了许多积极因素，比如民主思想的传播等。但独立战争，其实也就是欧洲来的殖民者对英国政府统治的反抗罢了…跟快被灭光的印第安人这些真正的原住民好像也没多大关系，那些被贩卖到美洲的黑奴也没获得多大的权益。</p><p>21）法国大革命（1789年~1794年）：一场初衷无比美好，过程惨不忍睹的革命。</p><p>1774年，路易十六召开三级会议；</p><p>1789年，攻占巴士底狱，不久通过了《人权宣言》，宣扬“人身自由，权利平等”；</p><p>1791年，法国大革命引起普鲁士和奥地利不安，两国联手攻打法国；</p><p>1793年，处死路易十六；</p><p>1794年，热月党处死罗伯斯庇尔；</p><p>1799年，拿破仑雾月政变；</p><p>1815年，拿破仑滑铁卢战败，路易十八复辟波旁王朝；</p><p>1830年，七月革命推翻查理十世，建立七月王朝，法国大革命结束。</p><p>法国大革命彻底推翻了封建专制，但其过程之惨烈也令后世对革命产生了后怕。国内各种政变，欧洲各国为了扼杀这次革命的五次反法战争都为这次披上一层血色的纱布。</p><p>22）海地革命（1790年~1804年）：海地的黑奴以及混血人种反对法国、西班牙殖民统治的革命。值得一提的是，海地革命的成功也粉碎了拿破仑称霸北美的梦想。</p><p>23）拉丁美洲革命（1810年~1826年）：拉丁美洲为了脱离西班牙和葡萄牙而掀起的革命。</p><p>24）工业革命（18世纪60年代~19世纪40年代）：大多数人认为工业革命起源于英格兰，视频中认为工业革命起源于英国，很大程度上是因为</p><p>1、煤矿开采多，导致比较廉价；    </p><p>2、当时英国的工资全球最高；</p><p>25）第一次世界大战（1914年~1918年）：随着帝国主义之间经济发展的不平衡，矛盾也变得越来越尖锐。1914年奥匈帝国皇储斐迪南大公被暗杀，史称萨拉热窝事件。以这一事件为借口，奥匈帝国对塞尔维亚宣战，紧接着沙俄、德、法、英相继各自组队。1918年，《凡尔赛条约》签订，一战结束。</p><p>一战后期，俄国爆发二月革命，推翻了罗曼诺夫王朝，随后又爆发十月革命，最终列宁领导的苏维埃政权控制了局面。</p><p>一战之后，因为欧洲列强都遭受了巨大打击，美国开始展露头脚。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Crash Coursera：&lt;a href=&quot;https://www.bilibili.com/video/av1893599/?p=3&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;十分钟世界史&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;0、农业革命：我们现在所存在的很多
+      
+    
+    </summary>
+    
+    
+      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
+    
+  </entry>
+  
+  <entry>
     <title>其他喜剧形式</title>
     <link href="http://yoursite.com/2019/01/26/%E5%85%B6%E4%BB%96%E5%96%9C%E5%89%A7%E5%BD%A2%E5%BC%8F/"/>
     <id>http://yoursite.com/2019/01/26/其他喜剧形式/</id>
     <published>2019-01-26T11:04:57.000Z</published>
-    <updated>2019-01-26T12:32:00.840Z</updated>
+    <updated>2019-02-22T05:47:32.331Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Monologue"><a href="#Monologue" class="headerlink" title="Monologue"></a>Monologue</h2><p>推荐几个写的好的博主：</p><p><a href="https://mp.weixin.qq.com/s/SESfIqN-5RryangHwxtQ7A" target="_blank" rel="noopener">牙签的喜剧课堂-公众号</a></p><p><a href="https://weibo.com/u/3334372892?is_all=1" target="_blank" rel="noopener">七点半的独角戏-微博</a></p><p>单立人喜剧公众号的一周墙报</p><p>Monologue特点：由两句话构成，前半句是真实新闻，后半句是戏谑调侃。</p><p>先从新闻中归纳出重要部分作为铺垫，然后根据你自己的观点（可以和原文的观点相反，比如原文是好消息，你就想出坏消息。但前提是要和铺垫逻辑通顺。）</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Monologue"><a href="#Monologue" class="headerlink" title="Monologue"></a>Monologue</h2><p>推荐几个写的好的博主：</p><p><a href="https://mp.weixin.qq.com/s/SESfIqN-5RryangHwxtQ7A" target="_blank" rel="noopener">牙签的喜剧课堂-公众号</a></p><p><a href="https://weibo.com/u/3334372892?is_all=1" target="_blank" rel="noopener">七点半的独角戏-微博</a></p><p>单立人喜剧公众号的一周墙报</p><p>Monologue特点：由两句话构成，前半句是真实新闻，后半句是戏谑调侃。</p><p>先从新闻中归纳出重要部分作为铺垫，然后根据你自己的观点（可以和原文的观点相反，比如原文是好消息，你就想出坏消息。但前提是要和铺垫逻辑通顺。）</p><h4 id="一些思考方向"><a href="#一些思考方向" class="headerlink" title="一些思考方向"></a>一些思考方向</h4><p>1、可以往那种“震惊体”方面去思考</p><p>2、可以把不同的新闻相结合，例如：</p><p><img src="/2019/01/26/其他喜剧形式/C:/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1550814366276.png" alt=""></p><p>把翟天临博士论文造假和弹幕审核两个新闻写在一起，简直是不(diao)要(de)命(yi)了(b).</p>]]></content>
     
     <summary type="html">
     
@@ -45,7 +89,7 @@
     <link href="http://yoursite.com/2019/01/26/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E8%84%B1%E5%8F%A3%E7%A7%802/"/>
     <id>http://yoursite.com/2019/01/26/手把手教你脱口秀2/</id>
     <published>2019-01-26T01:35:39.000Z</published>
-    <updated>2019-01-26T13:14:23.327Z</updated>
+    <updated>2019-01-26T13:30:20.659Z</updated>
     
     <content type="html"><![CDATA[<p><a href="/手把手教你脱口秀1">第一篇文章</a>中提到了如何写一个段子，这篇文章讲如何写一个段落和如何把多个段子组成一个脱口秀演讲稿。</p><h2 id="从搞笑到爆笑"><a href="#从搞笑到爆笑" class="headerlink" title="从搞笑到爆笑"></a>从搞笑到爆笑</h2><p>1、写新段子的时候快速写完，之后再回去打磨。</p><p>2、不要让观众思考，而是让他们直接笑出来。</p><p>3、每个笑点都有一个关键词、短语或动作来揭示再解读，称为”底“。这个底尽量要放在段子最后，并且和其他信息隔开来。</p><a id="more"></a><p>4、三段式结构。</p><p>5、尽量选择常识性的话题，容易引起共鸣。</p><p>6、尽量代入角色。</p><p>7、少用双关梗</p><p>8、角色具体化，比如：“两个人走进酒吧”可以改为”我和我的朋友李小明走进酒吧“。</p><p>9、素材本地化。</p><p>10、联系热点事件</p><p>11、使用语法错误的语言。</p><p>12、自创词汇。</p><p>13、可以适当借助道具。</p><p>14、（重点）<strong>给段子加连续笑点</strong></p><p>（1）、使用原有的目标假设，使用不同的再解读。</p><p>（2）、使用铺垫中不同的连接点来创作不同的笑点。</p><p>（3）、把上一个笑点作为铺垫，去作出下一个笑点。</p><h2 id="如何把零散的笑话组合成脱口秀段落"><a href="#如何把零散的笑话组合成脱口秀段落" class="headerlink" title="如何把零散的笑话组合成脱口秀段落"></a>如何把零散的笑话组合成脱口秀段落</h2><p>未完待续</p>]]></content>
     

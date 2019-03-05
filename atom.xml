@@ -130,9 +130,9 @@
     </summary>
     
     
-      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
-    
       <category term="Open-mic" scheme="http://yoursite.com/tags/Open-mic/"/>
+    
+      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
     
   </entry>
   
@@ -182,9 +182,9 @@
     </summary>
     
     
-      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
-    
       <category term="Open-mic" scheme="http://yoursite.com/tags/Open-mic/"/>
+    
+      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-01T08:42:57.501Z</updated>
+  <updated>2019-03-05T10:14:56.476Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python爬虫实践001</title>
+    <title>计算机编码问题</title>
+    <link href="http://yoursite.com/2019/03/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2019/03/05/计算机编码问题/</id>
+    <published>2019-03-05T10:14:56.000Z</published>
+    <updated>2019-03-05T10:14:56.476Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>整理了一些我对进制之间转换的理解，有些地方为了记忆方便可能不太准确，欢迎指正。</p></blockquote><p>我们日常最常用的进制当然是十进制DEC，因为最符合人类的习惯（数手指）。</p><p>对于计算机而言，最熟悉的则是二进制BIN（高低电平表示<code>1</code>和<code>0</code>）。</p><p>此外常用的还有八进制OCT，十六进制HEX。</p><a id="more"></a><h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>以最常见的十进制为例，我们对于数字的记录方式是通过<strong>数位+基数(0~9)</strong>，比如152可以看成是1*10²+5*10¹+2*10º，数位从低到高为个位、十位、百位…</p><p>这种方式对应到其他进制只是数位和基数都不相同，其组成数字的法则是一样的。</p><p>比如二进制从低位到高位可以看做是个位、二位、四位、八位….</p><p>e.g. 152的二进制表示是10011000，就可以看做是$1<em>2^7+1</em>2^4+1*2^3$</p><blockquote><p>一般而言，<strong>不同进制之间转换的时候都会以BIN作为桥梁</strong>。</p></blockquote><h4 id="不同进制之间转换"><a href="#不同进制之间转换" class="headerlink" title="不同进制之间转换"></a>不同进制之间转换</h4><p><a href="https://www.zhihu.com/question/22205629/answer/61304268" target="_blank" rel="noopener">不同进制之间如何熟练转换-知乎</a></p><p>因为OCT和HEX都是BIN的倍数，所以一般转换时都是分位转换，即OCT的一位数相当于BIN的三位，HEX的一位数相当于BIN的四位。</p><h4 id="常听见的几种编码"><a href="#常听见的几种编码" class="headerlink" title="常听见的几种编码"></a>常听见的几种编码</h4><p>ASCII标准码：最高位奇偶校验位，后七位进行存储，可存128个字符。</p><p>Unicode：因为计算机的普及，中文、日文以及其它文字使得更多的字符需要被编码，为了统一标准，因此Unicode诞生了，用两个字节来表示一个字符。</p><p>UTF-8：因为字母只需要一个字节，而汉字需要两个字节，这样在使用Unicode表示字母的时候就导致内存空间被浪费，因此再Unicode的基础上又诞生了更通用的UTF-8,他的特点是对不同范围的字符使用不同长度的编码。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;整理了一些我对进制之间转换的理解，有些地方为了记忆方便可能不太准确，欢迎指正。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们日常最常用的进制当然是十进制DEC，因为最符合人类的习惯（数手指）。&lt;/p&gt;
+&lt;p&gt;对于计算机而言，最熟悉的则是二进制BIN（高低电平表示&lt;code&gt;1&lt;/code&gt;和&lt;code&gt;0&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;此外常用的还有八进制OCT，十六进制HEX。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Computer foundation" scheme="http://yoursite.com/tags/Computer-foundation/"/>
+    
+      <category term="编码" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python爬虫实践1</title>
     <link href="http://yoursite.com/2019/03/01/Python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B51/"/>
     <id>http://yoursite.com/2019/03/01/Python爬虫实践1/</id>
     <published>2019-03-01T08:42:57.000Z</published>
-    <updated>2019-03-01T08:42:57.501Z</updated>
+    <updated>2019-03-01T08:50:06.761Z</updated>
     
     <content type="html"><![CDATA[<h2 id="项目001：爬取本地html文件"><a href="#项目001：爬取本地html文件" class="headerlink" title="项目001：爬取本地html文件"></a>项目001：爬取本地html文件</h2><h3 id="要求：爬取评分高于4分的文章标题和分类"><a href="#要求：爬取评分高于4分的文章标题和分类" class="headerlink" title="要求：爬取评分高于4分的文章标题和分类"></a>要求：爬取评分高于4分的文章标题和分类</h3><p><img src="https://s2.ax1x.com/2019/02/22/kWLnnP.png" alt=""></p><a id="more"></a><h3 id="解决步骤："><a href="#解决步骤：" class="headerlink" title="解决步骤："></a>解决步骤：</h3><p>step1、用BeautifulSoup解析网页</p><p>step2、查找需要用的tag</p><p>step3、提取tag中有用的信息</p><p>代码如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">data = []</span><br><span class="line">path = <span class="string">'1_2/1_2code_of_video/web/new_index.html'</span> <span class="comment">#vscode的相对路径是对于工程目录而非当前目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用with open() as f的方法比f.open()好，因为前者封装了f.close()，省去了清除内存的麻烦。</span></span><br><span class="line"><span class="keyword">with</span> open(path, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    Soup = BeautifulSoup(f.read(), <span class="string">'lxml'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#这里用select()和find_all()都行</span></span><br><span class="line">    titles = Soup.select(<span class="string">'ul &gt; li &gt; div.article-info &gt; h3 &gt; a'</span>)</span><br><span class="line">    pics = Soup.select(<span class="string">'ul &gt; li &gt; img'</span>)</span><br><span class="line">    descs = Soup.select(<span class="string">'ul &gt; li &gt; div.article-info &gt; p.description'</span>)</span><br><span class="line">    rates = Soup.select(<span class="string">'ul &gt; li &gt; div.rate &gt; span'</span>)</span><br><span class="line">    cates = Soup.select(<span class="string">'ul &gt; li &gt; div.article-info &gt; p.meta-info'</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment">#因为要通过一个tag值来判断，随后返回该tag值对应的另一tag值</span></span><br><span class="line"><span class="comment">#所以这里用dict来处理</span></span><br><span class="line"><span class="keyword">for</span> title, pic, desc, rate, cate <span class="keyword">in</span> zip(titles, pics, descs, rates, cates):</span><br><span class="line">    info = &#123;</span><br><span class="line">        <span class="string">'title'</span>: title.get_text(),</span><br><span class="line">        <span class="string">'pic'</span>: pic.get(<span class="string">'src'</span>),</span><br><span class="line">        <span class="string">'descs'</span>: desc.get_text(),</span><br><span class="line">        <span class="string">'rate'</span>: rate.get_text(),</span><br><span class="line">        <span class="string">'cate'</span>: list(cate.stripped_strings)</span><br><span class="line">    &#125;</span><br><span class="line">    data.append(info)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> data:</span><br><span class="line">    <span class="keyword">if</span> len(i[<span class="string">'rate'</span>]) &gt;= <span class="number">3</span>:</span><br><span class="line">        print(i[<span class="string">'title'</span>], i[<span class="string">'cate'</span>])</span><br></pre></td></tr></table></figure><h3 id="最后输出"><a href="#最后输出" class="headerlink" title="最后输出"></a>最后输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sardinia&apos;s top 10 beaches [&apos;fun&apos;, &apos;Wow&apos;]</span><br><span class="line">How to get tanned [&apos;butt&apos;, &apos;NSFW&apos;]</span><br><span class="line">How to be an Aussie beach bum [&apos;sea&apos;]</span><br><span class="line">Summer&apos;s cheat sheet [&apos;bay&apos;, &apos;boat&apos;, &apos;beach&apos;]</span><br></pre></td></tr></table></figure><h3 id="其余笔记"><a href="#其余笔记" class="headerlink" title="其余笔记"></a>其余笔记</h3><p>1、</p><blockquote><p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: <code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> , <code>Comment</code> .                                                      ——官方手册</p></blockquote><p>2、select()和find_all()</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#find_all()的返回值类型</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">bs4</span>.<span class="title">element</span>.<span class="title">ResultSet</span>'&gt;</span></span><br><span class="line"><span class="class">#<span class="title">select</span><span class="params">()</span>的返回值类型</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> '<span class="title">list</span>'&gt;</span></span><br></pre></td></tr></table></figure><p>返回的都是包含标签的<strong>列表</strong>。</p><p>参考资料</p><p>[1] <a href="https://www.cnblogs.com/ymjyqsx/p/6554817.html" target="_blank" rel="noopener">with open() as f和open()的区别</a></p><p>[2] <a href="https://www.jianshu.com/p/9cb390ffec29" target="_blank" rel="noopener">vscode文件路径问题</a></p>]]></content>
     

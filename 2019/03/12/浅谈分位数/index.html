@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="空博客">
 <meta property="og:description" content="在Coursera看Ng的视频时，因为不想用MATLAB和Octave，改用了Python实现，由于用到了pandas这个模块(moudle)中的.describe()方法，对它输出值(见下面代码段)中的分位数（25%，50%，75%）没太弄懂，再查阅各种资料之后，做一个简单的总结。 1234567891011&amp;gt;&amp;gt;&amp;gt; s = pd.Series([1, 2, 3])&amp;gt;&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-12T12:42:09.887Z">
+<meta property="og:updated_time" content="2019-03-14T12:15:30.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈分位数">
 <meta name="twitter:description" content="在Coursera看Ng的视频时，因为不想用MATLAB和Octave，改用了Python实现，由于用到了pandas这个模块(moudle)中的.describe()方法，对它输出值(见下面代码段)中的分位数（25%，50%，75%）没太弄懂，再查阅各种资料之后，做一个简单的总结。 1234567891011&amp;gt;&amp;gt;&amp;gt; s = pd.Series([1, 2, 3])&amp;gt;&amp;gt">
@@ -355,6 +355,7 @@
       
         <p>在Coursera看Ng的视频时，因为不想用MATLAB和Octave，改用了Python实现，由于用到了pandas这个模块(moudle)中的<code>.describe()</code>方法，对它输出值(见下面代码段)中的分位数（25%，50%，75%）没太弄懂，再查阅各种资料之后，做一个简单的总结。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.describe()</span><br><span class="line">count    <span class="number">3.0</span></span><br><span class="line">mean     <span class="number">2.0</span></span><br><span class="line">std      <span class="number">1.0</span></span><br><span class="line">min      <span class="number">1.0</span></span><br><span class="line"><span class="number">25</span>%      <span class="number">1.5</span></span><br><span class="line"><span class="number">50</span>%      <span class="number">2.0</span></span><br><span class="line"><span class="number">75</span>%      <span class="number">2.5</span></span><br><span class="line">max      <span class="number">3.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="中位数"><a href="#中位数" class="headerlink" title="中位数"></a>中位数</h2><p>首先需要把数据集从小到大<strong>排列</strong>（从大到小也行，取决于实际需求）。</p>
 <p><strong>1、若样本个数n为奇数，那么只需要取中间值（第n/2个）就是数据集的中位数。</strong></p>
 <p>e.g.数据集[1,2,3]，则中位数为2</p>
@@ -481,6 +482,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/14/vscode常用快捷键/" rel="prev" title="vscode常用快捷键">
+                vscode常用快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -589,7 +594,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -611,7 +616,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

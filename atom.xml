@@ -2,19 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>空博客</title>
   
-  <subtitle>The early worm be catched by birds.</subtitle>
+  <subtitle>The early worm is catched by birds.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-14T12:14:52.543Z</updated>
+  <updated>2019-03-16T07:42:50.868Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Lean/许阳航</name>
+    <name>JQK/许阳航</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Numpy中的Meshgrid</title>
+    <link href="http://yoursite.com/2019/03/16/Numpy%E4%B8%AD%E7%9A%84Meshgrid/"/>
+    <id>http://yoursite.com/2019/03/16/Numpy中的Meshgrid/</id>
+    <published>2019-03-16T07:42:50.000Z</published>
+    <updated>2019-03-16T07:42:50.868Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Numpy是在利用Python进行科学计算和数据处理时肯定会使用到的模块(moudle)。</p><p>本文用比较通俗的语言讲解一下其中的Meshgrid函数</p></blockquote><h4 id="1-Meshgrid前言"><a href="#1-Meshgrid前言" class="headerlink" title="1.Meshgrid前言"></a>1.Meshgrid前言</h4><p>简单来说，<code>Meshgrid</code>就是在用两个坐标轴上的点在平面上画网格，当然也可以用三个坐标，但是为了方便理解，下面都用两个坐标轴举例。</p><a id="more"></a><h4 id="2-Meshgrid参数"><a href="#2-Meshgrid参数" class="headerlink" title="2.Meshgrid参数"></a>2.Meshgrid参数</h4><p>详情咨询<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.meshgrid.html" target="_blank" rel="noopener">官方文档</a>，最常用的就是传入两个一维数组</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">y = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">xv,yv = meshgrid(x,y)</span><br></pre></td></tr></table></figure><h4 id="3-Meshgrid返回值"><a href="#3-Meshgrid返回值" class="headerlink" title="3.Meshgrid返回值"></a>3.Meshgrid返回值</h4><p>xv的返回值：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[-10,10],</span><br><span class="line"> [-10,10]]</span><br></pre></td></tr></table></figure><p>yv的返回值：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[-10,-10],</span><br><span class="line"> [10,10]]</span><br></pre></td></tr></table></figure><p>从上面很容易看出，Meshgrid实际上是返回两个<strong>矩阵</strong>，两个矩阵不同之处，下面用一张图来表示一目了然。</p><p><img src="https://s2.ax1x.com/2019/03/15/AEfxHJ.jpg" alt=""></p><p>可以看出就是通过两个矩阵的方式完成了网格的绘制。</p><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p>[1] <a href="https://zhuanlan.zhihu.com/p/33579211" target="_blank" rel="noopener">Python-Numpy模块Meshgrid函数</a></p><p>[2] <a href="https://zhuanlan.zhihu.com/p/33579211" target="_blank" rel="noopener">Numpy中Meshgrid函数介绍及2种应用场景</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Numpy是在利用Python进行科学计算和数据处理时肯定会使用到的模块(moudle)。&lt;/p&gt;
+&lt;p&gt;本文用比较通俗的语言讲解一下其中的Meshgrid函数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-Meshgrid前言&quot;&gt;&lt;a href=&quot;#1-Meshgrid前言&quot; class=&quot;headerlink&quot; title=&quot;1.Meshgrid前言&quot;&gt;&lt;/a&gt;1.Meshgrid前言&lt;/h4&gt;&lt;p&gt;简单来说，&lt;code&gt;Meshgrid&lt;/code&gt;就是在用两个坐标轴上的点在平面上画网格，当然也可以用三个坐标，但是为了方便理解，下面都用两个坐标轴举例。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>vscode常用快捷键</title>
@@ -60,9 +86,9 @@
     </summary>
     
     
-      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
-    
       <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+      <category term="Math" scheme="http://yoursite.com/tags/Math/"/>
     
   </entry>
   

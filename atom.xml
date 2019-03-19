@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>空博客</title>
   
-  <subtitle>The early worm is catched by birds.</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-19T03:38:01.387Z</updated>
+  <updated>2019-03-19T07:26:36.933Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,20 +21,15 @@
     <link href="http://yoursite.com/2019/03/19/Numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
     <id>http://yoursite.com/2019/03/19/Numpy中的矩阵乘法/</id>
     <published>2019-03-19T03:38:01.000Z</published>
-    <updated>2019-03-19T03:38:01.387Z</updated>
+    <updated>2019-03-19T07:26:36.933Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>简单介绍一下Numpy中<code>.dot()</code>、<code>*</code>、<code>multiply()</code>和<code>@</code>的区别</p></blockquote><p>#### </p><h4 id="1-np-multiply-函数"><a href="#1-np-multiply-函数" class="headerlink" title="1. np.multiply()函数"></a>1. np.multiply()函数</h4><p>数组/矩阵对应的位置相乘。</p><h4 id="2-np-dot-函数"><a href="#2-np-dot-函数" class="headerlink" title="2. np.dot()函数"></a>2. np.dot()函数</h4><p>2.1.  当数组/矩阵秩为1(即向量)时，执行点积。</p><p>2.2.  当数组/矩阵秩大于2时，执行矩阵乘法。</p><h4 id="3-星号-乘法运算"><a href="#3-星号-乘法运算" class="headerlink" title="3.  星号(*)乘法运算"></a>3.  星号(*)乘法运算</h4><p>3.1.  对数组执行对应位置相乘。</p><p>3.2.  对矩阵执行矩阵乘法。</p><h4 id="4-乘法运算"><a href="#4-乘法运算" class="headerlink" title="4. @乘法运算"></a>4. @乘法运算</h4><p>4.1.  对于矩阵乘法而言，完全等价于<code>.dot()</code>。</p><p>4.2.  区别在于，当a和b中有一个是标量时，只能用<code>.dot()</code>否则会报错。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>简单介绍一下Numpy中<code>.dot()</code>、<code>*</code>、<code>multiply()</code>和<code>@</code>的区别</p></blockquote><a id="more"></a><h4 id="1-np-multiply-函数"><a href="#1-np-multiply-函数" class="headerlink" title="1. np.multiply()函数"></a>1. np.multiply()函数</h4><p>数组/矩阵对应的位置相乘。</p><h4 id="2-np-dot-函数"><a href="#2-np-dot-函数" class="headerlink" title="2. np.dot()函数"></a>2. np.dot()函数</h4><p>2.1.  当数组/矩阵秩为1(即向量)时，执行点积。</p><p>2.2.  当数组/矩阵秩大于2时，执行矩阵乘法。</p><p>2.3.  .dot可以被数组对象调用，也可以通过numpy库调用（被matrix调用可以执行，但会报错）。</p><h4 id="3-星号-乘法运算"><a href="#3-星号-乘法运算" class="headerlink" title="3.  星号(*)乘法运算"></a>3.  星号(*)乘法运算</h4><p>3.1.  对数组执行对应位置相乘。</p><p>3.2.  对矩阵执行矩阵乘法。</p><h4 id="4-乘法运算"><a href="#4-乘法运算" class="headerlink" title="4. @乘法运算"></a>4. @乘法运算</h4><p>4.1.  对于矩阵乘法而言，完全等价于<code>.dot()</code>。</p><p>4.2.  区别在于，当a和b中有一个是标量时，只能用<code>.dot()</code>否则会报错。</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;blockquote&gt;
+      &lt;blockquote&gt;
 &lt;p&gt;简单介绍一下Numpy中&lt;code&gt;.dot()&lt;/code&gt;、&lt;code&gt;*&lt;/code&gt;、&lt;code&gt;multiply()&lt;/code&gt;和&lt;code&gt;@&lt;/code&gt;的区别&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;#### &lt;/p&gt;
-&lt;h4 
-      
     
     </summary>
     

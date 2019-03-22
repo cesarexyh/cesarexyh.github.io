@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>空博客</title>
   
-  <subtitle>总不能浪费这一行吧</subtitle>
+  <subtitle>总不能浪费个副标题吧</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>

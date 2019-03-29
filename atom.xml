@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-23T15:07:25.350Z</updated>
+  <updated>2019-03-25T10:12:32.929Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,65 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>YJango学习观笔记及感悟</title>
+    <link href="http://yoursite.com/2019/03/25/YJango%E5%AD%A6%E4%B9%A0%E8%A7%82%E7%AC%94%E8%AE%B0%E5%8F%8A%E6%84%9F%E6%82%9F/"/>
+    <id>http://yoursite.com/2019/03/25/YJango学习观笔记及感悟/</id>
+    <published>2019-03-25T10:11:47.000Z</published>
+    <updated>2019-03-25T10:12:32.929Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><a href="https://space.bilibili.com/344849038/video" target="_blank" rel="noopener">b站-YJango</a>，个人还是对这位先生的</p><p>视频地址：<a href="https://space.bilibili.com/344849038/video" target="_blank" rel="noopener">b站-Yjango</a>，个人还是对他表示敬意的，他的视频挺具有启发性。</p><p>本文同样参考了<a href="https://www.zhihu.com/question/305705365/answer/621628417" target="_blank" rel="noopener"> 如何评价知乎用户 YJango 的公众号？ - Makise Chris的回答 - 知乎</a> </p></blockquote><h3 id="第一季"><a href="#第一季" class="headerlink" title="第一季"></a>第一季</h3><h4 id="01-何为学习"><a href="#01-何为学习" class="headerlink" title="01.何为学习"></a>01.何为学习</h4><p>学习就是从有限例子中找出规律的过程，而这个规律就是知识。</p><h4 id="02-如何学习"><a href="#02-如何学习" class="headerlink" title="02.如何学习"></a>02.如何学习</h4><p>因为人脑机能原因，单单<strong>记忆</strong>一个知识，显然远远达不到掌握它的水平。</p><p>而首先应该做的是明确<strong>问题（输入）</strong>和<strong>答案（输出）</strong>。</p><p>然后通过大量例子来理清二者的关系。接下来根据你的问题和答案，找出这些例子中符合问题及答案的规律。这两步也就是华罗庚的”先把书读厚（大量例子体会关系），再把书读薄（找出知识来压缩例子）。”</p><p>最后，需要用新的问题来验证你的例子是否正确。</p><h4 id="03-学习误区"><a href="#03-学习误区" class="headerlink" title="03.学习误区"></a>03.学习误区</h4><p>学习误区指什么？见图片黄字。</p><p>学习方式分为两类：（1）运动类：语言、运动（2）思考类：数学、逻辑</p><p>举了个语言的例子：</p><p>错误方式：</p><p><img src="https://s2.ax1x.com/2019/03/24/AYs9G8.png" alt=""></p><p>正确方式：</p><p><img src="https://s2.ax1x.com/2019/03/24/AYrzIP.png" alt=""></p><p>老实说我认为这个观点见仁见智，尤其是摒弃中文作为中间媒介这件事，姑且不论对错，可行性就值得怀疑了。</p><h4 id="04-运用误区"><a href="#04-运用误区" class="headerlink" title="04.运用误区"></a>04.运用误区</h4><p>运动类的学习可以同时进行，比如边走路边聊天；而思考类则不行，只能串行操作，所以当我们遇到一个大的问题（输入）时，如果无法直接得到输出，就需要将这个输入拆分，分别解决。</p><h4 id="05-思维导图"><a href="#05-思维导图" class="headerlink" title="05.思维导图"></a>05.思维导图</h4><p>其功能不在于记忆，而在于克服学习和运用中的误区。</p><p>在构建思维导图的过程中，你会先找到<strong>关键词</strong>，然后问自己它是什么？从而不断的联想起具体的例子，进而分析这些例子的共同输入和输出，找出规律；而当问自己它的作用或目的时，实际在思考输入是怎么变成输出的。输入输出可以代表<strong>一类</strong>事物中任何一种<strong>情况</strong>，因此被称为变量。而从输入变成输出的这一过程称为函数。而确定了这个“函数”，等下一次遇到未知的情况时，利用这个函数就可以解答出输出。随后你会用一个更好的关键词来代表你所找出的关系，一种是动宾结构，因为它描述了输入和函数，也就确定了输出，但当人们开始传播知识时，动宾结构也会名词化。</p><p>还有一种知识本身就是名词，会让你觉得没有输出，但这种知识的输出是分类任务中的类型，描述它的是主谓结构：是或不是/是否属于/属于哪个。</p><p>思维导图最强大的地方在于对知识的拆分，构建出知识网络，而知识网络中有些内容是你已经知道的，即具有重用性，学习新内容时，可以利用这些重用性，加快学习速度。拆分知识既可以用在学习未知知识上，也可以用在运用已有知识上（分而治之）。</p><p>而拆分知识的能力也是一种特殊的知识，称为二阶知识，不同于一般的知识用于描述信息与信息的关系，二阶知识用于描述知识与知识的关系。</p><p>视频中举的例子就是<strong>思维导图</strong>，假设我们需要构建一个有关于思维导图内容的思维导图。</p><p>那么首先，找出关键词——思维导图。然后问自己：思维导图是什么？因此联想出思维导图使用的具体例子：任务清单、知识体系、任务关系…，接着分析这些例子的共同输入——杂乱信息，共同输出——知识网络。而当你问它的作用时，也就是在思考输入是怎么变成输出的。一类事物，这个例子中，假设它代表的是任务清单这一类，那么输入的杂乱信息和输出的知识网络就是任务清单这一类事物的特定情况。而这个“函数”：可以理解为思维导图的画图方法。然后是找动宾结构，这里是压缩信息（其中压缩是函数，信息是输出），当人们开始传递知识时，压缩信息就被名词化成了思维导图。</p><p>知识本身属于名词的没说例子。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://space.bilibili.com/344849038/video&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;b站-YJango&lt;/a&gt;，个人还是对这位先生的&lt;/p&gt;
+&lt;p&gt;视频地址：&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于记忆方法</title>
+    <link href="http://yoursite.com/2019/03/25/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BF%86%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/03/25/关于记忆方法/</id>
+    <published>2019-03-25T09:52:12.000Z</published>
+    <updated>2019-03-25T10:04:58.195Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>阅读了几篇关于记忆方法的文章，有所感悟，结合了一下自己经历，选了几个我认为有长期实践意义的方法，在此记录，此文可能会长期更新，毕竟记忆方法也是要不断调整的。</p></blockquote><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>我认为针对不同问题，应该具有不同的记忆方法。比如：</p><p>单词记忆，那么也许联想类方法比较有用；</p><p>记忆某些抽象概念，如剩余价值的含义，也许更适合用关键词法；</p><p>…</p><p>所以记忆方法不能一概而论，犯教条主义错误。</p><a id="more"></a><h4 id="记忆整体框架"><a href="#记忆整体框架" class="headerlink" title="记忆整体框架"></a>记忆整体框架</h4><p>结构化，也就是常说的<strong>思维导图</strong>，从全局出发，有助于你理清思路，尤其当你面对一个比较庞杂而又相互关联的知识（比如政治一整个章节的内容）。现在很多书籍都会替你整理好，但是请务必要<strong>用自己的方式去整理一遍</strong>，也许有人会说，我自己思考的和书上整理的一样啊，那么也请合上书默写出来。</p><p>实际上你默写也好，自己写也罢，<strong>这里的关键是在这个过程是一定要去==主动思考==（敲重点！）这个庞杂的知识的脉络到底是什么样的。</strong></p><p>思维导图：</p><p><img src="https://s2.ax1x.com/2019/03/25/At22X8.png" alt=""></p><p><img src="https://s2.ax1x.com/2019/03/25/AtRC1x.png" alt=""></p><p>参考资料：<a href="https://zhuanlan.zhihu.com/YJango" target="_blank" rel="noopener">知乎专栏——Yjango</a></p><h4 id="记忆段落-句子内容"><a href="#记忆段落-句子内容" class="headerlink" title="记忆段落/句子内容"></a>记忆段落/句子内容</h4><p>一般来说，我们学习的总是不熟悉的内容，再加上作者和你在表述习惯上的差异，才会导致你无法理解作者想要传达的意思，才会导致只能死记硬背。</p><p>所以同样需要我们用自己的方式理解并记忆作者想要传达给你的意思。那么如何去用自己的语言表述出来呢？</p><p>引用一句话：记忆<strong>书本原有的关键词、知识点</strong>等<strong>“点”信息</strong>，<strong>而后自己去连“点”成“线</strong>”——指的是把这一块的“点”信息串成有逻辑的内容$^{[2]}$。</p><p>举个例子：</p><blockquote><p>类是对一群具有相同特征或者行为的事物的一个统称，是抽象的，不能直接使用。特征被称为”属性“，行为被称为”方法“。</p></blockquote><p>在这个句子中，对我而言，关键词是”类，特征=属性，行为=方法“。所以对我而言只需要记住这几个内容，剩下的用自己的话重复一遍：</p><blockquote><p>类是具有相同的特征和行为的事物的统称，是一个抽象概念。实际运用时，特征又叫做属性，行为又叫方法。</p></blockquote><p><strong>参考资料</strong>：[2].<a href="https://www.zhihu.com/question/50343728" target="_blank" rel="noopener">你有什么值得分享的高效学习方法？</a> 这个问题下最高赞的回答</p><p>我认为这个方法尤其适用于抽象概念——尤其是文科类——的记忆。</p><h4 id="记忆关键词"><a href="#记忆关键词" class="headerlink" title="记忆关键词"></a>记忆关键词</h4><p>联想记忆法，这个方法算是很常见了，但我认为可以看一下这个视频：·<a href="https://weibo.com/1974576991/HmiDNf2ps?type=comment" target="_blank" rel="noopener">TED画图记忆方法</a>。</p><p>视频中提到可以用画图的方式来替代文字记忆，但我认为在记忆大量内容的时候这种方法太低效。不过比起单纯的联想，画图具有更强的可操作性（有时候真是联想不到），而且动笔的过程中又进一步加深了你的思考。所以我认为可以在上一个记忆法中，记忆关键字时，根据需要使用这个方法。</p><p>还是上面的例子，当我们提取关键字后，可能还是会觉得抽象，类是什么？特征和行为又怎么理解？这时候把这几个词语通过联想的方式去理解记忆：</p><p>类，可以看做是制造一样东西（比如飞机）的设计图；属性，就好比飞机都有一对翅膀；方法，就好比飞机如何起飞。还可以接着拓展，比如用类创建一个对象，就相当于用设计图纸去制造一架飞机。</p><p><img src="https://s2.ax1x.com/2019/03/24/AYeagH.png" alt=""></p><p>其实无论哪种方法，归根结底都是要把新的知识转化为自己更熟悉的方式，加以理解并记忆。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;阅读了几篇关于记忆方法的文章，有所感悟，结合了一下自己经历，选了几个我认为有长期实践意义的方法，在此记录，此文可能会长期更新，毕竟记忆方法也是要不断调整的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;我认为针对不同问题，应该具有不同的记忆方法。比如：&lt;/p&gt;
+&lt;p&gt;单词记忆，那么也许联想类方法比较有用；&lt;/p&gt;
+&lt;p&gt;记忆某些抽象概念，如剩余价值的含义，也许更适合用关键词法；&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;所以记忆方法不能一概而论，犯教条主义错误。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
+    
+  </entry>
+  
+  <entry>
     <title>正向传播的向量化实现</title>
     <link href="http://yoursite.com/2019/03/23/%E6%AD%A3%E5%90%91%E4%BC%A0%E6%92%AD%E7%9A%84%E5%90%91%E9%87%8F%E5%8C%96%E5%AE%9E%E7%8E%B0/"/>
     <id>http://yoursite.com/2019/03/23/正向传播的向量化实现/</id>
     <published>2019-03-23T06:51:39.000Z</published>
-    <updated>2019-03-23T15:07:25.350Z</updated>
+    <updated>2019-03-23T15:13:43.482Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)</p></blockquote><p><img src="https://s2.ax1x.com/2019/03/23/AGrwuR.png" alt=""></p><a id="more"></a><p>其实没什么难的，就是几个符号理解起来可能有点费劲，下面简单解释一下：</p><p>从这个式子入手：$z^{(2)}=\Theta^{(1)}*a^{(1)}​$</p><p>$z^{(2)}$等于信号$a^{(1)}$在传输过程中乘上响应的权重$\Theta^{(1)}​$，展开来写的话就是左图中等号右边的灰色线框。</p><p>$a^{(1)}$是指第一层中$x_{0}$~$x_{3}$构成的一维<strong>向量</strong>，上标1就是指第一层。</p><p>$\Theta^{(1)}$是指传递过程中不同信号所对应的权重，反应在公式上就是$\Theta^{(1)}_{10}$~$\Theta^{(1)}_{33}$所构成的<strong>矩阵</strong>。</p><p>$\Theta^{(1)}_{10}$下标的10是指，接收信号的神经元为下一层的第一个，发出信号的为这一层的第0个神经元。</p><p>这里额外说一下这个$\Theta^{(1)}​$的维度，如果在第$j​$层有$s_{j}​$个神经元(units)，在第$j+1​$层有$s_{j+1}​$个神经元，那么对应的权重的维度为$s_{j+1}*(s_{j}+1)​$。</p><p>其中$s_{j}+1$是因为上一层在传递时，默认会传递一个$s_{0}=1​$</p><p>以上是传递过程中的，$z^{(2)}$传递到神经元之后，就通过激励函数（图中是S函数）求出需要传递个下一层的信号$a^{(2)}$</p><p>即公式：$a^{(2)}=g(z^{(2)})$</p><p>.</p><p>依次类推，即可求出最终的假设函数$h_{\Theta}(x)$</p><blockquote><p>本文是从信号发出的角度去阐述，但似乎更多文章时站在信号接收的角度，但意思是一样的</p></blockquote><p>参考文章</p><p>[1]. <a href="https://zhuanlan.zhihu.com/p/28299430" target="_blank" rel="noopener">机器学习笔记（2）—— 神经网络</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)</p></blockquote><p><img src="https://s2.ax1x.com/2019/03/23/AGrwuR.png" alt=""></p><a id="more"></a><p>其实没什么难的，就是几个符号理解起来可能有点费劲，下面简单解释一下：</p><p>从这个式子入手：$z^{(2)}=\Theta^{(1)}*a^{(1)}$</p><p>$z^{(2)}$等于信号$a^{(1)}$在传输过程中乘上响应的权重$\Theta^{(1)}​$，展开来写的话就是左图中等号右边的灰色线框。</p><p>$a^{(1)}$是指第一层中$x_{0}$~$x_{3}$构成的一维<strong>向量</strong>，上标1就是指第一层。</p><p>$\Theta^{(1)}$是指传递过程中不同信号所对应的权重，反应在公式上就是$\Theta^{(1)}_{10}$~$\Theta^{(1)}_{33}$所构成的<strong>矩阵</strong>。</p><p>$\Theta^{(1)}_{10}$下标的10是指，接收信号的神经元为下一层的第一个，发出信号的为这一层的第0个神经元。</p><p>这里额外说一下这个$\Theta^{(1)}​$的维度，如果在第$j​$层有$s_{j}​$个神经元(units)，在第$j+1​$层有$s_{j+1}​$个神经元，那么对应的权重的维度为$s_{j+1}*(s_{j}+1)​$。</p><p>其中$s_{j}+1$是因为上一层在传递时，默认会传递一个$s_{0}=1​$</p><p>以上是传递过程中的，$z^{(2)}$传递到神经元之后，就通过激励函数（图中是S函数）求出需要传递个下一层的信号$a^{(2)}$</p><p>即公式：$a^{(2)}=g(z^{(2)})$</p><p>依次类推，即可求出最终的假设函数$h_{\Theta}(x)$</p><blockquote><p>本文是从信号发出的角度去阐述，但似乎更多文章时站在信号接收的角度，但意思是一样的</p></blockquote><p>参考文章</p><p>[1]. <a href="https://zhuanlan.zhihu.com/p/28299430" target="_blank" rel="noopener">机器学习笔记（2）—— 神经网络</a></p>]]></content>
     
     <summary type="html">
     
@@ -44,7 +96,7 @@
     <link href="http://yoursite.com/2019/03/20/sklearn%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0classification-report/"/>
     <id>http://yoursite.com/2019/03/20/sklearn中的函数classification-report/</id>
     <published>2019-03-20T08:42:54.000Z</published>
-    <updated>2019-03-20T08:42:54.847Z</updated>
+    <updated>2019-03-24T01:51:45.678Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>classification_report函数主要用于显示主要分类指标的文本报告</p></blockquote><h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h4><p>在报告中显示每个类的精确度、召回率等信息（可以用来检测回归算法的准确度）。</p><a id="more"></a><h4 id="2-classification-report-参数"><a href="#2-classification-report-参数" class="headerlink" title="2.classification_report()参数"></a>2.classification_report()参数</h4><p>详见<a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html" target="_blank" rel="noopener">官方文档</a>，这里只说几个重要参数</p><p><code>y_true</code>：1维数组，目标值</p><p><code>y_pred</code>：1维数组，分类器返回的估计值</p><p><code>label</code>：数组，报告中显示的类标签索引列表</p><p><code>target_names</code>：字符串列表，当和<code>label</code>匹配时作为<code>label</code>的名称</p><h4 id="3-classification-report-返回值"><a href="#3-classification-report-返回值" class="headerlink" title="3.classification_report()返回值"></a>3.classification_report()返回值</h4><blockquote><p>解释一下两个名词</p><p>正样本：与你所要研究的目的相关</p><p>负样本：与你所要研究的目的无关</p><p>举个例子：如果你要做一间教室里的人脸识别，那么正样本就是人脸，负样本就是课桌、门窗之类的</p></blockquote><p>TP(True Positive): 预测为正样本， 实际为正样本（预测正确）</p><p>FP(False Positive): 预测为正样本，  实际为负样本 （预测错误）</p><p>FN(False Negative): 预测为负样本，实际为正样本 （预测错误）</p><p>TN(True Negative): 预测为负样本， 实际为负样本 （预测正确）</p><p>精确度(precision)=正确预测的个数(TP)/预测为正样本的个数(TP+FP)</p><blockquote><p>检索结果中，都是你认为应该为正的样本（第二个字母都是P），但是其中有你判断正确的和判断错误的（第一个字母有T ，F）。</p></blockquote><p>召回率(recall)=正确预测值的个数(TP)/实际为正样本的个数(TP+FN)</p><blockquote><p>检索结果中，你判断为正的样本也确实为正的，以及那些没在检索结果中被你判断为负但是事实上是正的，或者说你没预测到的（FN）。</p></blockquote><p>F1值=2*精度*召回率/(精度+召回率)</p><p>不明白的话参考以下代码：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">4</span>]: <span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line">   ...: y_true = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>]</span><br><span class="line">   ...: y_pred = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>]</span><br><span class="line">   ...: labels =[<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>]</span><br><span class="line">   ...: target_names = [<span class="string">'labels_1'</span>,<span class="string">'labels_2'</span>,<span class="string">'labels_3'</span>,<span class="string">'labels-4'</span>]</span><br><span class="line">   ...: print(classification_report(y_true,y_pred,labels=labels,target_names= t</span><br><span class="line">   ...: arget_names,digits=<span class="number">3</span>))</span><br><span class="line">   ...:</span><br><span class="line">              precision    recall  f1-score   support</span><br><span class="line"></span><br><span class="line">    labels_1      <span class="number">0.500</span>     <span class="number">1.000</span>     <span class="number">0.667</span>         <span class="number">1</span></span><br><span class="line">    labels_2      <span class="number">1.000</span>     <span class="number">0.667</span>     <span class="number">0.800</span>         <span class="number">3</span></span><br><span class="line">    labels_3      <span class="number">0.000</span>     <span class="number">0.000</span>     <span class="number">0.000</span>         <span class="number">1</span></span><br><span class="line"></span><br><span class="line">   micro avg      <span class="number">0.600</span>     <span class="number">0.600</span>     <span class="number">0.600</span>         <span class="number">5</span></span><br><span class="line">   macro avg      <span class="number">0.500</span>     <span class="number">0.556</span>     <span class="number">0.489</span>         <span class="number">5</span></span><br><span class="line">weighted avg      <span class="number">0.700</span>     <span class="number">0.600</span>     <span class="number">0.613</span>         <span class="number">5</span></span><br></pre></td></tr></table></figure><p>最右边<code>support</code>列为每个标签的出现次数(权重)。</p><p><code>micro avg</code>：计算所有数据中预测正确的值，比如这里是3/5=0.6</p><p><code>macro avg</code>：每个类别指标中的未加权平均值(一列)，比如准确率(precision)的<code>macro avg</code>是：$(0.5+1.0+0)/3=0.5$</p><p><code>weighted avg</code>：每个类别指标中的加权平均，比如准确率(precision)的<code>weighted avg</code>是：$(0.5<em>1+1.0</em>3+0*1)/3=0.7$  </p><h4 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4.参考资料"></a>4.参考资料</h4><p>[1] <a href="http://www.cnblogs.com/akrusher/articles/6442839.html" target="_blank" rel="noopener">博客园</a></p><p>[2] <a href="https://blog.csdn.net/genghaihua/article/details/81155200" target="_blank" rel="noopener">CSDN博客</a></p><p>[3] <a href="https://blog.csdn.net/kancy110/article/details/74937469" target="_blank" rel="noopener">CSDN博客</a></p><p>[4] <a href="https://blog.csdn.net/guyubit/article/details/52276013" target="_blank" rel="noopener">CSDN博客——TP、TN、FP、FN解释说明</a></p><p>[5] <a href="https://www.libinx.com/2018/understanding-sklearn-classification-report/" target="_blank" rel="noopener">读懂 sklearn 的 classification_report</a></p>]]></content>
     
@@ -277,9 +329,9 @@
     </summary>
     
     
-      <category term="Open-mic" scheme="http://yoursite.com/tags/Open-mic/"/>
-    
       <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
+    
+      <category term="Open-mic" scheme="http://yoursite.com/tags/Open-mic/"/>
     
   </entry>
   
@@ -329,9 +381,9 @@
     </summary>
     
     
-      <category term="Open-mic" scheme="http://yoursite.com/tags/Open-mic/"/>
-    
       <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
+    
+      <category term="Open-mic" scheme="http://yoursite.com/tags/Open-mic/"/>
     
   </entry>
   
@@ -435,59 +487,6 @@
 &lt;p&gt;（这篇文章讲的挺详细的，但是会造成一个安全证书问题，在后面会给出解决方案）&lt;/p&gt;
     
     </summary>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="next" scheme="http://yoursite.com/tags/next/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>github pages绑定自定义域名并实现https访问</title>
-    <link href="http://yoursite.com/2019/01/07/pages%E7%BB%91%E5%AE%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%B9%B6%E5%AE%9E%E7%8E%B0https%E8%AE%BF%E9%97%AE/"/>
-    <id>http://yoursite.com/2019/01/07/pages绑定自定义域名并实现https访问/</id>
-    <published>2019-01-07T14:37:12.000Z</published>
-    <updated>2019-01-08T12:34:54.376Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>问题：</strong> 之前是通过<a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">这篇文章</a>绑定的从阿里云购买的自定义域名，但是绑定之后用chrome访问时总会出现证书的问题。</p><p><img src="https://ws1.sinaimg.cn/large/006LyeFJgy1fyzfosizd0j30ji0cg0t6.jpg" alt=""></p><p><strong>初步解决方案：</strong></p><p>1、使用Cloudfare：<a href="https://blog.csdn.net/Judikator/article/details/79368172" target="_blank" rel="noopener">https://blog.csdn.net/Judikator/article/details/79368172</a></p><p>2、Github已经为自定义域名提供HTTPS支持：<a href="https://poplite.xyz/post/2018/05/03/how-to-enable-https-for-custom-domain-on-github-pages.html" target="_blank" rel="noopener">启用方法</a></p><p><strong>最终选用第二种解决方案：</strong>注意最初域名A记录指向的IP地址是 <code>192.30.252.153</code>和 <code>192.30.252.154</code>一定要改成几个新地址，因为原来指向的IP证书是颁发给username.github.io而不是自定义域名的</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;问题：&lt;/strong&gt; 之前是通过&lt;a href=&quot;https://zhuanlan.zhihu.com/p/26625249&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这篇文章&lt;/a&gt;绑定的从阿里云购买的自定义域名，但是绑定之后用c
-      
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="next" scheme="http://yoursite.com/tags/next/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo+gitalk评论系统配置</title>
-    <link href="http://yoursite.com/2019/01/06/hexo-gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2019/01/06/hexo-gitalk评论系统配置/</id>
-    <published>2019-01-05T23:39:10.000Z</published>
-    <updated>2019-03-22T10:47:34.813Z</updated>
-    
-    <content type="html"><![CDATA[<p>主要参考以下几篇文章</p><p><a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">Hexo NexT主题中集成gitalk评论系统</a>：可以当教程用，但存在一些问题。</p><p><a href="https://qmsharing.space/2018/06/16/setup-gitalk/" target="_blank" rel="noopener">Hexo next 配置 Gitalk 总结</a>：解决了上面那个教程存在的问题。</p><p><a href="https://github.com/iissnan/hexo-theme-next/pull/1814/files" target="_blank" rel="noopener">官方</a>：不是配置文档但因为是官方的所以优先参考。    </p><p>我参考了上面三个配置方法，整合了一下</p><a id="more"></a><h3 id="step1：点击注册OAuth"><a href="#step1：点击注册OAuth" class="headerlink" title="step1：点击注册OAuth"></a>step1：点击<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">注册OAuth</a></h3><p>填写的内容参考<em>参考文章2</em>，这里放他的截图</p><p><img src="https://qmsharing.space/2018/06/16/Setup-gitalk/appSetting.png" alt="注册填写"></p><p><strong>ps：</strong>我在第二栏Homepage URL填的也是自定义域名。</p><p>注册成功后不要关闭跳转的页面，<code>Client ID</code>和 <code>Client Secret 等等还会用到</code></p><h3 id="Step2：配置文件"><a href="#Step2：配置文件" class="headerlink" title="Step2：配置文件"></a>Step2：配置文件</h3><p>这里同时参考了3个文章中的内容，我仅仅重新整合了一下，建议新手直接按步骤来。需要进一步了解的话请点击上面的三个链接。<strong>再次感谢上面的几位大佬。</strong></p><h4 id="gitalk-swig"><a href="#gitalk-swig" class="headerlink" title="gitalk.swig"></a>gitalk.swig</h4><p>新建 <code>/layout/_third-party/comments/gitalk.swig</code>文件，添加以下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if not (theme.duoshuo and theme.duoshuo.shortname) and not theme.duoshuo_shortname %&#125;</span><br><span class="line">    &#123;% if theme.gitalk.enable %&#125;</span><br><span class="line">        &#123;% if page.comments %&#125;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">            const gitalk = new Gitalk(&#123;</span><br><span class="line">            clientID: &apos;&#123;&#123;theme.gitalk.ClientID&#125;&#125;&apos;,</span><br><span class="line">            clientSecret: &apos;&#123;&#123;theme.gitalk.ClientSecret&#125;&#125;&apos;,</span><br><span class="line">            repo: &apos;&#123;&#123;theme.gitalk.repo&#125;&#125;&apos;,</span><br><span class="line">            owner: &apos;&#123;&#123;theme.gitalk.owner&#125;&#125;&apos;,</span><br><span class="line">            admin: &apos;&#123;&#123;theme.gitalk.admin&#125;&#125;&apos;.split(&apos;,&apos;),</span><br><span class="line">            pagerDirection: &apos;&#123;&#123;theme.gitalk.pagerDirection&#125;&#125;&apos;,</span><br><span class="line">            id: md5(window.location.pathname),</span><br><span class="line">            distractionFreeMode: false</span><br><span class="line">            &#125;)</span><br><span class="line">            gitalk.render(&apos;gitalk-container&apos;)</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure><p><strong>ps:</strong> 如果这里按<em>链接1</em>中配置会导致 <strong>Error：Validation Failde</strong>。</p><p>错误原因：<a href="https://github.com/gitalk/gitalk/issues/102" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/102</a></p><p>解决方法：改成使用上面代码块中的配置方法。（详见 <em>参考文章2</em>）</p><h4 id="comments-swig"><a href="#comments-swig" class="headerlink" title="comments.swig"></a>comments.swig</h4><p>修改<code>/layout/_partials/comments.swig</code>，添加以下内容（与其他的 <code>elseif</code>处在同一级即可）。(<em>参考文章3</em>)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;</span><br></pre></td></tr></table></figure><h4 id="index-swig"><a href="#index-swig" class="headerlink" title="index.swig"></a>index.swig</h4><p>修改 <code>layout/_third-party/comments/index.swig</code>，在最后一行添加内容。(<em>参考文章1</em>)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include &apos;gitalk.swig&apos; %&#125;</span><br></pre></td></tr></table></figure><h4 id="gitalk-styl"><a href="#gitalk-styl" class="headerlink" title="gitalk.styl"></a>gitalk.styl</h4><p>新建 <code>/source/css/_common/components/third-party/gitalk.styl</code>，添加以下内容：(<em>参考文章1</em>)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.gt-header a, .gt-comments a, .gt-popup a</span><br><span class="line">  border-bottom: none;</span><br><span class="line">.gt-container .gt-popup .gt-action.is--active:before</span><br><span class="line">  top: 0.7em;</span><br></pre></td></tr></table></figure><h4 id="third-party-styl"><a href="#third-party-styl" class="headerlink" title="third-party.styl"></a>third-party.styl</h4><p>修改<code>/source/css/_common/components/third-party/third-party.styl</code>，在最后一行上添加内容，引入样式。（<em>参考文章1</em>）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;gitalk&quot;;</span><br></pre></td></tr></table></figure><h4 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h4><p>在主题配置文件<code>next/_config.yml</code>中添加如下内容：（<em>参考文章2、3</em>）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  repo: # 仓库名称，例：asdfv1929.github.io（这里注意，不是仓库地址，所以不需要加上前面的https或github.com/之类的）</span><br><span class="line">  ClientID:     # 之前注册的 OAuth 界面的提供的 ID</span><br><span class="line">  ClientSecret: Client Secret # 同上</span><br><span class="line">  owner: # github 帐号</span><br><span class="line">  admin: # 同上，但可以添加额外的管理员用户，用逗号隔开</span><br><span class="line">  pagerDirection: first</span><br></pre></td></tr></table></figure><p>填写你自己的内容（这里就需要填写之前 <code>Client ID</code>和 <code>Client Secret</code>）</p><h3 id="其余问题"><a href="#其余问题" class="headerlink" title="其余问题"></a>其余问题</h3><p>1、<strong>Q：</strong>未找到相关的Issues进行评论，请联系xxx初始化创建</p><p>​       <strong>A：</strong>登录github之后刷新页面即可</p><p>2、<strong>Q：</strong>点击评论后不变色</p><p>​      <strong>A：</strong>1）把<code>gitalk.swig</code>中的 <code>distractionFreeMode: false</code>改为</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distractionFreeMode: &apos;&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;&apos;</span><br></pre></td></tr></table></figure><p>​            2）再往主题配置文件 <code>_config.yml</code>中添加 <code>distractionFreeMode: true</code></p><p>3、<strong>Q：</strong>点击登录github以后404</p><p>​      <strong>A：</strong>参考<a href="https://qmsharing.space/2018/06/16/setup-gitalk/" target="_blank" rel="noopener">Hexo next 配置 Gitalk 总结</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;主要参考以下几篇文章&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://asdfv1929.github.io/2018/01/20/gitalk/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo NexT主题中集成gitalk评论系统&lt;/a&gt;：可以当教程用，但存在一些问题。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://qmsharing.space/2018/06/16/setup-gitalk/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo next 配置 Gitalk 总结&lt;/a&gt;：解决了上面那个教程存在的问题。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/iissnan/hexo-theme-next/pull/1814/files&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方&lt;/a&gt;：不是配置文档但因为是官方的所以优先参考。    &lt;/p&gt;
-&lt;p&gt;我参考了上面三个配置方法，整合了一下&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>

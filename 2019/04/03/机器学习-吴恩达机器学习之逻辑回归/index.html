@@ -103,13 +103,13 @@
 
 
 
-<meta name="description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周  逻辑回归(Logic Regression)代码数据处理（1）常规读取数据的方法，值得注意的是X = data.iloc[:, :-1].values中.values作用是将DataFrame转化为ndarray。根据手册，更推荐使用.to_numpy()。 12345678910path = &apos;ex2data1.txt&apos;data">
+<meta name="description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习|吴恩达机器学习之逻辑回归">
 <meta property="og:url" content="http://yoursite.com/2019/04/03/机器学习-吴恩达机器学习之逻辑回归/index.html">
 <meta property="og:site_name" content="空博客">
-<meta property="og:description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周  逻辑回归(Logic Regression)代码数据处理（1）常规读取数据的方法，值得注意的是X = data.iloc[:, :-1].values中.values作用是将DataFrame转化为ndarray。根据手册，更推荐使用.to_numpy()。 12345678910path = &apos;ex2data1.txt&apos;data">
+<meta property="og:description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/Ac02QJ.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcBilQ.png">
@@ -122,10 +122,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcD4PK.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcD7KH.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/06/AWJzAf.md.png">
-<meta property="og:updated_time" content="2019-04-06T02:12:02.608Z">
+<meta property="og:updated_time" content="2019-04-06T08:46:45.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习|吴恩达机器学习之逻辑回归">
-<meta name="twitter:description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周  逻辑回归(Logic Regression)代码数据处理（1）常规读取数据的方法，值得注意的是X = data.iloc[:, :-1].values中.values作用是将DataFrame转化为ndarray。根据手册，更推荐使用.to_numpy()。 12345678910path = &apos;ex2data1.txt&apos;data">
+<meta name="twitter:description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/04/03/Ac02QJ.png">
 
 
@@ -378,6 +378,7 @@
         <blockquote>
 <p>一个名为回归确用于解决分类的算法，吴恩达coursera第三周</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="逻辑回归-Logic-Regression"><a href="#逻辑回归-Logic-Regression" class="headerlink" title="逻辑回归(Logic Regression)"></a>逻辑回归(Logic Regression)</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p>（1）常规读取数据的方法，值得注意的是<code>X = data.iloc[:, :-1].values</code>中<code>.values</code>作用是将<code>DataFrame</code>转化为<code>ndarray</code>。根据手册，更推荐使用<code>.to_numpy()</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">path = <span class="string">'ex2data1.txt'</span></span><br><span class="line">data = pd.read_csv(path, names=(<span class="string">'exam1'</span>, <span class="string">'exam2'</span>, <span class="string">'admitted'</span>))</span><br><span class="line">data_copy = pd.read_csv(path, names=(<span class="string">'exam1'</span>, <span class="string">'exam2'</span>, <span class="string">'admitted'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进一步准备数据，对结构初始化</span></span><br><span class="line">data.insert(<span class="number">0</span>, <span class="string">'One'</span>, <span class="number">1</span>)</span><br><span class="line">X = data.iloc[:, :<span class="number">-1</span>].values </span><br><span class="line">y = data.iloc[:, <span class="number">-1</span>].values</span><br><span class="line">theta = np.zeros(</span><br><span class="line">    X.shape[<span class="number">1</span>])  <span class="comment"># 注意这里theta创建的是一维的数组，对于ndarray一定要注意一维时它的shape（和matrix有很大区别）</span></span><br></pre></td></tr></table></figure>
 <h4 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">数据可视化</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_data</span><span class="params">(data)</span>:</span></span><br><span class="line">    cols = data.shape[<span class="number">1</span>]</span><br><span class="line">    feature = data.iloc[:, <span class="number">0</span>:cols - <span class="number">1</span>]</span><br><span class="line">    label = data.iloc[:, cols - <span class="number">1</span>]</span><br><span class="line">    <span class="comment"># iloc 根据列的位置索引来切片</span></span><br><span class="line">    postive = feature[label == <span class="number">1</span>]</span><br><span class="line">    negtive = feature[label == <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># plt.figure(figsize=(8, 5))</span></span><br><span class="line">    plt.scatter(postive.iloc[:, <span class="number">0</span>], postive.iloc[:, <span class="number">1</span>])</span><br><span class="line">    plt.scatter(negtive.iloc[:, <span class="number">0</span>], negtive.iloc[:, <span class="number">1</span>], c=<span class="string">'r'</span>, marker=<span class="string">'x'</span>)</span><br><span class="line">    plt.legend([<span class="string">'Admitted'</span>, <span class="string">'Not admitted'</span>], loc=<span class="number">1</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'Exam1 score'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'Exam2 score'</span>)</span><br></pre></td></tr></table></figure>

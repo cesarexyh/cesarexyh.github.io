@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+  <style>
+    .pace .pace-progress {
+        background: #181f25; /*进度条颜色*/
+    }
+  </style>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "3f8cade8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="空博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="对《机器学习》这门课程的回顾，系列文章的目的是希望能够把原理和代码实现统一起来，增进理解，所以对一些我认为简单的知识，可能会一笔带过。  前言这里对第一周的内容做一些简单的回顾：">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习|吴恩达机器学习之线性回归">
+<meta property="og:url" content="http://yoursite.com/2019/04/06/机器学习-吴恩达机器学习之线性回归/index.html">
+<meta property="og:site_name" content="空博客">
+<meta property="og:description" content="对《机器学习》这门课程的回顾，系列文章的目的是希望能够把原理和代码实现统一起来，增进理解，所以对一些我认为简单的知识，可能会一笔带过。  前言这里对第一周的内容做一些简单的回顾：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/29/A0dT2V.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/29/A0BCHe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/29/A0BCHe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/02/Aydhpd.md.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/02/AydTnP.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/02/AydqAS.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/02/AydLtg.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/02/AydOhQ.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/31/ADOqIS.md.png">
+<meta property="og:updated_time" content="2019-04-06T07:31:33.892Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习|吴恩达机器学习之线性回归">
+<meta name="twitter:description" content="对《机器学习》这门课程的回顾，系列文章的目的是希望能够把原理和代码实现统一起来，增进理解，所以对一些我认为简单的知识，可能会一笔带过。  前言这里对第一周的内容做一些简单的回顾：">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/29/A0dT2V.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/06/机器学习-吴恩达机器学习之线性回归/">
+
+
+
+
+
+  <title>机器学习|吴恩达机器学习之线性回归 | 空博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总不能浪费个副标题吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-newspaper-o"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/06/机器学习-吴恩达机器学习之线性回归/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JQK/许阳航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习|吴恩达机器学习之线性回归</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-06T15:31:33+08:00">
+                2019-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>对《机器学习》这门课程的回顾，系列文章的目的是希望能够把<strong>原理</strong>和<strong>代码</strong>实现统一起来，增进理解，所以对一些我认为简单的知识，可能会一笔带过。</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里对第一周的内容做一些简单的回顾：</p>
+<p><img src="https://s2.ax1x.com/2019/03/29/A0dT2V.png" alt=""></p>
+<a id="more"></a>
+<h2 id="线性回归-单变量-one-variable"><a href="#线性回归-单变量-one-variable" class="headerlink" title="线性回归-单变量(one variable)"></a>线性回归-单变量(one variable)</h2><h3 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h3><h5 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h5><p>（1）公式：$h_{\theta}(x)=\theta_{0}+\theta_{1}x​$</p>
+<p>（2）原理：输入一个单变量x，输出预测值</p>
+<h5 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h5><p>（1）公式：$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_{i})-y_{i})^{2}$，又称“平方误差函数”，这里的1/2是方便后面求导时约掉平方。</p>
+<p>（2）原理：最小二乘法判断误差。</p>
+<h5 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h5><p>（1）公式：</p>
+<p><img src="https://s2.ax1x.com/2019/03/29/A0BCHe.png" alt=""></p>
+<p>重复直到收敛。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><strong>在实际代码中，数据都是用矩阵的方式来表示。</strong></p>
+<p>1.导入几个常用库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  <span class="comment">#画图函数</span></span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"><span class="keyword">from</span> matplotlib.colors <span class="keyword">import</span> LogNorm</span><br></pre></td></tr></table></figure>
+<h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p>1.导入<code>csv</code>文件，用<code>DataFrame</code>结构存储。</p>
+<p>（1）关于<code>csv</code>文件：简单来说就是纯文本，以行为一条记录，每条记录被分隔符分隔。<a href="https://baike.baidu.com/item/CSV/10739" target="_blank" rel="noopener">CSV文件</a></p>
+<p>（2）pandas中的<code>DataFrame</code>：<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank" rel="noopener">官方手册</a></p>
+<p>（3）关于<code>.describe()</code>返回值中的分位数：<a href="https://nullblog.top/2019/03/12/%E6%B5%85%E8%B0%88%E5%88%86%E4%BD%8D%E6%95%B0/" target="_blank" rel="noopener">浅谈分为数</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''导入数据'''</span></span><br><span class="line">path = <span class="string">'Data\ex1data1.txt'</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">参数：</span></span><br><span class="line"><span class="string">	path:路径</span></span><br><span class="line"><span class="string">	header:列名，等于None，是因为接下去列名会显示传递</span></span><br><span class="line"><span class="string">	names:需要传递的列名</span></span><br><span class="line"><span class="string">返回值：</span></span><br><span class="line"><span class="string">	DataFrame形式数据结构</span></span><br><span class="line"><span class="string">'''</span> </span><br><span class="line">data = pd.read_csv(</span><br><span class="line">    path, header=<span class="keyword">None</span>,</span><br><span class="line">    names=[<span class="string">'Population'</span>,</span><br><span class="line">           <span class="string">'Profit'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入数据以后可视化观察一下</span></span><br><span class="line">data.head() <span class="comment"># 查看记录，默认返回前5条</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据集的描述信息 </span></span><br><span class="line"><span class="comment"># count:样本个数  mean：均值  std:标准差  min:最小值  25%:四分之一位数  50%:中位数  75%:四分之# 三位数  max:最大值</span></span><br><span class="line">data.describe()</span><br></pre></td></tr></table></figure>
+<p>2.对得到的数据进行加工，方便计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">从样本集中分离出X和y</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">data.insert(<span class="number">0</span>, <span class="string">'one'</span>, <span class="number">1</span>)<span class="comment"># 插入第1列：X0=1</span></span><br><span class="line"></span><br><span class="line">cols = data.shape[<span class="number">1</span>]  <span class="comment"># .shape返回一个元组，[0]为行数，[1]为列数</span></span><br><span class="line"><span class="comment"># 提取X，y的值</span></span><br><span class="line">X = data.iloc[:, <span class="number">0</span>:cols - <span class="number">1</span>]</span><br><span class="line">y = data.iloc[:, cols - <span class="number">1</span>:cols]</span><br></pre></td></tr></table></figure>
+<p>初始化数据矩阵，这里转化成了<code>np.matrix</code>，但建议使用<code>np.ndarray</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">数据处理</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 将dataframe结构转化成np的matrix</span></span><br><span class="line"><span class="comment"># 当Theta取0时计算平均误差</span></span><br><span class="line">X = np.matrix(X.values)</span><br><span class="line">y = np.matrix(y.values)</span><br><span class="line">theta = np.matrix([<span class="number">0</span>, <span class="number">0</span>])</span><br><span class="line"><span class="comment"># 初始化学习速率和迭代次数</span></span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br></pre></td></tr></table></figure>
+<h4 id="计算函数"><a href="#计算函数" class="headerlink" title="计算函数"></a>计算函数</h4><p>1.代价函数</p>
+<p>公式：$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_{i})-y_{i})^{2}$，其中主要矩阵化：假设函数$h_{\theta}(x_{i})=\theta^{T}X$和$y_{(i)}$</p>
+<p>（1）向量化：计算过程中注意矩阵乘法或是向量乘法的<strong>合法性</strong>。</p>
+<p>（2）数据可以用<code>np.matrix</code>存储，但更建议使用<code>np.ndarray</code></p>
+<p>（3）<code>np.matrix</code>和<code>np.ndarray</code>在乘法上有所区别:<a href="https://nullblog.top/2019/03/19/Numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" target="_blank" rel="noopener">Numpy中的矩阵乘法</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">函数名：</span></span><br><span class="line"><span class="string">	代价函数</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">参数：</span></span><br><span class="line"><span class="string">	X：矩阵 </span></span><br><span class="line"><span class="string">		-可用.shape查看维度(97,2)</span></span><br><span class="line"><span class="string">	y：向量，用numpy.matrix的结构存储</span></span><br><span class="line"><span class="string">    	-可用.shape查看维度(97,1)</span></span><br><span class="line"><span class="string">	theta:向量，np.matrix的结构存储</span></span><br><span class="line"><span class="string">		-维度(1,2)</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">返回值：</span></span><br><span class="line"><span class="string">	代价函数值	</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">costFunciton</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta.T) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner) / (<span class="number">2</span> * len(X))</span><br></pre></td></tr></table></figure>
+<p>2.批量梯度下降：</p>
+<p>（1）公式：</p>
+<p><img src="https://s2.ax1x.com/2019/03/29/A0BCHe.png" alt=""></p>
+<p>（2）作用：通过迭代的方式来寻找代价函数最小时的参数（$\theta_{j}$）</p>
+<p>（3）学习速率：如果过大，会导致无法到达代价值最小点（函数发散或震荡）；如果过小，则会使得迭代时间过长。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">函数名：</span></span><br><span class="line"><span class="string">	梯度下降法</span></span><br><span class="line"><span class="string">参数：</span></span><br><span class="line"><span class="string">	X:矩阵</span></span><br><span class="line"><span class="string">	y:向量</span></span><br><span class="line"><span class="string">	theta:向量</span></span><br><span class="line"><span class="string">	alpha:学习速率</span></span><br><span class="line"><span class="string">	epoch：迭代次数</span></span><br><span class="line"><span class="string">返回值：</span></span><br><span class="line"><span class="string">	theta:最后得到的两个参数theta_0,theta_1</span></span><br><span class="line"><span class="string">	cost:最后得到的误差</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X, y, theta, alpha, epoch)</span>:</span></span><br><span class="line"></span><br><span class="line">    temp = np.matrix(np.zeros(theta.shape))</span><br><span class="line"></span><br><span class="line">    cost = np.zeros(epoch)  <span class="comment"># epoch为迭代次数</span></span><br><span class="line">    m = X.shape[<span class="number">0</span>]  <span class="comment"># 样本数量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * (X.dot(theta.T) - y).T.dot(X)</span><br><span class="line">        theta = temp</span><br><span class="line">        <span class="comment"># 记录一下每次更新后的误差</span></span><br><span class="line">        cost[i] = costFunciton(X, y, theta)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> theta, cost</span><br></pre></td></tr></table></figure>
+<p>2*.正规方程法(Normal Equation)</p>
+<p>（1）同样也可以用于寻找代价函数最小时候的参数取值，与梯度下降法(Gradient Descent)比较</p>
+<p><img src="https://s2.ax1x.com/2019/04/02/Aydhpd.md.jpg" alt="Aydhpd.md.jpg"></p>
+<p>（2）公式：$\theta=(X^{T}X)^{-1}X^{T}y$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''特征方程'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">norEquation</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta=np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> theta</span><br></pre></td></tr></table></figure>
+<h4 id="画图函数"><a href="#画图函数" class="headerlink" title="画图函数"></a>画图函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(</span><br><span class="line">    data.Population.min(), data.Population.max(),</span><br><span class="line">    <span class="number">100</span>)  <span class="comment"># 横坐标:linspace(start,end, num)从start开始到end结束，平均分成num份，返回一个数组</span></span><br><span class="line">f = final_theta[<span class="number">0</span>, <span class="number">0</span>] + (final_theta[<span class="number">0</span>, <span class="number">1</span>] * x)  <span class="comment"># 假设函数</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''函数和散点图'''</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">5</span>))</span><br><span class="line">plt.plot(x, f, <span class="string">'r'</span>, label=<span class="string">'Prediction'</span>)</span><br><span class="line">plt.scatter(data[<span class="string">'Population'</span>], data.Profit, label=<span class="string">'Training Data'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Population'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Profit'</span>)</span><br><span class="line">plt.title(<span class="string">'Predicted Profit vs. Population Size'</span>)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<p><img src="https://s2.ax1x.com/2019/04/02/AydTnP.md.png" alt="AydTnP.md.png"></p>
+<p>可以看出拟合效果还可以。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">绘制代价函数与迭代次数的图像</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">5</span>))</span><br><span class="line">plt.plot(np.arange(epoch), cost, <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'iteration'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'cost'</span>)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<p><img src="https://s2.ax1x.com/2019/04/02/AydqAS.md.png" alt="AydqAS.md.png"></p>
+<p>随着迭代次数的增加，代价函数值单调递减。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">绘制代价函数3D图像</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">8</span>, <span class="number">5</span>))</span><br><span class="line">ax = Axes3D(fig)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制网格</span></span><br><span class="line"><span class="comment"># X,Y value</span></span><br><span class="line">theta0 = np.linspace(<span class="number">-10</span>, <span class="number">10</span>, <span class="number">100</span>)  <span class="comment"># 网格theta0范围</span></span><br><span class="line">theta1 = np.linspace(<span class="number">-1</span>, <span class="number">4</span>, <span class="number">100</span>)  <span class="comment"># 网格theta1范围</span></span><br><span class="line">x1, y1 = np.meshgrid(theta0, theta1)  <span class="comment"># 画网格</span></span><br><span class="line"><span class="comment"># height value</span></span><br><span class="line">z = np.zeros(x1.shape)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, theta0.size):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, theta1.size):</span><br><span class="line">        t = np.matrix([theta0[i], theta1[j]])</span><br><span class="line">        z[i][j] = costFunciton(X, y, t)</span><br><span class="line"><span class="comment"># 由循环可以看出，这里是先取x=-10时，y的所有取值，然后计算代价函数传入z的第一行</span></span><br><span class="line"><span class="comment"># 因此在绘图过程中，需要把行和列转置过来</span></span><br><span class="line">z = z.T</span><br><span class="line">ax.set_xlabel(<span class="string">r'$\theta_0$'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">r'$\theta_1$'</span>)</span><br><span class="line"><span class="comment"># 绘制函数图像</span></span><br><span class="line">ax.plot_surface(x1, y1, z, rstride=<span class="number">1</span>, cstride=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<p><img src="https://s2.ax1x.com/2019/04/02/AydLtg.md.png" alt="AydLtg.md.png"></p>
+<p>关于3D图中的<a href="https://nullblog.top/2019/03/16/Numpy%E4%B8%AD%E7%9A%84Meshgrid/" target="_blank" rel="noopener">Numpy中的Meshgrid</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">绘制等高线图</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">5</span>))</span><br><span class="line">lvls = np.logspace(<span class="number">-2</span>, <span class="number">3</span>, <span class="number">20</span>)</span><br><span class="line">plt.contour(x1, y1, z, levels=lvls, norm=LogNorm())  <span class="comment"># 画出等高线</span></span><br><span class="line">plt.plot(final_theta[<span class="number">0</span>, <span class="number">0</span>], final_theta[<span class="number">0</span>, <span class="number">1</span>], <span class="string">'r'</span>, marker=<span class="string">'x'</span>)  <span class="comment"># 标出代价函数最小值点</span></span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<p><img src="https://s2.ax1x.com/2019/04/02/AydOhQ.md.png" alt="AydOhQ.md.png"></p>
+<h2 id="线性回归-多变量-multiple-variables"><a href="#线性回归-多变量-multiple-variables" class="headerlink" title="线性回归-多变量(multiple variables)"></a>线性回归-多变量(multiple variables)</h2><h3 id="特征缩放-Feature-scaling"><a href="#特征缩放-Feature-scaling" class="headerlink" title="特征缩放(Feature scaling)"></a>特征缩放(Feature scaling)</h3><p>也叫均值归一化</p>
+<p>（1）公式：$x=\frac{x-\mu}{s_{1}}$，其中$\mu$为$x$的均值，$s_{1}$为$x$的最大值减去最小值，或者使用标准差。</p>
+<p>（2）作用：在多个特征值情况下，如果某个特征值$x_{i}$的取值范围和另一个特征值$x_{j}$的取值范围相差太大，会减慢梯度下降的速度，因此需要用特征缩放，将不同特征值的取值限定在差不多的范围内。</p>
+<p>e.g. $x_{1}$为房子的面积，取值范围0~2000；$x_{2}$为卧室的数量，取值0-5；那么对二者使用特征缩放，可得：</p>
+<p><img src="https://s2.ax1x.com/2019/03/31/ADOqIS.md.png" alt="ADOqIS.md.png"></p>
+<p>（3）代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = (data - data.mean()) / data.std()  </span><br><span class="line"><span class="comment"># 除数可以用标准差也可以用max-min，因为pandas方便，所以使用标准差</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a href="https://blog.csdn.net/sdu_hao/article/details/82973212" target="_blank" rel="noopener">机器学习 | 吴恩达机器学习第一周学习笔记</a></p>
+<p>[2] <a href="https://blog.csdn.net/sdu_hao/article/details/83932480" target="_blank" rel="noopener">机器学习 | 吴恩达机器学习第二周编程作业(Python版）</a></p>
+<p>[3] <a href="https://blog.csdn.net/Cowry5/article/details/80174130" target="_blank" rel="noopener">吴恩达机器学习作业Python实现(一)：线性回归</a></p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><p><a href="https://github.com/scp-1024/Coursera-ML-Ng/tree/master/Exercise%201-Linear%20Regression" target="_blank" rel="noopener">scp-1024/Coursera-ML-Ng</a></p>
+
+      
+    </div>
+    
+    
+    
+	
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------End-------------</div>
+    
+</div>
+
+  
+	</div>
+    
+	
+	
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>梦想总是要有的，万一有人有钱呢？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>包养</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="JQK/许阳航 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="JQK/许阳航 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/03/机器学习-吴恩达机器学习之逻辑回归/" rel="next" title="机器学习|吴恩达机器学习之逻辑回归">
+                <i class="fa fa-chevron-left"></i> 机器学习|吴恩达机器学习之逻辑回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/06/机器学习-吴恩达机器学习之神经网络/" rel="prev" title="机器学习-吴恩达机器学习之神经网络">
+                机器学习-吴恩达机器学习之神经网络 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JQK/许阳航">
+            
+              <p class="site-author-name" itemprop="name">JQK/许阳航</p>
+              <p class="site-description motion-element" itemprop="description">The early worm is catched by birds</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cesarexyh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2442021982/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/qing-lou-man-zuo/activities" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-custom zhihu"></i>Zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/123226876/" target="_blank" title="Douban">
+                      
+                        <i class="fa fa-fw fa-custom douban"></i>Douban</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归-单变量-one-variable"><span class="nav-number">2.</span> <span class="nav-text">线性回归-单变量(one variable)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本内容"><span class="nav-number">2.1.</span> <span class="nav-text">基本内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#假设函数"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代价函数"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#梯度下降法"><span class="nav-number">2.1.0.3.</span> <span class="nav-text">梯度下降法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据处理"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">计算函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画图函数"><span class="nav-number">2.2.3.</span> <span class="nav-text">画图函数</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归-多变量-multiple-variables"><span class="nav-number">3.</span> <span class="nav-text">线性回归-多变量(multiple variables)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征缩放-Feature-scaling"><span class="nav-number">3.1.</span> <span class="nav-text">特征缩放(Feature scaling)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JQK/许阳航</span>
+
+  
+</div>
+
+
+	<div class="powered-by">
+	<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+		本站访客数:<span id="busuanzi_value_site_uv"></span>
+	</span>
+	</div>
+<!--
+  <div class="powered-by">个人专属</div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">博客-nullblog </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+        <script type="text/javascript">
+            const gitalk = new Gitalk({
+            clientID: '6724e07f1e7ddc3c67ae',
+            clientSecret: 'ed0bb21b8d06979b07b9453d473167f1024efc97',
+            repo: 'scp-1024.github.io',
+            owner: 'scp-1024',
+            admin: 'scp-1024'.split(','),
+            pagerDirection: 'first',
+            id: md5(window.location.pathname),
+            distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+        
+    
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

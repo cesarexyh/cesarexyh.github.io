@@ -112,7 +112,7 @@
 <meta property="og:description" content="神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/23/AGrwuR.png">
-<meta property="og:updated_time" content="2019-03-23T15:13:43.482Z">
+<meta property="og:updated_time" content="2019-04-06T10:13:09.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正向传播的向量化实现">
 <meta name="twitter:description" content="神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)">
@@ -373,7 +373,7 @@
 <p>其实没什么难的，就是几个符号理解起来可能有点费劲，下面简单解释一下：</p>
 <p>从这个式子入手：$z^{(2)}=\Theta^{(1)}*a^{(1)}$</p>
 <p>$z^{(2)}$等于信号$a^{(1)}$在传输过程中乘上响应的权重$\Theta^{(1)}​$，展开来写的话就是左图中等号右边的灰色线框。</p>
-<p>$a^{(1)}$是指第一层中$x_{0}$~$x_{3}$构成的一维<strong>向量</strong>，上标1就是指第一层。</p>
+<p>$a^{(1)}$（activation values of layer one）是指第一层中$x_{0}$~$x_{3}$构成的一维<strong>向量</strong>，上标1就是指第一层。</p>
 <p>$\Theta^{(1)}$是指传递过程中不同信号所对应的权重，反应在公式上就是$\Theta^{(1)}_{10}$~$\Theta^{(1)}_{33}$所构成的<strong>矩阵</strong>。</p>
 <p>$\Theta^{(1)}_{10}$下标的10是指，接收信号的神经元为下一层的第一个，发出信号的为这一层的第0个神经元。</p>
 <p>这里额外说一下这个$\Theta^{(1)}​$的维度，如果在第$j​$层有$s_{j}​$个神经元(units)，在第$j+1​$层有$s_{j+1}​$个神经元，那么对应的权重的维度为$s_{j+1}*(s_{j}+1)​$。</p>
@@ -571,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -593,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

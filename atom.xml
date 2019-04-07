@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-06T08:27:28.290Z</updated>
+  <updated>2019-04-07T10:32:59.755Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>subplots画图</title>
+    <link href="http://yoursite.com/2019/04/07/subplots%E7%94%BB%E5%9B%BE/"/>
+    <id>http://yoursite.com/2019/04/07/subplots画图/</id>
+    <published>2019-04-07T10:32:59.000Z</published>
+    <updated>2019-04-07T10:32:59.755Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>matplotlib是python领域中很常见的绘图模块</p></blockquote><p>几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下</p><p>以一段画图代码为例</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_data</span><span class="params">(X)</span>:</span></span><br><span class="line">    <span class="string">'''随机画100个数字'''</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># np.random.choice(arrange,size),返回ndarray</span></span><br><span class="line">    index=np.random.choice(range(<span class="number">5000</span>),<span class="number">100</span>) </span><br><span class="line">    images=X[index] <span class="comment"># 随机选择100个样本</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ax_array为Axes对象</span></span><br><span class="line">    fig,ax_array=plt.subplots(<span class="number">10</span>,<span class="number">10</span>,sharex=<span class="keyword">True</span>,sharey=<span class="keyword">True</span>,figsize=(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">            <span class="comment"># matshow() 第一个参数为要显示的矩阵</span></span><br><span class="line">            <span class="comment">#Display an array as a matrix in a new figure window</span></span><br><span class="line">            ax_array[r,c].matshow(images[r*<span class="number">10</span>+c].reshape(<span class="number">20</span>,<span class="number">20</span>),cmap=<span class="string">'gray_r'</span>)</span><br><span class="line">    plt.yticks([])</span><br><span class="line">    plt.xticks([])</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure><p>1.<code>matplotlib.pyplot.subplots()</code>：创建一个figure和一组subplots</p><p>参数：</p><ul><li>nrows，ncols：<code>axes</code>的数量，这里是10*10</li><li>sharex，sharey：共享所有<code>axes</code>X轴和y轴的属性，设置<code>True</code>开启</li></ul><p>返回值：</p><ul><li>figure</li><li>ax：一个或多个<code>axes</code>对象</li></ul><p><strong>*</strong>  <code>axes</code>和<code>subplot</code>的区别：简单来说，如果把<code>figure</code>看做是电脑桌面，那么<code>axes</code>就是可自由移动的图标，<code>subplot</code>则是不可自由移动的图标。</p><p>2.<code>matplotlib.pyplot.matshow()</code>：在窗口用矩阵显示一个数组</p><p>参数：</p><ul><li>array-like(M,N)：要显示的(M,N)<strong>矩阵</strong></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;matplotlib是python领域中很常见的绘图模块&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下&lt;/p&gt;
+&lt;p&gt;以一段画图代码为例&lt;/p&gt;
+&lt;figure class=
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习|吴恩达机器学习之神经网络</title>
@@ -162,9 +192,9 @@
     <link href="http://yoursite.com/2019/03/23/%E6%AD%A3%E5%90%91%E4%BC%A0%E6%92%AD%E7%9A%84%E5%90%91%E9%87%8F%E5%8C%96%E5%AE%9E%E7%8E%B0/"/>
     <id>http://yoursite.com/2019/03/23/正向传播的向量化实现/</id>
     <published>2019-03-23T06:51:39.000Z</published>
-    <updated>2019-03-23T15:13:43.482Z</updated>
+    <updated>2019-04-06T10:13:09.799Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)</p></blockquote><p><img src="https://s2.ax1x.com/2019/03/23/AGrwuR.png" alt=""></p><a id="more"></a><p>其实没什么难的，就是几个符号理解起来可能有点费劲，下面简单解释一下：</p><p>从这个式子入手：$z^{(2)}=\Theta^{(1)}*a^{(1)}$</p><p>$z^{(2)}$等于信号$a^{(1)}$在传输过程中乘上响应的权重$\Theta^{(1)}​$，展开来写的话就是左图中等号右边的灰色线框。</p><p>$a^{(1)}$是指第一层中$x_{0}$~$x_{3}$构成的一维<strong>向量</strong>，上标1就是指第一层。</p><p>$\Theta^{(1)}$是指传递过程中不同信号所对应的权重，反应在公式上就是$\Theta^{(1)}_{10}$~$\Theta^{(1)}_{33}$所构成的<strong>矩阵</strong>。</p><p>$\Theta^{(1)}_{10}$下标的10是指，接收信号的神经元为下一层的第一个，发出信号的为这一层的第0个神经元。</p><p>这里额外说一下这个$\Theta^{(1)}​$的维度，如果在第$j​$层有$s_{j}​$个神经元(units)，在第$j+1​$层有$s_{j+1}​$个神经元，那么对应的权重的维度为$s_{j+1}*(s_{j}+1)​$。</p><p>其中$s_{j}+1$是因为上一层在传递时，默认会传递一个$s_{0}=1​$</p><p>以上是传递过程中的，$z^{(2)}$传递到神经元之后，就通过激励函数（图中是S函数）求出需要传递个下一层的信号$a^{(2)}$</p><p>即公式：$a^{(2)}=g(z^{(2)})$</p><p>依次类推，即可求出最终的假设函数$h_{\Theta}(x)$</p><blockquote><p>本文是从信号发出的角度去阐述，但似乎更多文章时站在信号接收的角度，但意思是一样的</p></blockquote><p>参考文章</p><p>[1]. <a href="https://zhuanlan.zhihu.com/p/28299430" target="_blank" rel="noopener">机器学习笔记（2）—— 神经网络</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)</p></blockquote><p><img src="https://s2.ax1x.com/2019/03/23/AGrwuR.png" alt=""></p><a id="more"></a><p>其实没什么难的，就是几个符号理解起来可能有点费劲，下面简单解释一下：</p><p>从这个式子入手：$z^{(2)}=\Theta^{(1)}*a^{(1)}$</p><p>$z^{(2)}$等于信号$a^{(1)}$在传输过程中乘上响应的权重$\Theta^{(1)}​$，展开来写的话就是左图中等号右边的灰色线框。</p><p>$a^{(1)}$（activation values of layer one）是指第一层中$x_{0}$~$x_{3}$构成的一维<strong>向量</strong>，上标1就是指第一层。</p><p>$\Theta^{(1)}$是指传递过程中不同信号所对应的权重，反应在公式上就是$\Theta^{(1)}_{10}$~$\Theta^{(1)}_{33}$所构成的<strong>矩阵</strong>。</p><p>$\Theta^{(1)}_{10}$下标的10是指，接收信号的神经元为下一层的第一个，发出信号的为这一层的第0个神经元。</p><p>这里额外说一下这个$\Theta^{(1)}​$的维度，如果在第$j​$层有$s_{j}​$个神经元(units)，在第$j+1​$层有$s_{j+1}​$个神经元，那么对应的权重的维度为$s_{j+1}*(s_{j}+1)​$。</p><p>其中$s_{j}+1$是因为上一层在传递时，默认会传递一个$s_{0}=1​$</p><p>以上是传递过程中的，$z^{(2)}$传递到神经元之后，就通过激励函数（图中是S函数）求出需要传递个下一层的信号$a^{(2)}$</p><p>即公式：$a^{(2)}=g(z^{(2)})$</p><p>依次类推，即可求出最终的假设函数$h_{\Theta}(x)$</p><blockquote><p>本文是从信号发出的角度去阐述，但似乎更多文章时站在信号接收的角度，但意思是一样的</p></blockquote><p>参考文章</p><p>[1]. <a href="https://zhuanlan.zhihu.com/p/28299430" target="_blank" rel="noopener">机器学习笔记（2）—— 神经网络</a></p>]]></content>
     
     <summary type="html">
     
@@ -227,9 +257,9 @@
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
-    
       <category term="Numpy" scheme="http://yoursite.com/tags/Numpy/"/>
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -475,26 +505,6 @@
       <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
     
       <category term="Open-mic" scheme="http://yoursite.com/tags/Open-mic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何阅读《如何阅读一本书》4：主题阅读</title>
-    <link href="http://yoursite.com/2019/01/14/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E3%80%8A%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6%E3%80%8B4/"/>
-    <id>http://yoursite.com/2019/01/14/如何阅读《如何阅读一本书》4/</id>
-    <published>2019-01-14T00:26:32.000Z</published>
-    <updated>2019-01-14T03:52:39.657Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="第四篇-阅读的最终目标"><a href="#第四篇-阅读的最终目标" class="headerlink" title="第四篇  阅读的最终目标"></a>第四篇  阅读的最终目标</h2><h3 id="第二十章-主题阅读"><a href="#第二十章-主题阅读" class="headerlink" title="第二十章  主题阅读"></a>第二十章  主题阅读</h3><p>主题阅读可以分为两个阶段</p><a id="more"></a><p><strong>阶段一：准备阶段</strong></p><p>1）针对你想研究的主题设计出参考书目清单。</p><p>2）检视阅读这份清单，确定哪些书是你需要的，并且<strong>明确你主题的概念。</strong></p><p><strong>阶段二：阅读所有第一阶段的书籍</strong></p><p>1）浏览最终选择好的参考书目，检视阅读确定哪些篇章是有用的；</p><p>2）根据主题创作出一套中立词汇，让作者与你达成共识；</p><p>3）建立一个中立的主旨，列出一连串的问题；</p><p>4）分清楚主要议题和次要议题，记住作者认为的主要议题和次要议题未必和你的一致，你需要自己去解读他的观点；</p><p>5）把问题和议题按照共通性的多寡，进行排序。</p><blockquote><p>主题阅读就很有写论文的影子了，这方面对于我来说也同样薄弱，需要在今后的学习里进一步体会。</p><p>但至少有一点需要记住，在主题阅读中，面对庞杂的观点，需要你尽量保持客观，要带着作者走而不像之前的分析阅读那样，顺着作者的论点。</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;第四篇-阅读的最终目标&quot;&gt;&lt;a href=&quot;#第四篇-阅读的最终目标&quot; class=&quot;headerlink&quot; title=&quot;第四篇  阅读的最终目标&quot;&gt;&lt;/a&gt;第四篇  阅读的最终目标&lt;/h2&gt;&lt;h3 id=&quot;第二十章-主题阅读&quot;&gt;&lt;a href=&quot;#第二十章-主题阅读&quot; class=&quot;headerlink&quot; title=&quot;第二十章  主题阅读&quot;&gt;&lt;/a&gt;第二十章  主题阅读&lt;/h3&gt;&lt;p&gt;主题阅读可以分为两个阶段&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
     
   </entry>
   

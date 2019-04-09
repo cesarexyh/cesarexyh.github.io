@@ -103,18 +103,18 @@
 
 
 
-<meta name="description" content="matplotlib是python领域中很常见的绘图模块  几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下 以一段画图代码为例 123456789101112131415161718def plot_data(X):    &apos;&apos;&apos;随机画100个数字&apos;&apos;&apos;        # np.random.choice(arrange,size),返回ndarray    ind">
+<meta name="description" content="matplotlib是python领域中很常见的绘图模块  几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下">
 <meta name="keywords" content="python,matplotlib">
 <meta property="og:type" content="article">
 <meta property="og:title" content="subplots画图">
 <meta property="og:url" content="http://yoursite.com/2019/04/07/subplots画图/index.html">
 <meta property="og:site_name" content="空博客">
-<meta property="og:description" content="matplotlib是python领域中很常见的绘图模块  几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下 以一段画图代码为例 123456789101112131415161718def plot_data(X):    &apos;&apos;&apos;随机画100个数字&apos;&apos;&apos;        # np.random.choice(arrange,size),返回ndarray    ind">
+<meta property="og:description" content="matplotlib是python领域中很常见的绘图模块  几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-07T10:32:59.755Z">
+<meta property="og:updated_time" content="2019-04-08T02:06:46.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="subplots画图">
-<meta name="twitter:description" content="matplotlib是python领域中很常见的绘图模块  几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下 以一段画图代码为例 123456789101112131415161718def plot_data(X):    &apos;&apos;&apos;随机画100个数字&apos;&apos;&apos;        # np.random.choice(arrange,size),返回ndarray    ind">
+<meta name="twitter:description" content="matplotlib是python领域中很常见的绘图模块  几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下">
 
 
 
@@ -367,6 +367,7 @@
 <p>matplotlib是python领域中很常见的绘图模块</p>
 </blockquote>
 <p>几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下</p>
+<a id="more"></a>
 <p>以一段画图代码为例</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_data</span><span class="params">(X)</span>:</span></span><br><span class="line">    <span class="string">'''随机画100个数字'''</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># np.random.choice(arrange,size),返回ndarray</span></span><br><span class="line">    index=np.random.choice(range(<span class="number">5000</span>),<span class="number">100</span>) </span><br><span class="line">    images=X[index] <span class="comment"># 随机选择100个样本</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ax_array为Axes对象</span></span><br><span class="line">    fig,ax_array=plt.subplots(<span class="number">10</span>,<span class="number">10</span>,sharex=<span class="keyword">True</span>,sharey=<span class="keyword">True</span>,figsize=(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">            <span class="comment"># matshow() 第一个参数为要显示的矩阵</span></span><br><span class="line">            <span class="comment">#Display an array as a matrix in a new figure window</span></span><br><span class="line">            ax_array[r,c].matshow(images[r*<span class="number">10</span>+c].reshape(<span class="number">20</span>,<span class="number">20</span>),cmap=<span class="string">'gray_r'</span>)</span><br><span class="line">    plt.yticks([])</span><br><span class="line">    plt.xticks([])</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 <p>1.<code>matplotlib.pyplot.subplots()</code>：创建一个figure和一组subplots</p>

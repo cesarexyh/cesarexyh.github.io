@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-07T10:32:59.755Z</updated>
+  <updated>2019-04-08T02:06:46.741Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,21 +21,16 @@
     <link href="http://yoursite.com/2019/04/07/subplots%E7%94%BB%E5%9B%BE/"/>
     <id>http://yoursite.com/2019/04/07/subplots画图/</id>
     <published>2019-04-07T10:32:59.000Z</published>
-    <updated>2019-04-07T10:32:59.755Z</updated>
+    <updated>2019-04-08T02:06:46.741Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>matplotlib是python领域中很常见的绘图模块</p></blockquote><p>几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下</p><p>以一段画图代码为例</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_data</span><span class="params">(X)</span>:</span></span><br><span class="line">    <span class="string">'''随机画100个数字'''</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># np.random.choice(arrange,size),返回ndarray</span></span><br><span class="line">    index=np.random.choice(range(<span class="number">5000</span>),<span class="number">100</span>) </span><br><span class="line">    images=X[index] <span class="comment"># 随机选择100个样本</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ax_array为Axes对象</span></span><br><span class="line">    fig,ax_array=plt.subplots(<span class="number">10</span>,<span class="number">10</span>,sharex=<span class="keyword">True</span>,sharey=<span class="keyword">True</span>,figsize=(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">            <span class="comment"># matshow() 第一个参数为要显示的矩阵</span></span><br><span class="line">            <span class="comment">#Display an array as a matrix in a new figure window</span></span><br><span class="line">            ax_array[r,c].matshow(images[r*<span class="number">10</span>+c].reshape(<span class="number">20</span>,<span class="number">20</span>),cmap=<span class="string">'gray_r'</span>)</span><br><span class="line">    plt.yticks([])</span><br><span class="line">    plt.xticks([])</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure><p>1.<code>matplotlib.pyplot.subplots()</code>：创建一个figure和一组subplots</p><p>参数：</p><ul><li>nrows，ncols：<code>axes</code>的数量，这里是10*10</li><li>sharex，sharey：共享所有<code>axes</code>X轴和y轴的属性，设置<code>True</code>开启</li></ul><p>返回值：</p><ul><li>figure</li><li>ax：一个或多个<code>axes</code>对象</li></ul><p><strong>*</strong>  <code>axes</code>和<code>subplot</code>的区别：简单来说，如果把<code>figure</code>看做是电脑桌面，那么<code>axes</code>就是可自由移动的图标，<code>subplot</code>则是不可自由移动的图标。</p><p>2.<code>matplotlib.pyplot.matshow()</code>：在窗口用矩阵显示一个数组</p><p>参数：</p><ul><li>array-like(M,N)：要显示的(M,N)<strong>矩阵</strong></li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>matplotlib是python领域中很常见的绘图模块</p></blockquote><p>几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下</p><a id="more"></a><p>以一段画图代码为例</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_data</span><span class="params">(X)</span>:</span></span><br><span class="line">    <span class="string">'''随机画100个数字'''</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># np.random.choice(arrange,size),返回ndarray</span></span><br><span class="line">    index=np.random.choice(range(<span class="number">5000</span>),<span class="number">100</span>) </span><br><span class="line">    images=X[index] <span class="comment"># 随机选择100个样本</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ax_array为Axes对象</span></span><br><span class="line">    fig,ax_array=plt.subplots(<span class="number">10</span>,<span class="number">10</span>,sharex=<span class="keyword">True</span>,sharey=<span class="keyword">True</span>,figsize=(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">            <span class="comment"># matshow() 第一个参数为要显示的矩阵</span></span><br><span class="line">            <span class="comment">#Display an array as a matrix in a new figure window</span></span><br><span class="line">            ax_array[r,c].matshow(images[r*<span class="number">10</span>+c].reshape(<span class="number">20</span>,<span class="number">20</span>),cmap=<span class="string">'gray_r'</span>)</span><br><span class="line">    plt.yticks([])</span><br><span class="line">    plt.xticks([])</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure><p>1.<code>matplotlib.pyplot.subplots()</code>：创建一个figure和一组subplots</p><p>参数：</p><ul><li>nrows，ncols：<code>axes</code>的数量，这里是10*10</li><li>sharex，sharey：共享所有<code>axes</code>X轴和y轴的属性，设置<code>True</code>开启</li></ul><p>返回值：</p><ul><li>figure</li><li>ax：一个或多个<code>axes</code>对象</li></ul><p><strong>*</strong>  <code>axes</code>和<code>subplot</code>的区别：简单来说，如果把<code>figure</code>看做是电脑桌面，那么<code>axes</code>就是可自由移动的图标，<code>subplot</code>则是不可自由移动的图标。</p><p>2.<code>matplotlib.pyplot.matshow()</code>：在窗口用矩阵显示一个数组</p><p>参数：</p><ul><li>array-like(M,N)：要显示的(M,N)<strong>矩阵</strong></li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;blockquote&gt;
+      &lt;blockquote&gt;
 &lt;p&gt;matplotlib是python领域中很常见的绘图模块&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下&lt;/p&gt;
-&lt;p&gt;以一段画图代码为例&lt;/p&gt;
-&lt;figure class=
-      
     
     </summary>
     
@@ -257,9 +252,9 @@
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="Numpy" scheme="http://yoursite.com/tags/Numpy/"/>
-    
       <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+      <category term="Numpy" scheme="http://yoursite.com/tags/Numpy/"/>
     
   </entry>
   

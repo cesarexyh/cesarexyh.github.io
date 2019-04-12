@@ -103,13 +103,13 @@
 
 
 
-<meta name="description" content="正向传播和机器学习|吴恩达机器学习之神经网络中的内容差不多，都是在给出$\Theta_{(1)}​$和$\Theta_{(2)}​$的情况下通过正向传播求个代价值或是验证一下准确率。 导入数据123456789101112131415def load_mat(path):    &apos;&apos;&apos;读取数据&apos;&apos;&apos;    data = loadmat(&apos;ex4data1.mat&apos;)  # return a dic">
+<meta name="description" content="正向传播和机器学习|吴恩达机器学习之神经网络中的内容差不多，都是在给出$\Theta_{(1)}$和$\Theta_{(2)}$的情况下通过正向传播求个代价值或是验证一下准确率。">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习|吴恩达机器学习之神经网络反向传播">
 <meta property="og:url" content="http://yoursite.com/2019/04/12/机器学习-吴恩达机器学习之神经网络反向传播/index.html">
 <meta property="og:site_name" content="空博客">
-<meta property="og:description" content="正向传播和机器学习|吴恩达机器学习之神经网络中的内容差不多，都是在给出$\Theta_{(1)}​$和$\Theta_{(2)}​$的情况下通过正向传播求个代价值或是验证一下准确率。 导入数据123456789101112131415def load_mat(path):    &apos;&apos;&apos;读取数据&apos;&apos;&apos;    data = loadmat(&apos;ex4data1.mat&apos;)  # return a dic">
+<meta property="og:description" content="正向传播和机器学习|吴恩达机器学习之神经网络中的内容差不多，都是在给出$\Theta_{(1)}$和$\Theta_{(2)}$的情况下通过正向传播求个代价值或是验证一下准确率。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/11/A7xwiq.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/06/AW7Z40.md.png">
@@ -117,10 +117,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/08/A4jwvR.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/09/AI71Yj.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/09/A5HaS1.png">
-<meta property="og:updated_time" content="2019-04-12T09:01:04.358Z">
+<meta property="og:updated_time" content="2019-04-12T14:25:47.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习|吴恩达机器学习之神经网络反向传播">
-<meta name="twitter:description" content="正向传播和机器学习|吴恩达机器学习之神经网络中的内容差不多，都是在给出$\Theta_{(1)}​$和$\Theta_{(2)}​$的情况下通过正向传播求个代价值或是验证一下准确率。 导入数据123456789101112131415def load_mat(path):    &apos;&apos;&apos;读取数据&apos;&apos;&apos;    data = loadmat(&apos;ex4data1.mat&apos;)  # return a dic">
+<meta name="twitter:description" content="正向传播和机器学习|吴恩达机器学习之神经网络中的内容差不多，都是在给出$\Theta_{(1)}$和$\Theta_{(2)}$的情况下通过正向传播求个代价值或是验证一下准确率。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/04/11/A7xwiq.png">
 
 
@@ -370,7 +370,8 @@
       
 
       
-        <h2 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h2><p>和<a href="https://nullblog.top/2019/04/06/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" target="_blank" rel="noopener">机器学习|吴恩达机器学习之神经网络</a>中的内容差不多，都是在给出$\Theta_{(1)}​$和$\Theta_{(2)}​$的情况下通过正向传播求个代价值或是验证一下准确率。</p>
+        <h2 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h2><p>和<a href="https://nullblog.top/2019/04/06/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" target="_blank" rel="noopener">机器学习|吴恩达机器学习之神经网络</a>中的内容差不多，都是在给出$\Theta_{(1)}$和$\Theta_{(2)}$的情况下通过正向传播求个代价值或是验证一下准确率。</p>
+<a id="more"></a>
 <h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_mat</span><span class="params">(path)</span>:</span></span><br><span class="line">    <span class="string">'''读取数据'''</span></span><br><span class="line">    data = loadmat(<span class="string">'ex4data1.mat'</span>)  <span class="comment"># return a dict</span></span><br><span class="line">    X = data[<span class="string">'X'</span>]</span><br><span class="line">    y = data[<span class="string">'y'</span>].flatten()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> X, y  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_weight</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''读取权重'''</span></span><br><span class="line">    weight = loadmat(<span class="string">'ex4weights.mat'</span>)</span><br><span class="line">    theta1 = weight[<span class="string">'Theta1'</span>]</span><br><span class="line">    theta2 = weight[<span class="string">'Theta2'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> theta1, theta2</span><br></pre></td></tr></table></figure>
 <p>这里需要对y向量做一个处理：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">expand_y</span><span class="params">(y)</span>:</span></span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> y:</span><br><span class="line">        y_array = np.zeros(<span class="number">10</span>)</span><br><span class="line">        y_array[i - <span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        result.append(y_array)</span><br><span class="line">    <span class="keyword">return</span> np.array(result)</span><br></pre></td></tr></table></figure>

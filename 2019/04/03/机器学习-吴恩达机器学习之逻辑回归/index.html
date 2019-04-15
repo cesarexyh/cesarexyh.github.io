@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcD4PK.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcD7KH.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/06/AWJzAf.md.png">
-<meta property="og:updated_time" content="2019-04-06T08:46:45.062Z">
+<meta property="og:updated_time" content="2019-04-13T05:44:50.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习|吴恩达机器学习之逻辑回归">
 <meta name="twitter:description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周">
@@ -416,9 +416,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">map_feature</span><span class="params">(x1, x2)</span>:</span></span><br><span class="line">    degree = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">    x1 = x1.reshape((x1.size, <span class="number">1</span>))  <span class="comment"># ndarray.size：数组中元素的个数</span></span><br><span class="line">    x2 = x2.reshape((x2.size, <span class="number">1</span>))</span><br><span class="line">    result = np.ones(x1.shape[<span class="number">0</span>])  <span class="comment"># 初始化一个值为1的数组(列向量)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, degree + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, i + <span class="number">1</span>):</span><br><span class="line">            result = np.c_[result, (x1**(i - j) * (x2**j))]  <span class="comment"># np.c_：列拼接</span></span><br><span class="line">    <span class="keyword">return</span> result  <span class="comment"># 返回值即为特征值X</span></span><br></pre></td></tr></table></figure>
 <p>但这种映射可能导致过拟合（overfit），泛化能力差，因此还需要正则化（regularization）。</p>
 <h4 id="正则化"><a href="#正则化" class="headerlink" title="*正则化"></a>*正则化</h4><p>（1）原理：</p>
-<p>因为过拟合是由于特征项过多引起的，减少特征的数量固然可以，还有一种方法就是正则化：<strong>减小$\theta_{j}​$的值。</strong></p>
+<p>因为过拟合是由于特征项过多引起的，减少特征的数量固然可以，还有一种方法就是正则化：<strong>减小$\theta_{j}$的值。</strong></p>
 <p><img src="https://s2.ax1x.com/2019/04/03/AcDRV1.md.png" alt="AcDRV1.md.png"></p>
-<p>由图中可以看出，线性回归算法中添加两个正则化项——也叫惩罚项，$1000<em>\theta_{3}$和$1000</em>\theta_{4}$。上图可以看出，在利用优化算法求解参数时，要想让代价函数值变小，$\theta_{3}$和$\theta_{4}$必须非常小，也就导致了$\theta_{3}x^{3}$和$\theta_{4}x^{4}$非常小，那么图中右边的假设函数就近似与左边的函数了。</p>
+<p>由图中可以看出，线性回归算法中添加两个正则化项——也叫惩罚项，1000$\theta_{3}$和1000$\theta_{4}$。上图可以看出，在利用优化算法求解参数时，要想让代价函数值变小，会使得$\theta_{3}$和$\theta_{4}$变得非常小，也就导致了$\theta_{3}x^{3}$和$\theta_{4}x^{4}$非常小，那么图中右边的假设函数就近似与左边的函数了。</p>
 <p>实际操作中，我们很多时候并不知道究竟应该惩罚哪一项，所以实际上除了$\theta_{0}​$（全是1），所有项都会惩罚。</p>
 <p>回到逻辑回归算法上也是一样的</p>
 <p>（2）公式：</p>
@@ -628,7 +628,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

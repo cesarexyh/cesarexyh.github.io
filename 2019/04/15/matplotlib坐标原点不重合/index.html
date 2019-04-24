@@ -113,7 +113,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/15/AXb0a9.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/15/AXqoTJ.md.png">
-<meta property="og:updated_time" content="2019-04-15T02:22:16.500Z">
+<meta property="og:updated_time" content="2019-04-24T07:37:43.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matplotlib坐标原点不重合">
 <meta name="twitter:description" content="用matplotlib画图时会遇到原点不重合在左下角的情况 12345678fig,ax=plt.subplots(figsize=(8,5))    ax.plot(range(1,13),error_train,label=&quot;Train&quot;)    ax.plot(range(1,13),error_cv,label=&quot;Cross Validation&quot;,color=&quot;green&quot;)    ax">
@@ -368,6 +368,7 @@
       
         <p>用matplotlib画图时会遇到原点不重合在左下角的情况</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig,ax=plt.subplots(figsize=(<span class="number">8</span>,<span class="number">5</span>))</span><br><span class="line">    ax.plot(range(<span class="number">1</span>,<span class="number">13</span>),error_train,label=<span class="string">"Train"</span>)</span><br><span class="line">    ax.plot(range(<span class="number">1</span>,<span class="number">13</span>),error_cv,label=<span class="string">"Cross Validation"</span>,color=<span class="string">"green"</span>)</span><br><span class="line">    ax.legend()</span><br><span class="line">    plt.xlabel(<span class="string">"Number of training examples"</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'error'</span>)</span><br><span class="line">    plt.title(<span class="string">'Learning curve of linear regression'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><img src="https://s2.ax1x.com/2019/04/15/AXb0a9.md.png" alt="AXb0a9.md.png"></p>
 <p>只需要添加两行代码即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.ylim(bottom=<span class="number">0</span>)</span><br><span class="line">plt.xlim(left=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
@@ -453,6 +454,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/24/机器学习笔记-第六周/" rel="prev" title="机器学习笔记|第六周">
+                机器学习笔记|第六周 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -553,7 +558,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

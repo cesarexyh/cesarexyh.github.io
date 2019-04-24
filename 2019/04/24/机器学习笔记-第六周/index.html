@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+  <style>
+    .pace .pace-progress {
+        background: #181f25; /*进度条颜色*/
+    }
+  </style>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "3f8cade8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="空博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="运用机器学习建议决定下一步做什么？当你的模型运用于新的样本时，如果产生巨大的误差该怎么办？ 一般来说，有以下几种处理方式：  获得更多的训练样本——通常是有效的，但代价较大，下面的方法也可能有效，可考虑先采用下面的几种方法。 尝试减少特征的数量 尝试获得更多的特征 尝试增加多项式特征 尝试减少正则化程度$\lambda$ 尝试增加正则化程度$\lambda$  当然我们不可能随机去一个个方法尝试，">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习笔记|第六周">
+<meta property="og:url" content="http://yoursite.com/2019/04/24/机器学习笔记-第六周/index.html">
+<meta property="og:site_name" content="空博客">
+<meta property="og:description" content="运用机器学习建议决定下一步做什么？当你的模型运用于新的样本时，如果产生巨大的误差该怎么办？ 一般来说，有以下几种处理方式：  获得更多的训练样本——通常是有效的，但代价较大，下面的方法也可能有效，可考虑先采用下面的几种方法。 尝试减少特征的数量 尝试获得更多的特征 尝试增加多项式特征 尝试减少正则化程度$\lambda$ 尝试增加正则化程度$\lambda$  当然我们不可能随机去一个个方法尝试，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AqXOCq.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALnxt1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL18fA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AqjGxf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AqvWX8.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/Aqzdde.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVNxVs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVUS5q.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVUCGV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALkcV0.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALAvkV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVUP2T.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVUkMF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALE10I.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL8954.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL8MPH.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALJn9H.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALJ0uq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALw9I0.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL2J9s.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL2wHU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALfbvR.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALh3q0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/14/AOn2b4.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EV3bgH.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVYC8O.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVYArd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EEHJrF.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EELpE4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EEzys1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVPm4K.png">
+<meta property="og:updated_time" content="2019-04-24T08:05:20.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习笔记|第六周">
+<meta name="twitter:description" content="运用机器学习建议决定下一步做什么？当你的模型运用于新的样本时，如果产生巨大的误差该怎么办？ 一般来说，有以下几种处理方式：  获得更多的训练样本——通常是有效的，但代价较大，下面的方法也可能有效，可考虑先采用下面的几种方法。 尝试减少特征的数量 尝试获得更多的特征 尝试增加多项式特征 尝试减少正则化程度$\lambda$ 尝试增加正则化程度$\lambda$  当然我们不可能随机去一个个方法尝试，">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/13/AqXOCq.md.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/24/机器学习笔记-第六周/">
+
+
+
+
+
+  <title>机器学习笔记|第六周 | 空博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总不能浪费个副标题吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-newspaper-o"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/24/机器学习笔记-第六周/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JQK/许阳航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习笔记|第六周</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T15:37:37+08:00">
+                2019-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="运用机器学习建议"><a href="#运用机器学习建议" class="headerlink" title="运用机器学习建议"></a>运用机器学习建议</h2><h3 id="决定下一步做什么？"><a href="#决定下一步做什么？" class="headerlink" title="决定下一步做什么？"></a>决定下一步做什么？</h3><p>当你的模型运用于新的样本时，如果产生巨大的误差该怎么办？</p>
+<p>一般来说，有以下几种处理方式：</p>
+<ul>
+<li>获得更多的训练样本——通常是有效的，但代价较大，下面的方法也可能有效，可考虑先采用下面的几种方法。</li>
+<li>尝试减少特征的数量</li>
+<li>尝试获得更多的特征</li>
+<li>尝试增加多项式特征</li>
+<li>尝试减少正则化程度$\lambda$</li>
+<li>尝试增加正则化程度$\lambda$</li>
+</ul>
+<p>当然我们不可能随机去一个个方法尝试，所以需要一点手段来预测。</p>
+<a id="more"></a>
+<h3 id="评估假设函数"><a href="#评估假设函数" class="headerlink" title="评估假设函数"></a>评估假设函数</h3><p>首先，如果你计算出的误差（代价函数值）非常大，那么选取的假设函数就可能存在问题；即便误差小，也有可能引起过拟合。</p>
+<p>那么如何来判断过拟合问题？</p>
+<p>可以将数据集按比例划分成，训练集（Training set）：测试集（Test set）=70：30。</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AqXOCq.md.png" alt="AqXOCq.md.png"></p>
+<p>然后将训练集得到的模型运用于测试集，用来计算误差：</p>
+<p>1.对于线性回归模型，我们直接计算<img src="https://s2.ax1x.com/2019/04/13/ALnxt1.png" alt="ALnxt1.png"></p>
+<p>2.对于逻辑回归模型，除了计算代价函数<img src="https://s2.ax1x.com/2019/04/13/AL18fA.png" alt="AL18fA.png"></p>
+<p>更常见的方法是计算误分类的比例（0/1错误分类度量）<img src="https://s2.ax1x.com/2019/04/13/AqjGxf.png" alt="AqjGxf.png"></p>
+<h3 id="模型选择和交叉验证集"><a href="#模型选择和交叉验证集" class="headerlink" title="模型选择和交叉验证集"></a>模型选择和交叉验证集</h3><p>当模型确定的时候可以使用上一节的方法来验证，但是如何确定一个模型呢？首先需要知道，正则化惩罚项系数$\lambda$的选择；增加多项式特征时，多项式的次数等这类问题，称为模型选择问题。</p>
+<p>假设我们的输入特征只有一个时，拟合效果是非常不理想的。因此，我们通常会增加特征项，那么问题又来了，多项式特征的次数应该怎么选取，即到底选取什么样的模型（假设）？</p>
+<p>我们可以罗列出多种情况</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AqvWX8.md.png" alt="AqvWX8.md.png"></p>
+<p>这时再将数据集划分成训练集和测试集，对这些假设分别在训练集上训练，通过最小化训练集的代价，求出最优参数$\Theta_{1}$~$\Theta_{10}$。将其代入测试集，计算每个模型的误差，选择误差最小的那组作为假设，并把这组的误差值作为泛化误差。</p>
+<p>然而其中存在一个问题：通过测试集来选取模型，又用测试集来求泛化误差，显然是不是坠吼滴。</p>
+<p>因此，我们重新划分数据集的比例，训练集：<strong>交叉验证集(Cross Validation set)</strong>：测试集=60:20:20</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/Aqzdde.md.png" alt="Aqzdde.md.png"></p>
+<p>然后计算选择出模型：</p>
+<p>1.用训练集训练出$\Theta_{1}$~$\Theta_{10}$;</p>
+<p>2.用交叉验证集计算出最小误差，选择误差最小的模型;</p>
+<p>3.用第2步中选择的模型计算测试集得出泛化误差。</p>
+<p><strong><em>Train/validation/test error</em></strong></p>
+<p><strong>Training error:</strong></p>
+<p>​            <img src="https://s2.ax1x.com/2019/04/24/EVNxVs.png" alt="EVNxVs.png"></p>
+<p><strong>Cross Validation error:</strong></p>
+<p>​            <img src="https://s2.ax1x.com/2019/04/24/EVUS5q.png" alt="EVUS5q.png"></p>
+<p><strong>Test error:</strong></p>
+<p>​            <img src="https://s2.ax1x.com/2019/04/24/EVUCGV.png" alt="EVUCGV.png"></p>
+<blockquote>
+<p>上面说到的，是关于如何改变特征来减小误差，而接下来的内容则和正则化$\lambda$有关</p>
+</blockquote>
+<h3 id="诊断偏差和方差"><a href="#诊断偏差和方差" class="headerlink" title="诊断偏差和方差"></a>诊断偏差和方差</h3><p>当运行结果不理想时，多半有两种情况：<strong>过拟合</strong>或者<strong>欠拟合</strong>。而这两种情况，哪种和高偏差有关？哪种和高方差有关？还是都有关系？</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALkcV0.md.png" alt="ALkcV0.md.png"></p>
+<p>从图中可以看出，欠拟合时高偏差，过拟合时高方差。那么在没法画图的情况下（基本都是这种情况）如何来确定是高偏差还是高方差呢？</p>
+<p>方法如下：</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALAvkV.png" alt="ALAvkV.png"></p>
+<p>将训练集误差和验证集误差绘制在图中，其中横坐标为多项式次数。</p>
+<p><strong>Training error:</strong>                               <img src="https://s2.ax1x.com/2019/04/24/EVUP2T.png" alt="EVUP2T.png"></p>
+<p><strong>Cross Validation error:</strong>                <img src="https://s2.ax1x.com/2019/04/24/EVUkMF.png" alt="EVUkMF.png"></p>
+<p>可以明显看出</p>
+<ul>
+<li>对于训练集，d越大，误差越小</li>
+<li>对于验证集，随着d增长，误差会先减小后增大，其中的最低点就是开始过拟合的情况。</li>
+</ul>
+<p>那么当我们在没有图像的情况下，得出验证集误差较大时，只需要根据训练集误差的大小就能得出是高偏差还是高方差了。</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALE10I.md.png" alt="ALE10I.md.png"></p>
+<p>具体来说，就是：</p>
+<ul>
+<li>训练集误差和交叉验证集误差近似时：偏差/欠拟合</li>
+<li>交叉验证集误差远大于训练集误差时：方差/过拟合</li>
+</ul>
+<h3 id="正则化和偏差、方差"><a href="#正则化和偏差、方差" class="headerlink" title="正则化和偏差、方差"></a>正则化和偏差、方差</h3><p>正则化常常用来解决过拟合问题，但是对于正则化项参数$\lambda$，如下图所示不同的选取可能会导致不同的偏差问题，那么应该如何选择合适的值呢？</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AL8954.md.png" alt="AL8954.md.png"></p>
+<p>我们先选择一系列想要测试的$\lambda$，通常是0~12之间呈现2倍的关系，例如：$0,0.01,0.02,0.04,0.08,0.15,0.32,0.64,1.28,2.56,5.12,10$（共12个）。</p>
+<p>再像之前那样，把数据集划分为训练集、验证集和测试集。但是因为之前我们都是不带正则化，所以$J(\theta)$和$J_{train}(\theta)$是一样的，但是这里就要如下图中的那样分开。</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AL8MPH.md.png" alt="AL8MPH.md.png"></p>
+<p>先在训练集上用最小化代价函数，求得最优的一组参数。然后再用该参数在训练/验证/测试集上根据公式计算相应误差。</p>
+<p>（这里存疑？关于$J(\theta)$和$J_{train}(\theta)$什么时候使用）</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALJn9H.md.png" alt="ALJn9H.md.png"></p>
+<p>具体步骤如下：</p>
+<p>1.先对每个$\lambda$值，求对应最小化代价函数的参数</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALJ0uq.png" alt="ALJ0uq.png"></p>
+<p>2.将上述求得的参数，代入交叉验证集计算代价函数$J_{cv}(\theta)$，选择对应最小代价函数的$\theta$作为最优模型参数。</p>
+<p>3.代入测试集$J_{test}(\theta)$计算泛化误差。</p>
+<p>还可以把验证集误差和训练集误差绘制成图，横坐标为$\lambda$。</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALw9I0.md.png" alt="ALw9I0.md.png"></p>
+<p>可以看出：</p>
+<ul>
+<li>当$\lambda$较小时，$J_{train}(\theta)$值较小，$J_{cv}(\theta)$值较大，过拟合</li>
+<li>当$\lambda$较大时，$J_{train}(\theta)$值较大，$J_{cv}(\theta)$值较大，欠拟合</li>
+</ul>
+<h3 id="学习曲线"><a href="#学习曲线" class="headerlink" title="学习曲线"></a>学习曲线</h3><p>学习曲线是一个非常好的工具，用于判断模型偏差、方差问题。它是一个以<strong>样本个数</strong>为横坐标，以<strong>误差</strong>为纵坐标绘制的图像。</p>
+<h4 id="1-如何利用学习曲线识别高偏差？"><a href="#1-如何利用学习曲线识别高偏差？" class="headerlink" title="1.如何利用学习曲线识别高偏差？"></a>1.如何利用学习曲线识别高偏差？</h4><p><img src="https://s2.ax1x.com/2019/04/13/AL2J9s.md.png" alt="AL2J9s.md.png"></p>
+<p>从图中可以看出，对于欠拟合而言，增加样本个数没有意义，因为模型拟合能力差，没有能力去关注”细节“。</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AL2wHU.png" alt="AL2wHU.png"></p>
+<p>从这张图中也可以看出，当样本到达一定数量时，训练集合测试集的误差会非常接近且不再变化，但高于我们期望的误差。</p>
+<h4 id="如何利用学习曲线识别高方差？"><a href="#如何利用学习曲线识别高方差？" class="headerlink" title="如何利用学习曲线识别高方差？"></a>如何利用学习曲线识别高方差？</h4><p><img src="https://s2.ax1x.com/2019/04/13/ALfbvR.md.png" alt="ALfbvR.md.png"></p>
+<p>可以看出在过拟合情况下，增加数据，可能可以提高算法效果。</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALh3q0.png" alt="ALh3q0.png"></p>
+<p>增加样本个数会小幅度提高训练集误差，但是始终维持在一个相对较低的水平。而验证集个数增加为增进模型对数据的了解，因此会验证集误差会减小</p>
+<blockquote>
+<p>上面的test error和cross validation error用哪个效果都一样。</p>
+</blockquote>
+<h4 id="决定下一步做什么？-1"><a href="#决定下一步做什么？-1" class="headerlink" title="决定下一步做什么？"></a>决定下一步做什么？</h4><p>如何通过这些诊断法来帮助我们选择改进模型的方法呢？回到最初的问题上</p>
+<ol>
+<li>获得更多的训练样本——解决高方差</li>
+<li>尝试减少特征的数量——解决高方差</li>
+<li>尝试获得更多的特征——解决高偏差</li>
+<li>尝试增加多项式特征——解决高偏差</li>
+<li>尝试减少正则化程度λ——解决高偏差</li>
+<li>尝试增加正则化程度λ——解决高方差</li>
+</ol>
+<p><strong>神经网络</strong></p>
+<p><img src="https://s2.ax1x.com/2019/04/14/AOn2b4.md.png" alt="AOn2b4.md.png"></p>
+<p>使用神经元较少的神经网络（左图）跟参数较少时情况类似，容易导致高偏差和欠拟合；同理，神经元较多（右图）这容易导致高方差，可以使用正则化手段来解决。</p>
+<p>一般使用神经元较多的情况比较好处理。当然你也可以同样把数据集划分为训练集、交叉验证集和测试集。然后从一层隐藏层开始逐一尝试。找到验证集误差最小的作为模型。</p>
+<h2 id="机器学习系统设计"><a href="#机器学习系统设计" class="headerlink" title="机器学习系统设计"></a>机器学习系统设计</h2><h3 id="确定执行的优先级"><a href="#确定执行的优先级" class="headerlink" title="确定执行的优先级"></a>确定执行的优先级</h3><p>以建立一个垃圾邮件分类器为例</p>
+<h5 id="step1-用向量表示邮件"><a href="#step1-用向量表示邮件" class="headerlink" title="step1.用向量表示邮件"></a>step1.用向量表示邮件</h5><p>输入变量x为邮件的特征；y表示邮件的标签，1代表垃圾邮件，0代表不是。</p>
+<p>我们可以人工选择100个单词作为词典，然后比对邮件中单词是否出现，出现则记为1，未出现记为0（注意不是记录出现个数），因此能够得到下图中的100维向量，这个向量作为输入。</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EV3bgH.md.png" alt="EV3bgH.md.png"></p>
+<blockquote>
+<p>实际上，我们不会人工选择单词构成字典，而是在训练集中自动选择出现频率最高的n(10000-50000)个单词构成字典,然后用一个n维的特征向量来表示邮件。</p>
+</blockquote>
+<h5 id="step2-想办法降低分类的错误率"><a href="#step2-想办法降低分类的错误率" class="headerlink" title="step2.想办法降低分类的错误率"></a>step2.想办法降低分类的错误率</h5><p>1.收集更多的训练数据，但这种要视情况而定。</p>
+<p>2.为每个邮件设计更复杂的特征，比如把邮件正文标题也考虑进去</p>
+<p>3.为邮件的正文设计更复杂的特征，比如单词的单复数，discount和discounts是否应该看成一个单词；首字母大小、后缀，deal和Dealer是否应该看作一个单词；是否应该考虑标点符号，可能垃圾邮件中叹号会比较多。</p>
+<p>4.构建更复杂的算法来检测邮件中的错误拼写，比如垃圾邮件发送者经常把一些容易被检测到的单词写错，如m0rtgage，med1cine，w4tches等，从而避免被检测到。</p>
+<p>当然上述方法如何选择，同样也是个问题。</p>
+<h3 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h3><p>当你准备好构建一个机器学习系统时，最好的方式是先用简单的方法快速实现。具体来说：</p>
+<p>1.从一个简单的能快速实现的算法开始，实现该算法并用交叉验证集数据测试。</p>
+<p>2.绘制学习曲线，判断是高偏差或是高方差，决定是增加更多的数据还是添加更多的特征。</p>
+<p>3.<strong>误差分析：</strong>人工观察交叉验证集，看看被分错的样本是否具有某些规律。</p>
+<ul>
+<li>举个误差分析的例子：</li>
+</ul>
+<p>假设验证集有500个样本，$m_{cv}=500$，分类器分错了100个样本，此时可以人工检查这100个错误：首先分析这100个样本的错分类型和数量。如下所示：</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVYC8O.png" alt="EVYC8O.png"></p>
+<p>卖药的邮件12封，卖假货的邮件4封，钓鱼的邮件53封，其他的31封；那么我们就可以把关注点放在钓鱼邮件上。</p>
+<p>然会继续对钓鱼邮件分析，是否可以发现一些新的特征。能够提高分类器的的性能，比如这些钓鱼邮件存在以下几个问题：</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVYArd.png" alt="EVYArd.png"></p>
+<p>我们又可以把关注点放在“不常用的标点”这一项上，毕竟有32封邮件都存在该问题，进而设计一些包含标点的更复杂的特征，以此提高性能。</p>
+<ul>
+<li>数值评估：</li>
+</ul>
+<p>在做垃圾邮件分类时，可能会遇到这种问题：</p>
+<p>应不应该把discount,discounts,discounted,discounting看作是同一个单词,即是否看成一个特征。</p>
+<p>在自然语言处理中会使用词干提取，在这种情况下，上述单词会被看作是同一个。但是词干提取有利有弊，这种方法通常指关注前几个字母，比如它可能会把universe/university看作一个单词，这显然不合理。</p>
+<p>那么我们到底要不要使用词干提取？这时我们可以使用数值评估的方法：</p>
+<p>首先使用词干提取，训练一个分类器，在验证集上计算它的错误率；然后不使用词干提取，训练一个分类器，在验证集上计算它的错误率。二者进行比较，哪个错误率低，就使用哪种方法。</p>
+<p>类似的这种问题，还包括是否应该区分单词大小写，如mom和Mom是否应该看作一个单词，都可以使用上述数值评估的方法，选择一个合理的做法。</p>
+<h3 id="不对称分类的误差评估"><a href="#不对称分类的误差评估" class="headerlink" title="不对称分类的误差评估"></a>不对称分类的误差评估</h3><p>我们通常用错误率/正确率来评估一个算法，但有时这种方法是不合适的，比如偏斜类问题。</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EEHJrF.md.png" alt="EEHJrF.md.png"></p>
+<p>以这个判断肿瘤恶性/良性的分类器为例，如果分类器错误率为1%，而实际只有0.5%的病人肿瘤为恶性。这种情况下，尽管错误率看起来非常低，也可能造成严重后果。此时哪怕直接把所有病人都认为良性，也只有0.5%的错误率，高于分类器。</p>
+<p>这就是<strong>偏斜类</strong>问题，情况表现为训练集中同一种类样本非常多，而其他类样本样本比较少。</p>
+<blockquote>
+<p>那么如何解决偏斜类问题？换句话说，如何知道算法把所有病人都认为良性而没有做出真正的分类？</p>
+</blockquote>
+<p>可以使用查准率(<strong>Precision</strong>)和召回率(<strong>Recall</strong>)。</p>
+<blockquote>
+<p>召回率又可以叫做<strong>查全率</strong>，事实上叫查全率显然更符合其含义</p>
+</blockquote>
+<p>我的理解，查准率指预测正确的样本个数占样本总数的多少；查全率指预测正确的样本个数占实际正确的样本个数。</p>
+<p>还是以上面肿瘤的例子</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EELpE4.png" alt="EELpE4.png"></p>
+<p>准确率等于True positive除以一行；</p>
+<p>召回率等于True positive除以一列；</p>
+<p>由此可以看出，当使用<code>y=0</code>（把所有病人判断为良性）的方法预测时，召回率为0，由此可以排除。</p>
+<h3 id="查准率和召回率的均衡"><a href="#查准率和召回率的均衡" class="headerlink" title="查准率和召回率的均衡"></a>查准率和召回率的均衡</h3><p>在肿瘤例子中，我们一般情况下设置分类的阈值为0.5。</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EEzys1.png" alt="EEzys1.png"></p>
+<ul>
+<li>我们可能需要在非常准确的情况下，才去预测肿瘤为恶性，否则让良性肿瘤的病人去接受治疗，那肯定要被骂，因此这时候我们需要高查准率，因此可以调高阈值为0.7或0.9，可以更准确的预测出恶性肿瘤。但此时明显，召回率就被降低了</li>
+<li>但召回率的降低可能导致更多恶性肿瘤的情况被归类为良性肿瘤，这种情况也是我们不愿见到的，因此我们也可能想调高召回率。</li>
+</ul>
+<p>由此可以画出查准率和召回率的图像：</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVPm4K.png" alt="EVPm4K.png"></p>
+<p>综上，我们需要向办法设置合适的阈值，以达到查准率和召回率的平衡。</p>
+<p>通常使用$F_{1}score$来权衡，计算公式为${ {F}_{1} }Score:2\frac{PR}{P+R}$，$F_{1}score$值越高，模型的性能越好。</p>
+<h3 id="机器学习数据"><a href="#机器学习数据" class="headerlink" title="机器学习数据"></a>机器学习数据</h3><p>之前曾经说过，不要盲目的收集大量训练数据。</p>
+<p>但是有些时候，收集大量数据会得到一个性能良好的学习算法。</p>
+<p>即当你的算法有很多参数，数据特征充足（当一个人类专家拿到输入x时，能做出良好的判断，证明特征充足）时，更多的训练数据会带来更好的性能。</p>
+<p><strong>参考资料</strong></p>
+<p>[1] <a href="https://blog.csdn.net/sdu_hao/article/details/84026798#7.%E5%86%B3%E5%AE%9A%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">机器学习 | 吴恩达机器学习第六周学习笔记</a></p>
+<p>[2] <a href="https://zhuanlan.zhihu.com/p/28409180" target="_blank" rel="noopener">机器学习笔记（3）—— 优化，偏差和方差，偏斜数据 - 关右的文章 - 知乎</a></p>
+
+      
+    </div>
+    
+    
+    
+	
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------End-------------</div>
+    
+</div>
+
+  
+	</div>
+    
+	
+	
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>梦想总是要有的，万一有人有钱呢？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>包养</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="JQK/许阳航 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="JQK/许阳航 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/15/matplotlib坐标原点不重合/" rel="next" title="matplotlib坐标原点不重合">
+                <i class="fa fa-chevron-left"></i> matplotlib坐标原点不重合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JQK/许阳航">
+            
+              <p class="site-author-name" itemprop="name">JQK/许阳航</p>
+              <p class="site-description motion-element" itemprop="description">The early worm is catched by birds</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cesarexyh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2442021982/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/qing-lou-man-zuo/activities" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-custom zhihu"></i>Zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/123226876/" target="_blank" title="Douban">
+                      
+                        <i class="fa fa-fw fa-custom douban"></i>Douban</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#运用机器学习建议"><span class="nav-number">1.</span> <span class="nav-text">运用机器学习建议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决定下一步做什么？"><span class="nav-number">1.1.</span> <span class="nav-text">决定下一步做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估假设函数"><span class="nav-number">1.2.</span> <span class="nav-text">评估假设函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型选择和交叉验证集"><span class="nav-number">1.3.</span> <span class="nav-text">模型选择和交叉验证集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#诊断偏差和方差"><span class="nav-number">1.4.</span> <span class="nav-text">诊断偏差和方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则化和偏差、方差"><span class="nav-number">1.5.</span> <span class="nav-text">正则化和偏差、方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习曲线"><span class="nav-number">1.6.</span> <span class="nav-text">学习曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-如何利用学习曲线识别高偏差？"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.如何利用学习曲线识别高偏差？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何利用学习曲线识别高方差？"><span class="nav-number">1.6.2.</span> <span class="nav-text">如何利用学习曲线识别高方差？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决定下一步做什么？-1"><span class="nav-number">1.6.3.</span> <span class="nav-text">决定下一步做什么？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习系统设计"><span class="nav-number">2.</span> <span class="nav-text">机器学习系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#确定执行的优先级"><span class="nav-number">2.1.</span> <span class="nav-text">确定执行的优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#step1-用向量表示邮件"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">step1.用向量表示邮件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#step2-想办法降低分类的错误率"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">step2.想办法降低分类的错误率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析"><span class="nav-number">2.2.</span> <span class="nav-text">误差分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不对称分类的误差评估"><span class="nav-number">2.3.</span> <span class="nav-text">不对称分类的误差评估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查准率和召回率的均衡"><span class="nav-number">2.4.</span> <span class="nav-text">查准率和召回率的均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习数据"><span class="nav-number">2.5.</span> <span class="nav-text">机器学习数据</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JQK/许阳航</span>
+
+  
+</div>
+
+
+	<div class="powered-by">
+	<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+		本站访客数:<span id="busuanzi_value_site_uv"></span>
+	</span>
+	</div>
+<!--
+  <div class="powered-by">个人专属</div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">博客-nullblog </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+        <script type="text/javascript">
+            const gitalk = new Gitalk({
+            clientID: '6724e07f1e7ddc3c67ae',
+            clientSecret: 'ed0bb21b8d06979b07b9453d473167f1024efc97',
+            repo: 'scp-1024.github.io',
+            owner: 'scp-1024',
+            admin: 'scp-1024'.split(','),
+            pagerDirection: 'first',
+            id: md5(window.location.pathname),
+            distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+        
+    
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

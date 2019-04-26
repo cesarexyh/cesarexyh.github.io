@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+  <style>
+    .pace .pace-progress {
+        background: #181f25; /*进度条颜色*/
+    }
+  </style>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "3f8cade8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="空博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="支持向量机优化目标在监督学习中，重要的不是你选择的算法，而是应用这些算法时，选择的特征、正则化参数等等诸如此类。其中有一种非常强大的分类工具，称为支持向量机。（Support Vector Machine，SVM） 下面展示如何通过修改逻辑回归，来得到SVM。 首先回顾一下逻辑回归假设函数，注意y=1和y=0的情况。">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习笔记|第七周">
+<meta property="og:url" content="http://yoursite.com/2019/04/26/机器学习笔记-第七周/index.html">
+<meta property="og:site_name" content="空博客">
+<meta property="og:description" content="支持向量机优化目标在监督学习中，重要的不是你选择的算法，而是应用这些算法时，选择的特征、正则化参数等等诸如此类。其中有一种非常强大的分类工具，称为支持向量机。（Support Vector Machine，SVM） 下面展示如何通过修改逻辑回归，来得到SVM。 首先回顾一下逻辑回归假设函数，注意y=1和y=0的情况。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVoj9P.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVTC7j.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVTFNn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVTfEj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/24/EVHUkd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZ0zzq.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZBHpR.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZBv7D.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZDphd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZDK9s.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZDcUe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZfmL9.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZ5mLQ.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZ5Tl8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZIJht.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EZIB7j.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EeKFDx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EeYNJP.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EecHzQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EecLss.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/Eegrmn.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/Ee2KA0.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/Ee2f4f.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/25/EeWpJf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/EmE7Q0.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/EmExY9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/Emn4xA.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/EmMZHx.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/EmMQ8e.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/EmMOPO.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/Em1gat.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/Em3gOJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/Em35Y6.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/Em8ehV.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/EmJnL4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/26/EmJH6U.md.png">
+<meta property="og:updated_time" content="2019-04-26T03:19:51.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习笔记|第七周">
+<meta name="twitter:description" content="支持向量机优化目标在监督学习中，重要的不是你选择的算法，而是应用这些算法时，选择的特征、正则化参数等等诸如此类。其中有一种非常强大的分类工具，称为支持向量机。（Support Vector Machine，SVM） 下面展示如何通过修改逻辑回归，来得到SVM。 首先回顾一下逻辑回归假设函数，注意y=1和y=0的情况。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/24/EVoj9P.md.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/26/机器学习笔记-第七周/">
+
+
+
+
+
+  <title>机器学习笔记|第七周 | 空博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总不能浪费个副标题吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-newspaper-o"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/机器学习笔记-第七周/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JQK/许阳航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习笔记|第七周</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-26T11:16:22+08:00">
+                2019-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h2><h3 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h3><p>在监督学习中，重要的不是你选择的算法，而是应用这些算法时，选择的特征、正则化参数等等诸如此类。其中有一种非常强大的分类工具，称为支持向量机。（<strong>Support Vector Machine，SVM</strong>）</p>
+<p>下面展示如何通过修改逻辑回归，来得到SVM。</p>
+<p>首先回顾一下逻辑回归假设函数，注意<code>y=1</code>和<code>y=0</code>的情况。</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVoj9P.md.png" alt="EVoj9P.md.png"></p>
+<a id="more"></a>
+<p>进一步写出代价函数</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVTC7j.md.png" alt="EVTC7j.md.png"></p>
+<p>当<code>y=1</code>时，此时代价函数剩左边一项$-y \log \frac{1}{1+e^{-\theta^{T} x} }$，图像为</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVTFNn.png" alt="EVTFNn.png"></p>
+<p>其中的曲线为逻辑回归代价函数，两段直线为SVM的代价函数，记为$cost_{1}(z)$</p>
+<p>同理，当<code>y=0</code>时，代价函数剩右边一项$(1-y) \log \left(1-\frac{1}{1+e^{-\theta^{T} x} }\right)$，图像为</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVTfEj.png" alt="EVTfEj.png"></p>
+<p>其中的SVM代价函数，记为$cost_{0}(z)$。</p>
+<p>完整的逻辑回归代价函数写成：$\min _{\theta} \frac{1}{m}\left[\sum_{i=1}^{m} y^{(i)}\left(-\log h_{\theta}\left(x^{(i)}\right)\right)+\left(1-y^{(i)}\right)\left(\left(-\log \left(1-h_{\theta}\left(x^{(i)}\right)\right)\right)\right]+\frac{\lambda}{2 m} \sum_{j=1}^{n} \theta_{j}^{2}\right.$</p>
+<p>可以看出由代价项和正则化项两部分组成，基本形式为$A+\lambda B$，$\lambda$可以看做是控制两部分的<em>权重</em>。</p>
+<p>要写出SVM的代价函数，首先我们把逻辑回归代价函数的$\frac{1}{m}$去掉，不影响$\theta$值。然后我们把正则化项的系数$\lambda$去掉，在代价项前面添上一个系数C，效果等同于$\frac{1}{\lambda}$。</p>
+<p>因此，最终SVM的代价函数为：$\min _{\theta} C \sum_{i=1}^{m}\left[y^{(i)} \cos t_{1}\left(\theta^{T} x^{(i)}\right)+\left(1-y^{(i)}\right) \operatorname{cost}_{0}\left(\theta^{T} x^{(i)}\right)\right]+\frac{1}{2} \sum_{i=1}^{n} \theta_{j}^{2}$</p>
+<p>假设函数为：</p>
+<p><img src="https://s2.ax1x.com/2019/04/24/EVHUkd.png" alt="EVHUkd.png"></p>
+<p>注意，和逻辑回归假设函数计算出的是概率不同，SVM假设函数直接计算结果(1/0)。</p>
+<h3 id="直观理解大间距"><a href="#直观理解大间距" class="headerlink" title="直观理解大间距"></a>直观理解大间距</h3><p>SVM又被称为大间距分类器，以下直观讲解为什么。</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZ0zzq.md.png" alt="EZ0zzq.md.png"></p>
+<p>从图中可以看出：</p>
+<p><code>y=1</code>时，需要$\theta^{T}x\ge1$，区别于逻辑回归中$\ge0$，此时$cost_{1}(z)=0$，即SVM在正确分类的基础上还构建了一个安全距离。</p>
+<p><code>y=0</code>时，需要$\theta^{T}x\le-1$，区别于逻辑回归中$\le0$，此时$cost_{0}(z)=0$，即SVM在正确分类的基础上还构建了一个安全距离。</p>
+<p>接下来，如果我们把代价函数中的常熟C设置成一个非常大的值，例如C=100000，此时为了使代价最小，就必须让最优化函数<img src="https://s2.ax1x.com/2019/04/25/EZBHpR.md.png" alt="EZBHpR.md.png"></p>
+<p>中蓝色框部分等于0，又根据<code>y=1</code>或<code>y=0</code>时$\theta^{T}x$的取值，可以把优化问题和约束条件改为：</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZBv7D.png" alt="EZBv7D.png"></p>
+<p>当你把它最小化时，可以得到决策边界。</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZDphd.png" alt="EZDphd.png"></p>
+<p>其中黑线为SVM的决策边界，比起粉红线和绿线，显然黑线具有更好的鲁棒性（robustness，又叫<strong>健壮性</strong>，在计算机中代表运行过程中处理错误，或是算法、输入异常时仍然正确运行的能力），距离正负样本的最小距离最大。也因此我们把SVM称为最大间距分类。</p>
+<p>如果把C设置的非常大时，可能会出现下面的情况</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZDK9s.png" alt="EZDK9s.png"></p>
+<p>由于左下角出现了一个异常点，决策边界会从黑线变为粉红线。相当于$\lambda$过小导致过拟合。如果把C值设置的小一点，则会忽略异常点的影响。因此对C的讨论，其实也是过拟合和欠拟合的问题。</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZDcUe.png" alt="EZDcUe.png"></p>
+<h3 id="大间隔分类器数学原理"><a href="#大间隔分类器数学原理" class="headerlink" title="大间隔分类器数学原理"></a>大间隔分类器数学原理</h3><p>本节解释了为什么SVM能够大间隔分类</p>
+<ul>
+<li>向量内积</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZfmL9.md.png" alt="EZfmL9.md.png"></p>
+<p>简单来说，就是内积等于$u^{T}v$，也等于$p\lVert u \rVert$，其中p为向量v对向量u的投影，$\lVert u \rVert$为范数（norm，意思是具有“长度”概念的函数，这里可以简单理解为向量的长度）。内积具有正负，当向量夹角大于90度，内积为负；小于90度，内积为正。</p>
+<p>那么回到优化问题上</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZ5mLQ.md.png" alt="EZ5mLQ.md.png"></p>
+<p>我们假设n=2，$\theta_{0}=0$，然后通过之前提到的内容，可以改写优化问题：$\min _{\theta} \frac{1}{2} \sum_{j=1}^{n} \theta_{j}^{2}=\frac{1}{2}|\theta|^{2}$</p>
+<p>也可以改写约束条件，即把$\theta^{T} x^{(i)}$看成是向量相乘，最终能改写为下面的式子：</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZ5Tl8.png" alt="EZ5Tl8.png"></p>
+<p>那么为什么SVM不会选择下图中的决策边界呢？</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZIJht.png" alt="EZIJht.png"></p>
+<p>其原因是，由下图可以看出，位于一、四象限的样本$x^{(1)}$，因为和决策边界接近，当它投影到$\theta$上时得到的$p^{(1)}$非常小，因此如果要满足$p^{(i)} \cdot|\theta| \geq 1$，那么$|\theta|$就必须非常大，这跟我们的优化问题$\min _{\theta} \frac{1}{2} \sum_{j=1}^{n} \theta_{j}^{2}=\frac{1}{2}|\theta|^{2}$矛盾。</p>
+<p>位于二、三象限样本同理。</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EZIB7j.png" alt="EZIB7j.png"></p>
+<p>正确的样本边界如下图</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EeKFDx.png" alt="EeKFDx.png"></p>
+<p>额外说明一下，这里的$\theta_{0}=0$意味着决策边界一定会经过原点，如果令其不等于0，结论也是同样成立的。</p>
+<h3 id="核函数1"><a href="#核函数1" class="headerlink" title="核函数1"></a>核函数1</h3><p>本质上说，核函数跟SVM没有必然联系，但是在用于求分线性分类器时具有很好的效果。</p>
+<p>考虑下图中的数据集：</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EeYNJP.md.png" alt="EeYNJP.md.png"></p>
+<p>这种非线性的情况，显然用原始输入的两个特征是无法表示的，因此我们需要增加多项式特征。</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EecHzQ.png" alt="EecHzQ.png"></p>
+<p>这里我们可以将特征重新编号为$f_{i}$：</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EecLss.md.png" alt="EecLss.md.png"></p>
+<p>但问题在于，如何去选取新的特征呢？之前在逻辑回归时，我们是列举出了多个不同组合方式，通过交叉验证集进行验证，挑选出最合适的。而在SVM中，我们可以通过核函数对原始输入特征进行映射进而得到新的特征。</p>
+<p>举例说明：</p>
+<p>假设此时原始输入x有两个特征$x_{1}$和$x_{2}$（不考虑$x_{0}$），需要得到新的特征$f_{1}$、$f_{2}$、$f_{3}$。</p>
+<p>首先我们选取了3个点$l_{1}$、$l_{2}$、$l_{3}$，称为标记（<strong>landmark</strong>）。</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/Eegrmn.md.png" alt="Eegrmn.md.png"></p>
+<p>从图中可以看出，$f_{i}$为x和$l^{(i)}$相似度，而这个求相似度的函数就被称为核函数（<strong>kernel</strong>），这里用到的是高斯核函数（<strong>Gaussion Kernels</strong>），${ {f}_{1} }=similarity(x,{ {l}^{ (1) } } )=e(-\frac{ { {\left| x-{ {l}^{(1)} } \right|}^{2} } }{2{ {\sigma }^{2} } } )$。</p>
+<p>那么右边的式子究竟是什么含义？</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/Ee2KA0.md.png" alt="Ee2KA0.md.png"></p>
+<p>图中可以很明显的看出，$f_{i}$的取值在0~1之间。</p>
+<p>绘制出核函数的图像如下</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/Ee2f4f.md.png" alt="Ee2f4f.md.png"></p>
+<p>图中水平面坐标代表$x_{1}$和$x_{2}$，垂直的坐标代表$f$，可以看出，只有当x和$l$重合时，$f$才具有最大值。</p>
+<p>同时也可以看出$\sigma$对$f$改变速率的影响。$\sigma$较小时，中间凸起的部分较窄，当x远离$l$时，$f$下降的较快；当$\sigma$较大时则刚好相反。</p>
+<p>得到新的特征值$f$之后，就可以写出假设函数$h(\theta)=\theta_{0}+\theta_{1} f_{1}+\theta_{2} f_{2}+\theta_{3} f_{3}$，进而在图像上画出决策边界如下：</p>
+<p><img src="https://s2.ax1x.com/2019/04/25/EeWpJf.png" alt="EeWpJf.png"></p>
+<p>可以看出，当样本位于粉红色点的位置时，x靠近$l^{(1)}$，y=1；位于绿色点时，靠近$l^{(2)}$，y=1；位于蓝色点时，靠近$l^{(3)}$，y=0。</p>
+<h3 id="核函数2"><a href="#核函数2" class="headerlink" title="核函数2"></a>核函数2</h3><p>在上一节中，我们提到一个重要问题，那就是如何选取标记？</p>
+<p>通常根据训练集的样本数量来选择对应地标，即如果训练集中有m个样本，就选取m个标记。并且令：$l^{(1)}=x^{(1)}, l^{(2)}=x^{(2)}, \ldots, l^{(m)}=x^{(m)}$，这样做的好处在于我们得到的新标记是基于原有特征与其他样本特征的距离。</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/EmE7Q0.md.png" alt="EmE7Q0.md.png"></p>
+<p>由上图我们可以得出结论，对于一个样本$x^{(i)}$，我们可以将它的特征映射为$f^{(i)}$，从维度上看，我们也将原始输入特征从n+1维，映射为m+1维（+1为偏置项，m为标记个数也是样本个数）</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/EmExY9.png" alt="EmExY9.png"></p>
+<p>下面将核函数运用到SVM中，首先我们将原始输入特征映射为新特征$f$，然后根据代价函数求出最优化的$\theta$</p>
+<p>$min C\sum\limits_{i=1}^{m}{ [ { {y}^{ (i)} }cos { {t}_{1} } }( { {\theta }^{T} }{ {f}^{(i)} })+(1-{ {y}^{(i)} })cos { {t}_{0} }( { {\theta }^{T} }{ {f}^{(i)} })]+\frac{1}{2}\sum\limits_{j=1}^{m}{\theta _{j}^{2} }$</p>
+<p>注意这里的最后的正则化项，$j$是从1-m而不是1-n，因为我们新特征$f \in \mathbb{R}^{m+1}$。而在实际运用中，我们还得对这一项的计算做一些修改，通常我们对正则化项的计算是用矩阵相乘$\sum_{j=1}^{n=m} \theta_{j}^{2}=\theta^{T} \theta$，但在SVM中，我们用$θ^TMθ$代替$θ^Tθ$，其中M根据我们选择的核函数来确定，这样可以简化运算。</p>
+<p>最后再代入新的假设函数中。</p>
+<p>使用SVM时还需要选择几个参数：</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/Emn4xA.md.png" alt="Emn4xA.md.png"></p>
+<h3 id="使用SVM"><a href="#使用SVM" class="headerlink" title="使用SVM"></a>使用SVM</h3><p>使用成熟的软件包来计算参数</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/EmMZHx.md.png" alt="EmMZHx.md.png"></p>
+<p>不过还是有些问题需要你自己解决</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/EmMQ8e.png" alt="EmMQ8e.png"></p>
+<p>关于内核函数的选择</p>
+<p>1.可以使用线性内核函数，即不用内核函数，这种情况适用于n较大，m较小。因为如果样本个数少，特征多，去拟合复杂的非线性函数，容易导致过拟合。</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/EmMOPO.md.png" alt="EmMOPO.md.png"></p>
+<p>2.也可以使用核函数（高斯核函数），适用于n较小，m较大。</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/Em1gat.md.png" alt="Em1gat.md.png"></p>
+<p>以一个高斯核函数为例，输入两个特征向量，输出一个实数<img src="https://s2.ax1x.com/2019/04/26/Em3gOJ.png" alt="Em3gOJ.png"></p>
+<p>注意在使用高斯核函数时，一定要对原始输入特征进行缩放：</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/Em35Y6.md.png" alt="Em35Y6.md.png"></p>
+<p>否则会如图中那样，不同范围的特征在生成新特征时会产生不同的影响。</p>
+<p>除此之外还可以选择其他的核函数，但是都必须满足莫塞尔定理，不过除了线性核函数和高斯核函数，其他的一般也不太常用。</p>
+<p><img src="https://s2.ax1x.com/2019/04/26/Em8ehV.md.png" alt="Em8ehV.md.png"></p>
+<h4 id="多类分类问题"><a href="#多类分类问题" class="headerlink" title="多类分类问题"></a>多类分类问题</h4><p><img src="https://s2.ax1x.com/2019/04/26/EmJnL4.png" alt="EmJnL4.png"></p>
+<p>解决多分类问题的方法</p>
+<p>1.可以使用封装好的模块</p>
+<p>2.和之前逻辑回归中多分类问题类似，也可以使用把多分类问题转换成多个二分类问题，最终对新样本进行预测时，只要看它属于哪个正类的假设函数值最大，就属于哪个类别。</p>
+<h4 id="关于逻辑回归、核函数SVM、不含核函数SVM的选择"><a href="#关于逻辑回归、核函数SVM、不含核函数SVM的选择" class="headerlink" title="关于逻辑回归、核函数SVM、不含核函数SVM的选择"></a>关于逻辑回归、核函数SVM、不含核函数SVM的选择</h4><p><img src="https://s2.ax1x.com/2019/04/26/EmJH6U.md.png" alt="EmJH6U.md.png"></p>
+<p>SVM的效果可能不如神经网络，但训练速度快，且是一个凸优化问题（即一定能得到全局最优解）。</p>
+
+      
+    </div>
+    
+    
+    
+	
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------End-------------</div>
+    
+</div>
+
+  
+	</div>
+    
+	
+	
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>梦想总是要有的，万一有人有钱呢？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>包养</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="JQK/许阳航 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="JQK/许阳航 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/24/机器学习笔记-第六周/" rel="next" title="机器学习笔记|第六周">
+                <i class="fa fa-chevron-left"></i> 机器学习笔记|第六周
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JQK/许阳航">
+            
+              <p class="site-author-name" itemprop="name">JQK/许阳航</p>
+              <p class="site-description motion-element" itemprop="description">The early worm is catched by birds</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cesarexyh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2442021982/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/qing-lou-man-zuo/activities" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-custom zhihu"></i>Zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/123226876/" target="_blank" title="Douban">
+                      
+                        <i class="fa fa-fw fa-custom douban"></i>Douban</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机"><span class="nav-number">1.</span> <span class="nav-text">支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化目标"><span class="nav-number">1.1.</span> <span class="nav-text">优化目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直观理解大间距"><span class="nav-number">1.2.</span> <span class="nav-text">直观理解大间距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大间隔分类器数学原理"><span class="nav-number">1.3.</span> <span class="nav-text">大间隔分类器数学原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数1"><span class="nav-number">1.4.</span> <span class="nav-text">核函数1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数2"><span class="nav-number">1.5.</span> <span class="nav-text">核函数2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用SVM"><span class="nav-number">1.6.</span> <span class="nav-text">使用SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多类分类问题"><span class="nav-number">1.6.1.</span> <span class="nav-text">多类分类问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于逻辑回归、核函数SVM、不含核函数SVM的选择"><span class="nav-number">1.6.2.</span> <span class="nav-text">关于逻辑回归、核函数SVM、不含核函数SVM的选择</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JQK/许阳航</span>
+
+  
+</div>
+
+
+	<div class="powered-by">
+	<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+		本站访客数:<span id="busuanzi_value_site_uv"></span>
+	</span>
+	</div>
+<!--
+  <div class="powered-by">个人专属</div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">博客-nullblog </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+        <script type="text/javascript">
+            const gitalk = new Gitalk({
+            clientID: '6724e07f1e7ddc3c67ae',
+            clientSecret: 'ed0bb21b8d06979b07b9453d473167f1024efc97',
+            repo: 'scp-1024.github.io',
+            owner: 'scp-1024',
+            admin: 'scp-1024'.split(','),
+            pagerDirection: 'first',
+            id: md5(window.location.pathname),
+            distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+        
+    
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

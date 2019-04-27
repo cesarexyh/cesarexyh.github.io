@@ -112,7 +112,7 @@
 <meta property="og:description" content="Numpy是在利用Python进行科学计算和数据处理时肯定会使用到的模块(moudle)。 本文用比较通俗的语言讲解一下其中的Meshgrid函数  1.Meshgrid前言简单来说，Meshgrid就是在用两个坐标轴上的点在平面上画网格，当然也可以用三个坐标，但是为了方便理解，下面都用两个坐标轴举例。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/15/AEfxHJ.jpg">
-<meta property="og:updated_time" content="2019-03-16T07:42:50.868Z">
+<meta property="og:updated_time" content="2019-04-26T08:06:55.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Numpy中的Meshgrid">
 <meta name="twitter:description" content="Numpy是在利用Python进行科学计算和数据处理时肯定会使用到的模块(moudle)。 本文用比较通俗的语言讲解一下其中的Meshgrid函数  1.Meshgrid前言简单来说，Meshgrid就是在用两个坐标轴上的点在平面上画网格，当然也可以用三个坐标，但是为了方便理解，下面都用两个坐标轴举例。">
@@ -373,9 +373,9 @@
 <a id="more"></a>
 <h4 id="2-Meshgrid参数"><a href="#2-Meshgrid参数" class="headerlink" title="2.Meshgrid参数"></a>2.Meshgrid参数</h4><p>详情咨询<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.meshgrid.html" target="_blank" rel="noopener">官方文档</a>，最常用的就是传入两个一维数组</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">y = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">xv,yv = meshgrid(x,y)</span><br></pre></td></tr></table></figure>
-<h4 id="3-Meshgrid返回值"><a href="#3-Meshgrid返回值" class="headerlink" title="3.Meshgrid返回值"></a>3.Meshgrid返回值</h4><p>xv的返回值：</p>
+<h4 id="3-Meshgrid返回值"><a href="#3-Meshgrid返回值" class="headerlink" title="3.Meshgrid返回值"></a>3.Meshgrid返回值</h4><p>xv的返回值，列相等：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[-10,10],</span><br><span class="line"> [-10,10]]</span><br></pre></td></tr></table></figure>
-<p>yv的返回值：</p>
+<p>yv的返回值，行相等：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[-10,-10],</span><br><span class="line"> [10,10]]</span><br></pre></td></tr></table></figure>
 <p>从上面很容易看出，Meshgrid实际上是返回两个<strong>矩阵</strong>，两个矩阵不同之处，下面用一张图来表示一目了然。</p>
 <p><img src="https://s2.ax1x.com/2019/03/15/AEfxHJ.jpg" alt=""></p>
@@ -578,7 +578,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

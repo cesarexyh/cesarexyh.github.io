@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+  <style>
+    .pace .pace-progress {
+        background: #181f25; /*进度条颜色*/
+    }
+  </style>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "3f8cade8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="空博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="K-means Clustering导入模块 1234import numpy as npimport matplotlib.pyplot as pltfrom scipy.io import loadmatfrom skimage import io">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习|吴恩达机器学习之PCA">
+<meta property="og:url" content="http://yoursite.com/2019/05/02/机器学习-吴恩达机器学习之PCA/index.html">
+<meta property="og:site_name" content="空博客">
+<meta property="og:description" content="K-means Clustering导入模块 1234import numpy as npimport matplotlib.pyplot as pltfrom scipy.io import loadmatfrom skimage import io">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EYOrCQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EYXtG4.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EYX5eP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EYjBlj.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EYz5cQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EtpMM4.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/Et9DcF.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/Et9Ije.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/Et9O4P.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/Etn09H.png">
+<meta property="og:updated_time" content="2019-05-02T06:44:46.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习|吴恩达机器学习之PCA">
+<meta name="twitter:description" content="K-means Clustering导入模块 1234import numpy as npimport matplotlib.pyplot as pltfrom scipy.io import loadmatfrom skimage import io">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/02/EYOrCQ.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/02/机器学习-吴恩达机器学习之PCA/">
+
+
+
+
+
+  <title>机器学习|吴恩达机器学习之PCA | 空博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总不能浪费个副标题吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-newspaper-o"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/02/机器学习-吴恩达机器学习之PCA/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JQK/许阳航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习|吴恩达机器学习之PCA</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T14:44:46+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="K-means-Clustering"><a href="#K-means-Clustering" class="headerlink" title="K-means Clustering"></a>K-means Clustering</h2><p>导入模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> loadmat</span><br><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> io</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="Implementing-K-means"><a href="#Implementing-K-means" class="headerlink" title="Implementing K-means"></a>Implementing K-means</h3><h4 id="Finding-closet-centroids"><a href="#Finding-closet-centroids" class="headerlink" title="Finding closet centroids"></a>Finding closet centroids</h4><ul>
+<li>读入数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data=loadmat(<span class="string">'ex7data2.mat'</span>)</span><br><span class="line">X=data[<span class="string">'X'</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为每个样本找到最近的聚类中心</li>
+</ul>
+<p>$c^{(i)} :=j \quad$ that minimizes $\quad\left|x^{(i)}-\mu_{j}\right|^{2}$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#========================找聚类中心</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_closet_centroids</span><span class="params">(X,centroids)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    返回每个样本所在的cluster索引</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    idx=[]</span><br><span class="line">    max_dist=<span class="number">10000</span> <span class="comment"># 给一个距离限定</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(X)):</span><br><span class="line">        minus=X[i]-centroids <span class="comment"># minus是3x2的矩阵，每一行代表了第i个样本到一个centroids的x1,x2距离</span></span><br><span class="line">        dist=minus[:,<span class="number">0</span>]**<span class="number">2</span>+minus[:,<span class="number">1</span>]**<span class="number">2</span> <span class="comment">#求范式，即直线距离,dist是3x1的向量</span></span><br><span class="line">        <span class="keyword">if</span> dist.min()&lt;max_dist:</span><br><span class="line">            ci=np.argmin(dist) <span class="comment">#返回沿axis的最小值索引</span></span><br><span class="line">            idx.append(ci)</span><br><span class="line">    <span class="keyword">return</span> np.array(idx)</span><br></pre></td></tr></table></figure>
+<p>可以自己初始化一组聚类中心来测试一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init_centroids = np.array([[<span class="number">3</span>, <span class="number">3</span>], [<span class="number">6</span>, <span class="number">2</span>], [<span class="number">8</span>, <span class="number">5</span>]])</span><br><span class="line">idx = findClosestCentroids(X, init_centroids)</span><br><span class="line">print(idx[<span class="number">0</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<p>结果应该是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span> <span class="number">2</span> <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="Computing-centroids-means"><a href="#Computing-centroids-means" class="headerlink" title="Computing  centroids means"></a>Computing  centroids means</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#=========================移动聚类中心</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_centroids</span><span class="params">(X,idx)</span>:</span></span><br><span class="line">    centroids=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(np.unique(idx))):</span><br><span class="line">        <span class="comment"># 布尔索引，idx==i运算返回bool value，根据值为true的下标来输出X中对应元素值</span></span><br><span class="line">        u_k=X[idx==i].mean(axis=<span class="number">0</span>)</span><br><span class="line">        </span><br><span class="line">        centroids.append(u_k)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> np.array(centroids)</span><br></pre></td></tr></table></figure>
+<h4 id="K-means-on-example-dataset"><a href="#K-means-on-example-dataset" class="headerlink" title="K-means on example dataset"></a>K-means on example dataset</h4><ul>
+<li>画图函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_data</span><span class="params">(X,centroids,idx=None)</span>:</span></span><br><span class="line"></span><br><span class="line">    colors = [<span class="string">'b'</span>,<span class="string">'g'</span>,<span class="string">'gold'</span>,<span class="string">'darkorange'</span>,<span class="string">'salmon'</span>,<span class="string">'olivedrab'</span>, </span><br><span class="line">              <span class="string">'maroon'</span>, <span class="string">'navy'</span>, <span class="string">'sienna'</span>, <span class="string">'tomato'</span>, <span class="string">'lightgray'</span>, <span class="string">'gainsboro'</span></span><br><span class="line">             <span class="string">'coral'</span>, <span class="string">'aliceblue'</span>, <span class="string">'dimgray'</span>, <span class="string">'mintcream'</span>, <span class="string">'mintcream'</span>]</span><br><span class="line">	</span><br><span class="line">    <span class="comment"># 这里centroids需要从ndarray转成list,但centroids[0]仍为ndarray.</span></span><br><span class="line">    <span class="keyword">assert</span> len(centroids[<span class="number">0</span>])&lt;=len(colors),<span class="string">'colors not enough'</span> </span><br><span class="line">    </span><br><span class="line">    subX=[]</span><br><span class="line">    <span class="keyword">if</span> idx <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(centroids[<span class="number">0</span>].shape[<span class="number">0</span>]): <span class="comment">#分成几类就循环几次</span></span><br><span class="line">            x_i=X[idx==i]</span><br><span class="line">            subX.append(x_i) <span class="comment">#把数据按cluster分成不同下标的元素，存储在subx这个list中</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        subX=[X]</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    fig=plt.figure(figsize=(<span class="number">8</span>,<span class="number">5</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(subX)):</span><br><span class="line">        xx=subX[i]</span><br><span class="line">        plt.scatter(xx[:,<span class="number">0</span>],xx[:,<span class="number">1</span>],c=colors[i])    </span><br><span class="line">    plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'y'</span>)</span><br><span class="line">    plt.title(<span class="string">'Plot of X Points'</span>)</span><br><span class="line"></span><br><span class="line">    xx,yy=[],[]</span><br><span class="line">    <span class="keyword">for</span> centroid <span class="keyword">in</span> centroids: </span><br><span class="line">        xx.append(centroid[:,<span class="number">0</span>])</span><br><span class="line">        yy.append(centroid[:,<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    plt.plot(xx,yy,<span class="string">'rx--'</span>)</span><br><span class="line"></span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>画出聚类中心移动过程</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#=============================聚类中心移动过程</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_kmeans</span><span class="params">(X,centroids,max_iters)</span>:</span></span><br><span class="line"></span><br><span class="line">    centroids_all=[]</span><br><span class="line">    centroids_all.append(centroids)</span><br><span class="line">    centroid_i=centroids</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(max_iters):</span><br><span class="line">        idx=find_closet_centroids(X,centroid_i)</span><br><span class="line">        centroid_i=compute_centroids(X,idx) </span><br><span class="line">        centroids_all.append(centroid_i) <span class="comment">#每次移动后的聚类中心坐标都记录下来</span></span><br><span class="line">    <span class="keyword">return</span> idx,centroids_all</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EYOrCQ.png" alt="EYOrCQ.png"></p>
+<h4 id="Random-initialization"><a href="#Random-initialization" class="headerlink" title="Random initialization"></a>Random initialization</h4><p>关于聚类中心的初始化，一个更好的方法是从样本集中随机选取。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#==============================随机初始化聚类中心</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_centroids</span><span class="params">(X,K)</span>:</span></span><br><span class="line">    m=X.shape[<span class="number">0</span>]</span><br><span class="line">    index=np.random.choice(m,K) <span class="comment">#在0~m中随机生成K个样本</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> X[index]</span><br></pre></td></tr></table></figure>
+<p>最后再尝试一下聚类算法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        init_centroids=random_centroids(X,<span class="number">3</span>)</span><br><span class="line">        </span><br><span class="line">        idx,centroids_all=run_kmeans(X,init_centroids,<span class="number">20</span>)</span><br><span class="line">        plot_data(X,centroids_all,idx=idx) <span class="comment">#idx为每个样本所在cluster的索引</span></span><br></pre></td></tr></table></figure>
+<p>得到最终结果：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EYXtG4.md.png" alt="EYXtG4.md.png"></p>
+<h3 id="Image-compression-with-K-means"><a href="#Image-compression-with-K-means" class="headerlink" title="Image compression with K-means"></a>Image compression with K-means</h3><ul>
+<li>导入数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img=io.imread(<span class="string">'bird_small.png'</span>)</span><br><span class="line">plt.imshow(img)</span><br><span class="line">plt.show()</span><br><span class="line">print(img.shape)</span><br></pre></td></tr></table></figure>
+<p>图像为</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EYX5eP.png" alt="EYX5eP.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">128</span>,<span class="number">128</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>可以看到图像以3维矩阵的方式存储，前面两个维度代表图像的像素点个数128x128，最后一个维度代表像素点由RGB三个通道表示。又因为一个通道占用8-bit，因此在原始的图像中一个像素点需要24-bit来储存。</p>
+<p>在这幅图中包含了上千种种颜色，而在这个实验中，我们把颜色降为16种，也就是说，一像素点只需要4bit就足够了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">img=img/<span class="number">255</span></span><br><span class="line">X=img.reshape(<span class="number">-1</span>,<span class="number">3</span>) <span class="comment">#转换成128x128行，3列为RGB三通道</span></span><br><span class="line">K=<span class="number">16</span> <span class="comment">#16个聚类中心，就是把所有颜色压缩为16种RGB颜色，那么每个像素值需要4bit存储即可</span></span><br><span class="line">init_centroids=random_centroids(X,K)</span><br><span class="line">idx,centroids_all=run_kmeans(X,init_centroids,<span class="number">10</span>)</span><br><span class="line">img_2=np.zeros(X.shape)</span><br><span class="line">centroids=centroids_all[<span class="number">-1</span>] <span class="comment"># 只需要记录聚类中心最后移动的位置即可</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(centroids)):</span><br><span class="line">    img_2[idx==i]=centroids[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">img_2=img_2.reshape((<span class="number">128</span>,<span class="number">128</span>,<span class="number">3</span>))</span><br><span class="line">fig,axes=plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>))</span><br><span class="line">axes[<span class="number">0</span>].imshow(img)</span><br><span class="line">axes[<span class="number">1</span>].imshow(img_2)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>比对一下压缩效果：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EYjBlj.md.png" alt="EYjBlj.md.png"></p>
+<h2 id="Principle-Component-Analysis"><a href="#Principle-Component-Analysis" class="headerlink" title="Principle Component Analysis"></a>Principle Component Analysis</h2><ul>
+<li>导入模块</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> loadmat</span><br></pre></td></tr></table></figure>
+<h3 id="Example-Dataset"><a href="#Example-Dataset" class="headerlink" title="Example Dataset"></a>Example Dataset</h3><ul>
+<li>导入数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = loadmat(<span class="string">'ex7data1.mat'</span>)</span><br><span class="line">X = data[<span class="string">'X'</span>]</span><br><span class="line">print(X.shape)</span><br><span class="line">plt.scatter(X[:,<span class="number">0</span>], X[:,<span class="number">1</span>], facecolors=<span class="string">'none'</span>, edgecolors=<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(50,2)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>显示图像：</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/05/02/EYz5cQ.png" alt="EYz5cQ.png"></p>
+<h3 id="Implementing-PCA"><a href="#Implementing-PCA" class="headerlink" title="Implementing PCA"></a>Implementing PCA</h3><blockquote>
+<p>关于PCA的数学原理可以参考：<a href="https://nullblog.top/2019/05/01/%E6%B5%85%E8%B0%88SVD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/" target="_blank" rel="noopener">浅谈SVD的数学原理及应用</a></p>
+</blockquote>
+<p>PCA主要分为两个计算步骤：</p>
+<ul>
+<li>计算数据的协方差矩阵：$\Sigma=\frac{1}{m} \sum_{i=1}^{n}\left(x^{(i)}\right)\left(x^{(i)}\right)^{T}$</li>
+<li>用SVD函数进行奇异值分解</li>
+</ul>
+<p>在开始上面的步骤之前，需要先对数据进行特征缩放和归一化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">feature_normalize</span><span class="params">(X)</span>:</span></span><br><span class="line">    means = X.mean(axis=<span class="number">0</span>)</span><br><span class="line">    stds = X.std(axis=<span class="number">0</span>, ddof=<span class="number">1</span>)</span><br><span class="line">    X_norm = (X - means) / stds</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> X_norm, means</span><br></pre></td></tr></table></figure>
+<p>PCA：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#===================================PCA</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pca</span><span class="params">(X)</span>:</span></span><br><span class="line">    sigma = (<span class="number">1</span> / len(X)) * (X.T @ X)  <span class="comment">#求出协方差矩阵</span></span><br><span class="line">    U, S, V = np.linalg.svd(sigma)  <span class="comment">#奇异值分解</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> U, S, V</span><br></pre></td></tr></table></figure>
+<p>可视化主成成分：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_reduce</span><span class="params">(means, U, S)</span>:</span></span><br><span class="line">    plt.plot([means[<span class="number">0</span>], means[<span class="number">0</span>] + <span class="number">1.5</span> * S[<span class="number">0</span>] * U[<span class="number">0</span>, <span class="number">0</span>]],</span><br><span class="line">             [means[<span class="number">1</span>], means[<span class="number">1</span>] + <span class="number">1.5</span> * S[<span class="number">0</span>] * U[<span class="number">0</span>, <span class="number">1</span>]],</span><br><span class="line">             c=<span class="string">'r'</span>,</span><br><span class="line">             linewidth=<span class="number">3</span>,</span><br><span class="line">             label=<span class="string">'First Principle Component'</span>)</span><br><span class="line">    plt.plot([means[<span class="number">0</span>], means[<span class="number">0</span>] + <span class="number">1.5</span> * S[<span class="number">1</span>] * U[<span class="number">1</span>, <span class="number">0</span>]],</span><br><span class="line">             [means[<span class="number">1</span>], means[<span class="number">1</span>] + <span class="number">1.5</span> * S[<span class="number">1</span>] * U[<span class="number">1</span>, <span class="number">1</span>]],</span><br><span class="line">             c=<span class="string">'g'</span>,</span><br><span class="line">             linewidth=<span class="number">3</span>,</span><br><span class="line">             label=<span class="string">'Second Principal Component'</span>)</span><br><span class="line">    plt.axis(<span class="string">'equal'</span>)</span><br><span class="line">    plt.legend()</span><br></pre></td></tr></table></figure>
+<p>得到结果：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EtpMM4.md.png" alt="EtpMM4.md.png"></p>
+<h3 id="Dimensionality-Reduction-with-PCA"><a href="#Dimensionality-Reduction-with-PCA" class="headerlink" title="Dimensionality Reduction with PCA"></a>Dimensionality Reduction with PCA</h3><h4 id="Projecting-the-data-onto-the-principal-components"><a href="#Projecting-the-data-onto-the-principal-components" class="headerlink" title="Projecting the data onto the principal components"></a>Projecting the data onto the principal components</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">返回值</span></span><br><span class="line"><span class="string">	- Z：投影到主成成分后的样本点</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">project_data</span><span class="params">(X, U, K)</span>:</span></span><br><span class="line">    Z = X @ U[:, <span class="number">0</span>:K]</span><br><span class="line">    <span class="keyword">return</span> Z</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">K = <span class="number">1</span></span><br><span class="line">Z = project_data(X_norm, U, K)</span><br><span class="line">print(Z[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p>得到结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([<span class="number">1.48127391</span>])</span><br></pre></td></tr></table></figure>
+<h4 id="Reconstructing-an-approximation-of-the-data"><a href="#Reconstructing-an-approximation-of-the-data" class="headerlink" title="Reconstructing an approximation of the data"></a>Reconstructing an approximation of the data</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#===================================重建数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recover_data</span><span class="params">(Z, U, K)</span>:</span></span><br><span class="line">    X_rec = Z @ U[:, <span class="number">0</span>:K].T</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> X_rec</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># you will recover an approximation of the first example and you should see a value of</span></span><br><span class="line"><span class="comment"># about [-1.047 -1.047].</span></span><br><span class="line">X_rec = recover_data(Z, U, <span class="number">1</span>)</span><br><span class="line">X_rec[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([<span class="number">-1.04741883</span>, <span class="number">-1.04741883</span>])</span><br></pre></td></tr></table></figure>
+<h4 id="Visualizing-the-projections"><a href="#Visualizing-the-projections" class="headerlink" title="Visualizing the projections"></a>Visualizing the projections</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#====================================PCA样本投影可视化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">visualize_data</span><span class="params">(X_norm, X_rec)</span>:</span></span><br><span class="line">    fig, ax = plt.subplots(figsize=(<span class="number">8</span>, <span class="number">5</span>))</span><br><span class="line">    plt.axis(<span class="string">'equal'</span>)</span><br><span class="line">    plt.scatter(</span><br><span class="line">        X_norm[:, <span class="number">0</span>],</span><br><span class="line">        X_norm[:, <span class="number">1</span>],</span><br><span class="line">        s=<span class="number">30</span>,</span><br><span class="line">        facecolors=<span class="string">'none'</span>,</span><br><span class="line">        edgecolors=<span class="string">'blue'</span>,</span><br><span class="line">        label=<span class="string">'Original Data Points'</span>)</span><br><span class="line"></span><br><span class="line">    plt.scatter(</span><br><span class="line">        X_rec[:, <span class="number">0</span>],</span><br><span class="line">        X_rec[:, <span class="number">1</span>],</span><br><span class="line">        s=<span class="number">30</span>,</span><br><span class="line">        facecolors=<span class="string">'none'</span>,</span><br><span class="line">        edgecolors=<span class="string">'red'</span>,</span><br><span class="line">        label=<span class="string">'PCA Reduced Data Points'</span>)</span><br><span class="line"></span><br><span class="line">    plt.title(<span class="string">"Example Dataset: Reduced Dimension Points Shown"</span>,fontsize=<span class="number">14</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'x1 [Feature Normalized]'</span>,fontsize=<span class="number">14</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'x2 [Feature Normalized]'</span>,fontsize=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(X_norm.shape[<span class="number">0</span>]):</span><br><span class="line">        plt.plot([X_norm[x,<span class="number">0</span>],X_rec[x,<span class="number">0</span>]],[X_norm[x,<span class="number">1</span>],X_rec[x,<span class="number">1</span>]],<span class="string">'k--'</span>)</span><br><span class="line">        plt.legend(loc=<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># 输入第一项全是X坐标，第二项都是Y坐标</span></span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果如图：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/Et9DcF.md.png" alt="Et9DcF.md.png"></p>
+<h3 id="Face-Image-Dataset"><a href="#Face-Image-Dataset" class="headerlink" title="Face Image Dataset"></a>Face Image Dataset</h3><ul>
+<li>导入数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data_2=loadmat(<span class="string">'ex7faces.mat'</span>)</span><br><span class="line">X_2=data_2[<span class="string">'X'</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数据可视化</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_face</span><span class="params">(X,row,col)</span>:</span></span><br><span class="line">    fig,ax=plt.subplots(row,col,figsize=(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</span><br><span class="line">            ax[i][j].imshow(X[i*col+j].reshape(<span class="number">32</span>,<span class="number">32</span>).T,cmap=<span class="string">'Greys_r'</span>)</span><br><span class="line">            ax[i][j].set_xticks([])</span><br><span class="line">            ax[i][j].set_yticks([])</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果如图：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/Et9Ije.png" alt="Et9Ije.png"></p>
+<h4 id="PCA-on-Faces"><a href="#PCA-on-Faces" class="headerlink" title="PCA on Faces"></a>PCA on Faces</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X_2_norm,means_2=feature_normalize(X_2)</span><br><span class="line">U_2,S_2,V_2=pca(X_2_norm)</span><br></pre></td></tr></table></figure>
+<p>显示主成成分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot_face(U[:,:<span class="number">36</span>].T, <span class="number">6</span>, <span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/Et9O4P.png" alt="Et9O4P.png"></p>
+<h4 id="Dimensionality-Reduction"><a href="#Dimensionality-Reduction" class="headerlink" title="Dimensionality Reduction"></a>Dimensionality Reduction</h4><p>把图片降维</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Z_2=project_data(X_2_norm,U_2,K=<span class="number">36</span>)</span><br><span class="line">X_2_rec=recover_data(Z_2,U_2,K=<span class="number">36</span>)</span><br><span class="line">plot_face(X_2_rec,<span class="number">10</span>,<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/Etn09H.png" alt="Etn09H.png"></p>
+
+      
+    </div>
+    
+    
+    
+	
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------End-------------</div>
+    
+</div>
+
+  
+	</div>
+    
+	
+	
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>梦想总是要有的，万一有人有钱呢？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>包养</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="JQK/许阳航 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="JQK/许阳航 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/01/浅谈SVD的数学原理及应用/" rel="next" title="浅谈SVD的数学原理及应用">
+                <i class="fa fa-chevron-left"></i> 浅谈SVD的数学原理及应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JQK/许阳航">
+            
+              <p class="site-author-name" itemprop="name">JQK/许阳航</p>
+              <p class="site-description motion-element" itemprop="description">The early worm is catched by birds</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cesarexyh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2442021982/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/qing-lou-man-zuo/activities" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-custom zhihu"></i>Zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/123226876/" target="_blank" title="Douban">
+                      
+                        <i class="fa fa-fw fa-custom douban"></i>Douban</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#K-means-Clustering"><span class="nav-number">1.</span> <span class="nav-text">K-means Clustering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementing-K-means"><span class="nav-number">1.1.</span> <span class="nav-text">Implementing K-means</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Finding-closet-centroids"><span class="nav-number">1.1.1.</span> <span class="nav-text">Finding closet centroids</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Computing-centroids-means"><span class="nav-number">1.1.2.</span> <span class="nav-text">Computing  centroids means</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means-on-example-dataset"><span class="nav-number">1.1.3.</span> <span class="nav-text">K-means on example dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-initialization"><span class="nav-number">1.1.4.</span> <span class="nav-text">Random initialization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-compression-with-K-means"><span class="nav-number">1.2.</span> <span class="nav-text">Image compression with K-means</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Principle-Component-Analysis"><span class="nav-number">2.</span> <span class="nav-text">Principle Component Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-Dataset"><span class="nav-number">2.1.</span> <span class="nav-text">Example Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementing-PCA"><span class="nav-number">2.2.</span> <span class="nav-text">Implementing PCA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dimensionality-Reduction-with-PCA"><span class="nav-number">2.3.</span> <span class="nav-text">Dimensionality Reduction with PCA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Projecting-the-data-onto-the-principal-components"><span class="nav-number">2.3.1.</span> <span class="nav-text">Projecting the data onto the principal components</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reconstructing-an-approximation-of-the-data"><span class="nav-number">2.3.2.</span> <span class="nav-text">Reconstructing an approximation of the data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Visualizing-the-projections"><span class="nav-number">2.3.3.</span> <span class="nav-text">Visualizing the projections</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Face-Image-Dataset"><span class="nav-number">2.4.</span> <span class="nav-text">Face Image Dataset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PCA-on-Faces"><span class="nav-number">2.4.1.</span> <span class="nav-text">PCA on Faces</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dimensionality-Reduction"><span class="nav-number">2.4.2.</span> <span class="nav-text">Dimensionality Reduction</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JQK/许阳航</span>
+
+  
+</div>
+
+
+	<div class="powered-by">
+	<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+		本站访客数:<span id="busuanzi_value_site_uv"></span>
+	</span>
+	</div>
+<!--
+  <div class="powered-by">个人专属</div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">博客-nullblog </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+        <script type="text/javascript">
+            const gitalk = new Gitalk({
+            clientID: '6724e07f1e7ddc3c67ae',
+            clientSecret: 'ed0bb21b8d06979b07b9453d473167f1024efc97',
+            repo: 'scp-1024.github.io',
+            owner: 'scp-1024',
+            admin: 'scp-1024'.split(','),
+            pagerDirection: 'first',
+            id: md5(window.location.pathname),
+            distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+        
+    
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2" rel="stylesheet">
+  <style>
+    .pace .pace-progress {
+        background: #181f25; /*进度条颜色*/
+    }
+  </style>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "3f8cade8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="空博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="异常检测异常检测(Anomaly detection)是一种特殊的无监督学习，但其和监督问题有些类似之处。 问题动机从下图可以看出，对训练集建立模型后，输入$x_{test}$，通过概率来判断它是否异常。">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习笔记|第九周">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/机器学习笔记-第九周/index.html">
+<meta property="og:site_name" content="空博客">
+<meta property="og:description" content="异常检测异常检测(Anomaly detection)是一种特殊的无监督学习，但其和监督问题有些类似之处。 问题动机从下图可以看出，对训练集建立模型后，输入$x_{test}$，通过概率来判断它是否异常。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EtQyRg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EtlNfU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EtJiZ9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/EtTFi9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/02/Et7u60.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENccxe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENcvaq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/EN2PtP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/EN2B9K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/EN2x3T.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENRdbj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENWiQS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENWfl8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/03/EN5X59.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaFTjP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaFqHS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaFjhj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EakKu6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EakNvt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EakaKP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaVmgs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaV1ET.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaVbxs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/Ean0QH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauE1e.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauU7q.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaKt2D.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaQQtx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaQGcD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaQwNt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EaYtR1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EagnzT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/Ea25jO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EdSRIA.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EdPHlq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EdiJAg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EdFaIe.png">
+<meta property="og:updated_time" content="2019-05-04T08:50:04.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习笔记|第九周">
+<meta name="twitter:description" content="异常检测异常检测(Anomaly detection)是一种特殊的无监督学习，但其和监督问题有些类似之处。 问题动机从下图可以看出，对训练集建立模型后，输入$x_{test}$，通过概率来判断它是否异常。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/02/EtQyRg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/机器学习笔记-第九周/">
+
+
+
+
+
+  <title>机器学习笔记|第九周 | 空博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总不能浪费个副标题吧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-newspaper-o"></i> <br>
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/机器学习笔记-第九周/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JQK/许阳航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习笔记|第九周</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T16:50:04+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="异常检测"><a href="#异常检测" class="headerlink" title="异常检测"></a>异常检测</h2><p>异常检测(<strong>Anomaly detection</strong>)是一种特殊的无监督学习，但其和监督问题有些类似之处。</p>
+<h3 id="问题动机"><a href="#问题动机" class="headerlink" title="问题动机"></a>问题动机</h3><p>从下图可以看出，对训练集建立模型后，输入$x_{test}$，通过概率来判断它是否异常。</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EtQyRg.png" alt="EtQyRg.png"></p>
+ <a id="more"></a>
+<p>异常检测的运用：</p>
+<ul>
+<li>欺诈检测</li>
+<li>工业生产领域</li>
+<li>检测数据中心的计算机</li>
+</ul>
+<h3 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h3><p>就是正态分布，因为其性质和异常检测的性质差不多，由下图可以很明显看出，样本集中的位置同样也是高斯分布中概率（面积）较大的位置。</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EtlNfU.png" alt="EtlNfU.png"></p>
+<p>参数估计要做的则是确定高斯分布的参数，具体而言就是确定$\mu$和$\sigma^{2}$</p>
+<ul>
+<li>均值：$\mu=\frac{1}{m} \sum_{i=1}^{m} x^{(i)}$</li>
+<li>方差：$\sigma^{2}=\frac{1}{m} \sum_{i=1}^{m}\left(x^{(i)}-\mu\right)^{2}$</li>
+</ul>
+<h3 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h3><ul>
+<li><p>第一步：选取你认为能够指示出异常例子的特征$x_{i}$</p>
+</li>
+<li><p>第二步：拟合参数 $\mu_{1}, \dots, \mu_{n}, \sigma_{1}^{2}, \dots, \sigma_{n}^{2}$</p>
+</li>
+<li><p>第三步：给定一个新的输入，计算$p(x)=\prod_{j=1}^{n} p\left(x_{j} ; \mu_{j}, \sigma_{j}^{2}\right)=\prod_{j=1}^{n} \frac{1}{\sqrt{2 \pi} \sigma_{j}} \exp \left(-\frac{\left(x_{j}-\mu_{j}\right)^{2}}{2 \sigma_{j}^{2}}\right)$</p>
+<p>也就是根据不同的特征，计算出<strong>每个特征的概率</strong>，再将所有概率累乘起来。最后如果$p(x)&lt;\varepsilon$，则标注为异常。</p>
+</li>
+</ul>
+<p>以二维特征为例：</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EtJiZ9.png" alt="EtJiZ9.png"></p>
+<h3 id="开发和评估异常检测系统"><a href="#开发和评估异常检测系统" class="headerlink" title="开发和评估异常检测系统"></a>开发和评估异常检测系统</h3><p>前面所提到的内容都是在只有正常样本（y=0，normal）的情况下训练的吗，也就是无监督学习。但如果你还有异常样本（y=1，anomalous），则可以用于评估算法的准确性。而且，当为样本选择特征时，如果不确定是否该纳入某一个特征，可以分别在两种情况下进行训练，在验证集上分别评估效果，从而决定是否纳入该特征(模型选择问题)。</p>
+<p>假设现在你有一些带标签数据，即含有正常样本和异常样本。可以把数据集划分为训练集、交叉验证集和测试集。</p>
+<ul>
+<li>数据集尽量都为正常样本</li>
+<li>异常样本放入交叉验证集和测试集中。</li>
+</ul>
+<p>举个例子：飞机引擎，10000个正常引擎，20个有瑕疵的引擎。把正常引擎按60%、20%、20%的比例划分为训练集、CV和测试集。同时把瑕疵引擎平均分配到CV和测试集中。</p>
+<p>用6000个正常引擎数据拟合出概率分布$p(x)$。</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/EtTFi9.png" alt="EtTFi9.png"></p>
+<p>推广到一般情况下</p>
+<p><img src="https://s2.ax1x.com/2019/05/02/Et7u60.png" alt="Et7u60.png"></p>
+<ul>
+<li>利用训练集来拟合出概率分布p(x)</li>
+<li>将CV中的x输入p(x)，设置好阈值$\varepsilon$，从而预测出结果y</li>
+<li>根据y，计算TP、FP、FN、TN。准确率和找回率，计算F1分数</li>
+<li>调整$\varepsilon$直到找到最高F1的函数作为最优拟合模型</li>
+<li>把测试集代入最优拟合模型。</li>
+</ul>
+<h3 id="异常检测-vs-监督学习"><a href="#异常检测-vs-监督学习" class="headerlink" title="异常检测 vs 监督学习"></a>异常检测 vs 监督学习</h3><p>在有标签的情况下，异常检测和监督学习具有相似之处，但仍然有许多明显的差别。从图中可以看出，如果样本中含有大量的负样本（y=0，正常样本），少量正样本（y=1，非正常样本）。那么常使用异常检测；而当正样本数量和负样本数量都很多时，采用监督学习。</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/ENccxe.png" alt="ENccxe.png"></p>
+<p>在用途上也略有不同：</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/ENcvaq.png" alt="ENcvaq.png"></p>
+<h3 id="选择要使用的功能"><a href="#选择要使用的功能" class="headerlink" title="选择要使用的功能"></a>选择要使用的功能</h3><p>在应用异常检测之前，有一个很重要的是就是选择合适的特征。下面介绍几个常用的方法：</p>
+<ul>
+<li>特征不服从高斯分布</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/05/03/EN2PtP.png" alt="EN2PtP.png"></p>
+<p>如果特征不服从高斯分布，那就需要通过一些转换方法（比如取对数或是开根号）来构造出符合高斯分布的样子。</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/EN2B9K.png" alt="EN2B9K.png"></p>
+<ul>
+<li>异常检测误差分析</li>
+</ul>
+<p>也可以尝试用有标签的样本，先选择一个比较原始的特征，计算出$p(x)$，在验证集上验证，找到不符合验证结果的样本，观察它的特征，看看能否构建出新的特征，从而能够达到区分的目的。</p>
+<p>例如下图中在只有特征$x_{1}$的情况下，很难看出绿色样本是异常样本。</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/EN2x3T.png" alt="EN2x3T.png"></p>
+<p>此时对可以对这个绿色样本进行分析，看能不能构建出一个特征$x_{2}$，把这个异常样本给检测出来：</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/ENRdbj.png" alt="ENRdbj.png"></p>
+<p>以数据中心的计算机为例：</p>
+<p>通常不会选取值特别大或者特别小的特征。</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/ENWiQS.png" alt="ENWiQS.png"></p>
+<p>如果突然我怀疑一台计算机陷入了死循环，那么$x_{3}$的数值会变得很大而$x_{4}$的数值则基本不变。那么我可以通过设置其它特征$x_{5}$和$x_{6}$来判断是哪台计算机出现了该问题。</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/ENWfl8.png" alt="ENWfl8.png"></p>
+<h3 id="多变量高斯分布"><a href="#多变量高斯分布" class="headerlink" title="多变量高斯分布"></a>多变量高斯分布</h3><p>对比单元高斯分布，多元高斯分布在处理某些问题上具有优势。</p>
+<p>以数据中心的计算机为例：</p>
+<p><img src="https://s2.ax1x.com/2019/05/03/EN5X59.png" alt="EN5X59.png"></p>
+<p>我们用到CPU负载和内存使用两个特征，如果使用单元高斯分布，则分别对这两个特征训练出p(x)，再相乘得到最终结果。反映在左图中，其概率的范围应该是粉红色圈。</p>
+<p>但事实上，我们知道CPU负载和内存的使用之间的关系应该呈现出左图蓝色线圈那样的正线性关系。具体来说，如果此时有一个异常样本点——小绿叉，根据单元高斯分布计算出的结果，小绿叉落在的粉红色线圈范围是概率较高的范围，也就是会被判定为正常样本（从右图也可以看出）。但这显然不符合真实情况。</p>
+<p>要解决这个问题，第一种方法是上一节说过的，可以通过构建新的特征，比如这里可以用x3=x1/x2。还有一种方法就是利用多元高斯分布。</p>
+<p>多元高斯分布考虑了每两个特征之间可能存在的关系。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaFTjP.png" alt="EaFTjP.png"></p>
+<p>而多元高斯分布公式：</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaFqHS.png" alt="EaFqHS.png"></p>
+<p>其中，粉色圈内的表示行列式。</p>
+<p>在多元高斯分布公式中，$\Sigma$表示的是协方差矩阵，衡量的是方差，也就是$x_{1}$和$x_{2}$之间的变化量。其中对角线上元素上表示维度之间的方差。</p>
+<p>从下面的图中可以看出，当对角线元素相等时，图像的投影为圆形。而当对角线元素不等时，投影为椭圆。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaFjhj.png" alt="EaFjhj.png"></p>
+<p>非对角的元素表示维度之间的协方差，以下是为正值的情况。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EakKu6.png" alt="EakKu6.png"></p>
+<p>如果非对角线的元素为负值：</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EakNvt.png" alt="EakNvt.png"></p>
+<p>我们还可以改变$\mu$值，即移动峰值所在位置：</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EakaKP.png" alt="EakaKP.png"></p>
+<h3 id="使用多变量高斯分布的异常检测"><a href="#使用多变量高斯分布的异常检测" class="headerlink" title="使用多变量高斯分布的异常检测"></a>使用多变量高斯分布的异常检测</h3><p>以下是多变量高斯模型的计算过程：</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaVmgs.png" alt="EaVmgs.png"></p>
+<p>可以看出计算过程和之前的原始模型（单元高斯分布模型）：</p>
+<p>$p(x)=p\left(x_{1} ; \mu_{1}, \sigma_{1}^{2}\right) \times p\left(x_{2} ; \mu_{2}, \sigma_{2}^{2}\right) \times \cdots \times p\left(x_{n} ; \mu_{n}, \sigma_{n}^{2}\right)$</p>
+<p>有相似的地方。其实只要把多元高斯分布中的$\Sigma$非对角线元素全部改为0，就消除了不同纬度的相关性，得到的就是原始模型了。</p>
+<ul>
+<li>原始模型和多变量高斯分布模型比较</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaV1ET.png" alt="EaV1ET.png"></p>
+<p>多元高斯分布模型的优点在于能够自动找到不同维度之间的关系；而原始模型的优点在于计算效率高，适用于维度小或是样本少的情况。值得注意的是多元高斯分布模型的$\Sigma$必须可逆，所以必须满足m&gt;n（NG建议m&gt;=10n），而且维度之间必须是线性无关的。</p>
+<h2 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h2><h3 id="问题规划"><a href="#问题规划" class="headerlink" title="问题规划"></a>问题规划</h3><p>后面几个小节都会通过这个预测电影评分的例子来讲解，目的是预测左下角表格中’?’的评分</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaVbxs.png" alt="EaVbxs.png"></p>
+<h3 id="基于内容的推荐算法"><a href="#基于内容的推荐算法" class="headerlink" title="基于内容的推荐算法"></a>基于内容的推荐算法</h3><p>假设我们已经知道了衡量电影类型的属性，$x_{1}$和$x_{2}$。再添加一个偏置，即可以用三个特征来表示一个样本，例如《Love at last》的特征就是[1 , 0.9 , 0]。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/Ean0QH.png" alt="Ean0QH.png"></p>
+<p>对于每个样本而言，接下来就需要求出参数$\theta^{(j)}$（单个用户j的参数向量），再通过$\left(\theta^{(j)}\right)^{T} x^{(i)}$即可求出结果。以第一个粉红色圈圈为例，假设我们已知它的参数$\theta^{(1)}$，那么就能预测出评分为4.95。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EauE1e.png" alt="EauE1e.png"></p>
+<p>那么如何求出参数$\theta^{(j)}$呢？</p>
+<p>这相当于一个线性回归问题：</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EauU7q.png" alt="EauU7q.png"></p>
+<p>得到优化目标之后，可以使用梯度下降法、BFGS等方法来进行优化。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaKt2D.png" alt="EaKt2D.png"></p>
+<p>使用基于内容的推荐算法的前提是，我们已经有了用于描述算法的不同特征，这个例子中，就是用了描述电影成分的$x_{1}$和$x_{2}$。但是大多数情况下，我们不具有这些特征时又应该怎么做呢？</p>
+<h3 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h3><p>特征学习：学习算法能自动习得所需要的所有特征。这个和上一节中学习参数$\theta$放在一起，有点类似于先有蛋还是先有鸡的问题。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaQQtx.png" alt="EaQQtx.png"></p>
+<p>从图中可以得出，需要知道每个用户对于不同类型电影的喜爱程度，从而计算出电影含有爱情的成分$x_{1}$和含有动作$x_{2}$的成分。</p>
+<p>对比之前求$\theta$的步骤如下：</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaQGcD.png" alt="EaQGcD.png"></p>
+<p>那么到底是先计算$\theta$还是先计算$x_{j}$呢？</p>
+<p>简单来说，就是先猜测一个$\theta$值，然后不断迭代，从而使得参数和特征都收敛于某个最终值。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaQwNt.png" alt="EaQwNt.png"></p>
+<h3 id="协同过滤算法"><a href="#协同过滤算法" class="headerlink" title="协同过滤算法"></a>协同过滤算法</h3><p>除了上个例子中的反复计算特征和参数的方法，我们还可以把特征和参数放在同一个优化目标中计算。实际操作就是把前面提到的两个优化目标放在一起，因为他们本质上也是针对那些被用户评分了的电影（即r(i,j)=1）。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EaYtR1.png" alt="EaYtR1.png"></p>
+<p>值得注意的是，因为协同过滤算法是自动学习参数和特征，所以不需要像以前一样手动去添加偏置项。可以理解为如果算法需要，他会自己去计算出这一项。</p>
+<h3 id="矢量化：低秩矩阵分解"><a href="#矢量化：低秩矩阵分解" class="headerlink" title="矢量化：低秩矩阵分解"></a>矢量化：低秩矩阵分解</h3><p>我们可以把用户对电影的评分的表格记录成矩阵的形式。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EagnzT.png" alt="EagnzT.png"></p>
+<p>而我们的预测矩阵应该和矩阵Y中的值差不多</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/Ea25jO.png" alt="Ea25jO.png"></p>
+<p>具体而言，可以把预测矩阵看成是由对每个特征向量转秩后放入矩阵x中，每位用户对某一电影类型的喜好放在矩阵$\Theta$中：</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EdSRIA.md.png" alt="EdSRIA.md.png"></p>
+<h3 id="实施细节：均值规范化"><a href="#实施细节：均值规范化" class="headerlink" title="实施细节：均值规范化"></a>实施细节：均值规范化</h3><p>如果多了一位用户Eve，她还没对任何电影做出过评分。那么应该如何预测她的评分呢？</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EdPHlq.png" alt="EdPHlq.png"></p>
+<p>如果我们仍然使用之前说过的方法来计算$\theta$和$x$，那么显然式子中的前两项为0，而只需要最后的正则项，又由于正则化项的性质可知（使得参数接近0），在没有数据时，根本不存在过拟合情况。最后一项中$\theta^{(5)}=0$。再根据$\left(\theta^{(5)}\right)^{T} x^{(i)}=0$可以得到上图中我们对Eve评分的预测值全为0，这显然没有意义。</p>
+<p>为了解决这个问题，我们引入均值化。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EdiJAg.png" alt="EdiJAg.png"></p>
+<p>上图中$\mu$为每一行的平均值，再用$Y-\mu$得到右边的矩阵。</p>
+<p>这样在预测评分时，只需要把$\mu$加回去即可，既不会影响已经评分过了的用户，也使得还会评分的用户的预测值不会为0。</p>
+<p><img src="https://s2.ax1x.com/2019/05/04/EdFaIe.png" alt="EdFaIe.png"></p>
+
+      
+    </div>
+    
+    
+    
+	
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------End-------------</div>
+    
+</div>
+
+  
+	</div>
+    
+	
+	
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>梦想总是要有的，万一有人有钱呢？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>包养</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="JQK/许阳航 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="JQK/许阳航 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/机器学习-吴恩达机器学习之PCA/" rel="next" title="机器学习|吴恩达机器学习之PCA">
+                <i class="fa fa-chevron-left"></i> 机器学习|吴恩达机器学习之PCA
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	  
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JQK/许阳航">
+            
+              <p class="site-author-name" itemprop="name">JQK/许阳航</p>
+              <p class="site-description motion-element" itemprop="description">The early worm is catched by birds</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cesarexyh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2442021982/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/qing-lou-man-zuo/activities" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-custom zhihu"></i>Zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/123226876/" target="_blank" title="Douban">
+                      
+                        <i class="fa fa-fw fa-custom douban"></i>Douban</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常检测"><span class="nav-number">1.</span> <span class="nav-text">异常检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题动机"><span class="nav-number">1.1.</span> <span class="nav-text">问题动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">高斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法："><span class="nav-number">1.3.</span> <span class="nav-text">算法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发和评估异常检测系统"><span class="nav-number">1.4.</span> <span class="nav-text">开发和评估异常检测系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常检测-vs-监督学习"><span class="nav-number">1.5.</span> <span class="nav-text">异常检测 vs 监督学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择要使用的功能"><span class="nav-number">1.6.</span> <span class="nav-text">选择要使用的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多变量高斯分布"><span class="nav-number">1.7.</span> <span class="nav-text">多变量高斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用多变量高斯分布的异常检测"><span class="nav-number">1.8.</span> <span class="nav-text">使用多变量高斯分布的异常检测</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐系统"><span class="nav-number">2.</span> <span class="nav-text">推荐系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题规划"><span class="nav-number">2.1.</span> <span class="nav-text">问题规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于内容的推荐算法"><span class="nav-number">2.2.</span> <span class="nav-text">基于内容的推荐算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协同过滤"><span class="nav-number">2.3.</span> <span class="nav-text">协同过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协同过滤算法"><span class="nav-number">2.4.</span> <span class="nav-text">协同过滤算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矢量化：低秩矩阵分解"><span class="nav-number">2.5.</span> <span class="nav-text">矢量化：低秩矩阵分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实施细节：均值规范化"><span class="nav-number">2.6.</span> <span class="nav-text">实施细节：均值规范化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JQK/许阳航</span>
+
+  
+</div>
+
+
+	<div class="powered-by">
+	<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+		本站访客数:<span id="busuanzi_value_site_uv"></span>
+	</span>
+	</div>
+<!--
+  <div class="powered-by">个人专属</div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">博客-nullblog </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+        <script type="text/javascript">
+            const gitalk = new Gitalk({
+            clientID: '6724e07f1e7ddc3c67ae',
+            clientSecret: 'ed0bb21b8d06979b07b9453d473167f1024efc97',
+            repo: 'scp-1024.github.io',
+            owner: 'scp-1024',
+            admin: 'scp-1024'.split(','),
+            pagerDirection: 'first',
+            id: md5(window.location.pathname),
+            distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+        
+    
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

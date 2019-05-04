@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-02T06:44:46.165Z</updated>
+  <updated>2019-05-04T08:50:04.973Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习笔记|第九周</title>
+    <link href="http://yoursite.com/2019/05/04/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B9%9D%E5%91%A8/"/>
+    <id>http://yoursite.com/2019/05/04/机器学习笔记-第九周/</id>
+    <published>2019-05-04T08:50:04.000Z</published>
+    <updated>2019-05-04T08:50:04.973Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="异常检测"><a href="#异常检测" class="headerlink" title="异常检测"></a>异常检测</h2><p>异常检测(<strong>Anomaly detection</strong>)是一种特殊的无监督学习，但其和监督问题有些类似之处。</p><h3 id="问题动机"><a href="#问题动机" class="headerlink" title="问题动机"></a>问题动机</h3><p>从下图可以看出，对训练集建立模型后，输入$x_{test}$，通过概率来判断它是否异常。</p><p><img src="https://s2.ax1x.com/2019/05/02/EtQyRg.png" alt="EtQyRg.png"></p> <a id="more"></a><p>异常检测的运用：</p><ul><li>欺诈检测</li><li>工业生产领域</li><li>检测数据中心的计算机</li></ul><h3 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h3><p>就是正态分布，因为其性质和异常检测的性质差不多，由下图可以很明显看出，样本集中的位置同样也是高斯分布中概率（面积）较大的位置。</p><p><img src="https://s2.ax1x.com/2019/05/02/EtlNfU.png" alt="EtlNfU.png"></p><p>参数估计要做的则是确定高斯分布的参数，具体而言就是确定$\mu$和$\sigma^{2}$</p><ul><li>均值：$\mu=\frac{1}{m} \sum_{i=1}^{m} x^{(i)}$</li><li>方差：$\sigma^{2}=\frac{1}{m} \sum_{i=1}^{m}\left(x^{(i)}-\mu\right)^{2}$</li></ul><h3 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h3><ul><li><p>第一步：选取你认为能够指示出异常例子的特征$x_{i}$</p></li><li><p>第二步：拟合参数 $\mu_{1}, \dots, \mu_{n}, \sigma_{1}^{2}, \dots, \sigma_{n}^{2}$</p></li><li><p>第三步：给定一个新的输入，计算$p(x)=\prod_{j=1}^{n} p\left(x_{j} ; \mu_{j}, \sigma_{j}^{2}\right)=\prod_{j=1}^{n} \frac{1}{\sqrt{2 \pi} \sigma_{j}} \exp \left(-\frac{\left(x_{j}-\mu_{j}\right)^{2}}{2 \sigma_{j}^{2}}\right)$</p><p>也就是根据不同的特征，计算出<strong>每个特征的概率</strong>，再将所有概率累乘起来。最后如果$p(x)&lt;\varepsilon$，则标注为异常。</p></li></ul><p>以二维特征为例：</p><p><img src="https://s2.ax1x.com/2019/05/02/EtJiZ9.png" alt="EtJiZ9.png"></p><h3 id="开发和评估异常检测系统"><a href="#开发和评估异常检测系统" class="headerlink" title="开发和评估异常检测系统"></a>开发和评估异常检测系统</h3><p>前面所提到的内容都是在只有正常样本（y=0，normal）的情况下训练的吗，也就是无监督学习。但如果你还有异常样本（y=1，anomalous），则可以用于评估算法的准确性。而且，当为样本选择特征时，如果不确定是否该纳入某一个特征，可以分别在两种情况下进行训练，在验证集上分别评估效果，从而决定是否纳入该特征(模型选择问题)。</p><p>假设现在你有一些带标签数据，即含有正常样本和异常样本。可以把数据集划分为训练集、交叉验证集和测试集。</p><ul><li>数据集尽量都为正常样本</li><li>异常样本放入交叉验证集和测试集中。</li></ul><p>举个例子：飞机引擎，10000个正常引擎，20个有瑕疵的引擎。把正常引擎按60%、20%、20%的比例划分为训练集、CV和测试集。同时把瑕疵引擎平均分配到CV和测试集中。</p><p>用6000个正常引擎数据拟合出概率分布$p(x)$。</p><p><img src="https://s2.ax1x.com/2019/05/02/EtTFi9.png" alt="EtTFi9.png"></p><p>推广到一般情况下</p><p><img src="https://s2.ax1x.com/2019/05/02/Et7u60.png" alt="Et7u60.png"></p><ul><li>利用训练集来拟合出概率分布p(x)</li><li>将CV中的x输入p(x)，设置好阈值$\varepsilon$，从而预测出结果y</li><li>根据y，计算TP、FP、FN、TN。准确率和找回率，计算F1分数</li><li>调整$\varepsilon$直到找到最高F1的函数作为最优拟合模型</li><li>把测试集代入最优拟合模型。</li></ul><h3 id="异常检测-vs-监督学习"><a href="#异常检测-vs-监督学习" class="headerlink" title="异常检测 vs 监督学习"></a>异常检测 vs 监督学习</h3><p>在有标签的情况下，异常检测和监督学习具有相似之处，但仍然有许多明显的差别。从图中可以看出，如果样本中含有大量的负样本（y=0，正常样本），少量正样本（y=1，非正常样本）。那么常使用异常检测；而当正样本数量和负样本数量都很多时，采用监督学习。</p><p><img src="https://s2.ax1x.com/2019/05/03/ENccxe.png" alt="ENccxe.png"></p><p>在用途上也略有不同：</p><p><img src="https://s2.ax1x.com/2019/05/03/ENcvaq.png" alt="ENcvaq.png"></p><h3 id="选择要使用的功能"><a href="#选择要使用的功能" class="headerlink" title="选择要使用的功能"></a>选择要使用的功能</h3><p>在应用异常检测之前，有一个很重要的是就是选择合适的特征。下面介绍几个常用的方法：</p><ul><li>特征不服从高斯分布</li></ul><p><img src="https://s2.ax1x.com/2019/05/03/EN2PtP.png" alt="EN2PtP.png"></p><p>如果特征不服从高斯分布，那就需要通过一些转换方法（比如取对数或是开根号）来构造出符合高斯分布的样子。</p><p><img src="https://s2.ax1x.com/2019/05/03/EN2B9K.png" alt="EN2B9K.png"></p><ul><li>异常检测误差分析</li></ul><p>也可以尝试用有标签的样本，先选择一个比较原始的特征，计算出$p(x)$，在验证集上验证，找到不符合验证结果的样本，观察它的特征，看看能否构建出新的特征，从而能够达到区分的目的。</p><p>例如下图中在只有特征$x_{1}$的情况下，很难看出绿色样本是异常样本。</p><p><img src="https://s2.ax1x.com/2019/05/03/EN2x3T.png" alt="EN2x3T.png"></p><p>此时对可以对这个绿色样本进行分析，看能不能构建出一个特征$x_{2}$，把这个异常样本给检测出来：</p><p><img src="https://s2.ax1x.com/2019/05/03/ENRdbj.png" alt="ENRdbj.png"></p><p>以数据中心的计算机为例：</p><p>通常不会选取值特别大或者特别小的特征。</p><p><img src="https://s2.ax1x.com/2019/05/03/ENWiQS.png" alt="ENWiQS.png"></p><p>如果突然我怀疑一台计算机陷入了死循环，那么$x_{3}$的数值会变得很大而$x_{4}$的数值则基本不变。那么我可以通过设置其它特征$x_{5}$和$x_{6}$来判断是哪台计算机出现了该问题。</p><p><img src="https://s2.ax1x.com/2019/05/03/ENWfl8.png" alt="ENWfl8.png"></p><h3 id="多变量高斯分布"><a href="#多变量高斯分布" class="headerlink" title="多变量高斯分布"></a>多变量高斯分布</h3><p>对比单元高斯分布，多元高斯分布在处理某些问题上具有优势。</p><p>以数据中心的计算机为例：</p><p><img src="https://s2.ax1x.com/2019/05/03/EN5X59.png" alt="EN5X59.png"></p><p>我们用到CPU负载和内存使用两个特征，如果使用单元高斯分布，则分别对这两个特征训练出p(x)，再相乘得到最终结果。反映在左图中，其概率的范围应该是粉红色圈。</p><p>但事实上，我们知道CPU负载和内存的使用之间的关系应该呈现出左图蓝色线圈那样的正线性关系。具体来说，如果此时有一个异常样本点——小绿叉，根据单元高斯分布计算出的结果，小绿叉落在的粉红色线圈范围是概率较高的范围，也就是会被判定为正常样本（从右图也可以看出）。但这显然不符合真实情况。</p><p>要解决这个问题，第一种方法是上一节说过的，可以通过构建新的特征，比如这里可以用x3=x1/x2。还有一种方法就是利用多元高斯分布。</p><p>多元高斯分布考虑了每两个特征之间可能存在的关系。</p><p><img src="https://s2.ax1x.com/2019/05/04/EaFTjP.png" alt="EaFTjP.png"></p><p>而多元高斯分布公式：</p><p><img src="https://s2.ax1x.com/2019/05/04/EaFqHS.png" alt="EaFqHS.png"></p><p>其中，粉色圈内的表示行列式。</p><p>在多元高斯分布公式中，$\Sigma$表示的是协方差矩阵，衡量的是方差，也就是$x_{1}$和$x_{2}$之间的变化量。其中对角线上元素上表示维度之间的方差。</p><p>从下面的图中可以看出，当对角线元素相等时，图像的投影为圆形。而当对角线元素不等时，投影为椭圆。</p><p><img src="https://s2.ax1x.com/2019/05/04/EaFjhj.png" alt="EaFjhj.png"></p><p>非对角的元素表示维度之间的协方差，以下是为正值的情况。</p><p><img src="https://s2.ax1x.com/2019/05/04/EakKu6.png" alt="EakKu6.png"></p><p>如果非对角线的元素为负值：</p><p><img src="https://s2.ax1x.com/2019/05/04/EakNvt.png" alt="EakNvt.png"></p><p>我们还可以改变$\mu$值，即移动峰值所在位置：</p><p><img src="https://s2.ax1x.com/2019/05/04/EakaKP.png" alt="EakaKP.png"></p><h3 id="使用多变量高斯分布的异常检测"><a href="#使用多变量高斯分布的异常检测" class="headerlink" title="使用多变量高斯分布的异常检测"></a>使用多变量高斯分布的异常检测</h3><p>以下是多变量高斯模型的计算过程：</p><p><img src="https://s2.ax1x.com/2019/05/04/EaVmgs.png" alt="EaVmgs.png"></p><p>可以看出计算过程和之前的原始模型（单元高斯分布模型）：</p><p>$p(x)=p\left(x_{1} ; \mu_{1}, \sigma_{1}^{2}\right) \times p\left(x_{2} ; \mu_{2}, \sigma_{2}^{2}\right) \times \cdots \times p\left(x_{n} ; \mu_{n}, \sigma_{n}^{2}\right)$</p><p>有相似的地方。其实只要把多元高斯分布中的$\Sigma$非对角线元素全部改为0，就消除了不同纬度的相关性，得到的就是原始模型了。</p><ul><li>原始模型和多变量高斯分布模型比较</li></ul><p><img src="https://s2.ax1x.com/2019/05/04/EaV1ET.png" alt="EaV1ET.png"></p><p>多元高斯分布模型的优点在于能够自动找到不同维度之间的关系；而原始模型的优点在于计算效率高，适用于维度小或是样本少的情况。值得注意的是多元高斯分布模型的$\Sigma$必须可逆，所以必须满足m&gt;n（NG建议m&gt;=10n），而且维度之间必须是线性无关的。</p><h2 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h2><h3 id="问题规划"><a href="#问题规划" class="headerlink" title="问题规划"></a>问题规划</h3><p>后面几个小节都会通过这个预测电影评分的例子来讲解，目的是预测左下角表格中’?’的评分</p><p><img src="https://s2.ax1x.com/2019/05/04/EaVbxs.png" alt="EaVbxs.png"></p><h3 id="基于内容的推荐算法"><a href="#基于内容的推荐算法" class="headerlink" title="基于内容的推荐算法"></a>基于内容的推荐算法</h3><p>假设我们已经知道了衡量电影类型的属性，$x_{1}$和$x_{2}$。再添加一个偏置，即可以用三个特征来表示一个样本，例如《Love at last》的特征就是[1 , 0.9 , 0]。</p><p><img src="https://s2.ax1x.com/2019/05/04/Ean0QH.png" alt="Ean0QH.png"></p><p>对于每个样本而言，接下来就需要求出参数$\theta^{(j)}$（单个用户j的参数向量），再通过$\left(\theta^{(j)}\right)^{T} x^{(i)}$即可求出结果。以第一个粉红色圈圈为例，假设我们已知它的参数$\theta^{(1)}$，那么就能预测出评分为4.95。</p><p><img src="https://s2.ax1x.com/2019/05/04/EauE1e.png" alt="EauE1e.png"></p><p>那么如何求出参数$\theta^{(j)}$呢？</p><p>这相当于一个线性回归问题：</p><p><img src="https://s2.ax1x.com/2019/05/04/EauU7q.png" alt="EauU7q.png"></p><p>得到优化目标之后，可以使用梯度下降法、BFGS等方法来进行优化。</p><p><img src="https://s2.ax1x.com/2019/05/04/EaKt2D.png" alt="EaKt2D.png"></p><p>使用基于内容的推荐算法的前提是，我们已经有了用于描述算法的不同特征，这个例子中，就是用了描述电影成分的$x_{1}$和$x_{2}$。但是大多数情况下，我们不具有这些特征时又应该怎么做呢？</p><h3 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h3><p>特征学习：学习算法能自动习得所需要的所有特征。这个和上一节中学习参数$\theta$放在一起，有点类似于先有蛋还是先有鸡的问题。</p><p><img src="https://s2.ax1x.com/2019/05/04/EaQQtx.png" alt="EaQQtx.png"></p><p>从图中可以得出，需要知道每个用户对于不同类型电影的喜爱程度，从而计算出电影含有爱情的成分$x_{1}$和含有动作$x_{2}$的成分。</p><p>对比之前求$\theta$的步骤如下：</p><p><img src="https://s2.ax1x.com/2019/05/04/EaQGcD.png" alt="EaQGcD.png"></p><p>那么到底是先计算$\theta$还是先计算$x_{j}$呢？</p><p>简单来说，就是先猜测一个$\theta$值，然后不断迭代，从而使得参数和特征都收敛于某个最终值。</p><p><img src="https://s2.ax1x.com/2019/05/04/EaQwNt.png" alt="EaQwNt.png"></p><h3 id="协同过滤算法"><a href="#协同过滤算法" class="headerlink" title="协同过滤算法"></a>协同过滤算法</h3><p>除了上个例子中的反复计算特征和参数的方法，我们还可以把特征和参数放在同一个优化目标中计算。实际操作就是把前面提到的两个优化目标放在一起，因为他们本质上也是针对那些被用户评分了的电影（即r(i,j)=1）。</p><p><img src="https://s2.ax1x.com/2019/05/04/EaYtR1.png" alt="EaYtR1.png"></p><p>值得注意的是，因为协同过滤算法是自动学习参数和特征，所以不需要像以前一样手动去添加偏置项。可以理解为如果算法需要，他会自己去计算出这一项。</p><h3 id="矢量化：低秩矩阵分解"><a href="#矢量化：低秩矩阵分解" class="headerlink" title="矢量化：低秩矩阵分解"></a>矢量化：低秩矩阵分解</h3><p>我们可以把用户对电影的评分的表格记录成矩阵的形式。</p><p><img src="https://s2.ax1x.com/2019/05/04/EagnzT.png" alt="EagnzT.png"></p><p>而我们的预测矩阵应该和矩阵Y中的值差不多</p><p><img src="https://s2.ax1x.com/2019/05/04/Ea25jO.png" alt="Ea25jO.png"></p><p>具体而言，可以把预测矩阵看成是由对每个特征向量转秩后放入矩阵x中，每位用户对某一电影类型的喜好放在矩阵$\Theta$中：</p><p><img src="https://s2.ax1x.com/2019/05/04/EdSRIA.md.png" alt="EdSRIA.md.png"></p><h3 id="实施细节：均值规范化"><a href="#实施细节：均值规范化" class="headerlink" title="实施细节：均值规范化"></a>实施细节：均值规范化</h3><p>如果多了一位用户Eve，她还没对任何电影做出过评分。那么应该如何预测她的评分呢？</p><p><img src="https://s2.ax1x.com/2019/05/04/EdPHlq.png" alt="EdPHlq.png"></p><p>如果我们仍然使用之前说过的方法来计算$\theta$和$x$，那么显然式子中的前两项为0，而只需要最后的正则项，又由于正则化项的性质可知（使得参数接近0），在没有数据时，根本不存在过拟合情况。最后一项中$\theta^{(5)}=0$。再根据$\left(\theta^{(5)}\right)^{T} x^{(i)}=0$可以得到上图中我们对Eve评分的预测值全为0，这显然没有意义。</p><p>为了解决这个问题，我们引入均值化。</p><p><img src="https://s2.ax1x.com/2019/05/04/EdiJAg.png" alt="EdiJAg.png"></p><p>上图中$\mu$为每一行的平均值，再用$Y-\mu$得到右边的矩阵。</p><p>这样在预测评分时，只需要把$\mu$加回去即可，既不会影响已经评分过了的用户，也使得还会评分的用户的预测值不会为0。</p><p><img src="https://s2.ax1x.com/2019/05/04/EdFaIe.png" alt="EdFaIe.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;异常检测&quot;&gt;&lt;a href=&quot;#异常检测&quot; class=&quot;headerlink&quot; title=&quot;异常检测&quot;&gt;&lt;/a&gt;异常检测&lt;/h2&gt;&lt;p&gt;异常检测(&lt;strong&gt;Anomaly detection&lt;/strong&gt;)是一种特殊的无监督学习，但其和监督问题有些类似之处。&lt;/p&gt;
+&lt;h3 id=&quot;问题动机&quot;&gt;&lt;a href=&quot;#问题动机&quot; class=&quot;headerlink&quot; title=&quot;问题动机&quot;&gt;&lt;/a&gt;问题动机&lt;/h3&gt;&lt;p&gt;从下图可以看出，对训练集建立模型后，输入$x_{test}$，通过概率来判断它是否异常。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/05/02/EtQyRg.png&quot; alt=&quot;EtQyRg.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习|吴恩达机器学习之PCA</title>
@@ -462,32 +484,6 @@
       <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
     
       <category term="Numpy" scheme="http://yoursite.com/tags/Numpy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Numpy中的Meshgrid</title>
-    <link href="http://yoursite.com/2019/03/16/Numpy%E4%B8%AD%E7%9A%84Meshgrid/"/>
-    <id>http://yoursite.com/2019/03/16/Numpy中的Meshgrid/</id>
-    <published>2019-03-16T07:42:50.000Z</published>
-    <updated>2019-04-26T08:06:55.959Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Numpy是在利用Python进行科学计算和数据处理时肯定会使用到的模块(moudle)。</p><p>本文用比较通俗的语言讲解一下其中的Meshgrid函数</p></blockquote><h4 id="1-Meshgrid前言"><a href="#1-Meshgrid前言" class="headerlink" title="1.Meshgrid前言"></a>1.Meshgrid前言</h4><p>简单来说，<code>Meshgrid</code>就是在用两个坐标轴上的点在平面上画网格，当然也可以用三个坐标，但是为了方便理解，下面都用两个坐标轴举例。</p><a id="more"></a><h4 id="2-Meshgrid参数"><a href="#2-Meshgrid参数" class="headerlink" title="2.Meshgrid参数"></a>2.Meshgrid参数</h4><p>详情咨询<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.meshgrid.html" target="_blank" rel="noopener">官方文档</a>，最常用的就是传入两个一维数组</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">y = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">xv,yv = meshgrid(x,y)</span><br></pre></td></tr></table></figure><h4 id="3-Meshgrid返回值"><a href="#3-Meshgrid返回值" class="headerlink" title="3.Meshgrid返回值"></a>3.Meshgrid返回值</h4><p>xv的返回值，列相等：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[-10,10],</span><br><span class="line"> [-10,10]]</span><br></pre></td></tr></table></figure><p>yv的返回值，行相等：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[-10,-10],</span><br><span class="line"> [10,10]]</span><br></pre></td></tr></table></figure><p>从上面很容易看出，Meshgrid实际上是返回两个<strong>矩阵</strong>，两个矩阵不同之处，下面用一张图来表示一目了然。</p><p><img src="https://s2.ax1x.com/2019/03/15/AEfxHJ.jpg" alt=""></p><p>可以看出就是通过两个矩阵的方式完成了网格的绘制。</p><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p>[1] <a href="https://zhuanlan.zhihu.com/p/33579211" target="_blank" rel="noopener">Python-Numpy模块Meshgrid函数</a></p><p>[2] <a href="https://zhuanlan.zhihu.com/p/33579211" target="_blank" rel="noopener">Numpy中Meshgrid函数介绍及2种应用场景</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Numpy是在利用Python进行科学计算和数据处理时肯定会使用到的模块(moudle)。&lt;/p&gt;
-&lt;p&gt;本文用比较通俗的语言讲解一下其中的Meshgrid函数&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;1-Meshgrid前言&quot;&gt;&lt;a href=&quot;#1-Meshgrid前言&quot; class=&quot;headerlink&quot; title=&quot;1.Meshgrid前言&quot;&gt;&lt;/a&gt;1.Meshgrid前言&lt;/h4&gt;&lt;p&gt;简单来说，&lt;code&gt;Meshgrid&lt;/code&gt;就是在用两个坐标轴上的点在平面上画网格，当然也可以用三个坐标，但是为了方便理解，下面都用两个坐标轴举例。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
     
   </entry>
   

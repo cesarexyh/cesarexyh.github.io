@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器学习笔记|第一周]]></title>
+    <url>%2F2019%2F05%2F08%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%91%A8%2F</url>
+    <content type="text"><![CDATA[绪论和单变量线性回归]]></content>
+      <tags>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[100天机器学习-1]]></title>
     <url>%2F2019%2F05%2F08%2F100%E5%A4%A9%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-1%2F</url>
     <content type="text"><![CDATA[Day-1pd.iloc()用于切分pandas的数据，基于整数位置索引。再通过.values即可返回numpy表示。 12x=data.iloc[:,:-1].valuesy=data.iloc[:,3].values 处理缺失值（missing value）数据集中有些数据的值为NaN。值得一提的是，在numpy中，NaN(Not a Number)属于float类型的。可以使用sklearn.preprocessing中的类Imputer来处理这些缺失值。具体步骤如下： 12345678from sklearn.preprocessing import Imputer# 创立一个imputer对象，参数是对缺失值的处理方式imputer=Imputer(missing_values='NaN',strategy='mean',axis=0)# fit()方法是用数组x去"训练"imputer对象imputer=imputer.fit(x[:,1:3])# transform()是用训练好的对象再对x进行处理x[:,1:3]=imputer.transform(x[:,1:3]) 关于缺失值（missing value）的处理 解析分类数据（encoding categorical data）分类数据是指不用数字而用标签的变量，比如本例中的“Yes”和“No”。为了方便处理，可以用sklearn.preprocessing模块中的LabelEncoder类把他们转换成数字。 12345from sklearn.preprocessing import LabelEncoder,OneHotEncoderlabelencoder_X=LabelEncoder()# fit()给标签编码，并且返回编码后的值x[:,0]=labelencoder_X.fit_transform(x[:,0])]]></content>

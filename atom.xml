@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-08T01:56:38.272Z</updated>
+  <updated>2019-05-08T03:25:01.521Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习笔记|第一周</title>
+    <link href="http://yoursite.com/2019/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%91%A8/"/>
+    <id>http://yoursite.com/2019/05/08/机器学习笔记-第一周/</id>
+    <published>2019-05-08T02:35:39.000Z</published>
+    <updated>2019-05-08T03:25:01.521Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="绪论和单变量线性回归"><a href="#绪论和单变量线性回归" class="headerlink" title="绪论和单变量线性回归"></a>绪论和单变量线性回归</h2><p><img src="https://s2.ax1x.com/2019/05/08/EyjKAO.md.jpg" alt="EyjKAO.md.jpg"></p><a id="more"></a><p><img src="https://s2.ax1x.com/2019/05/08/Eyjbb6.md.jpg" alt="Eyjbb6.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/Eyv6RH.md.jpg" alt="Eyv6RH.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/EyvqQs.md.jpg" alt="EyvqQs.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/EyvvwV.md.jpg" alt="EyvvwV.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/EyxPSJ.md.jpg" alt="EyxPSJ.md.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;绪论和单变量线性回归&quot;&gt;&lt;a href=&quot;#绪论和单变量线性回归&quot; class=&quot;headerlink&quot; title=&quot;绪论和单变量线性回归&quot;&gt;&lt;/a&gt;绪论和单变量线性回归&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/05/08/EyjKAO.md.jpg&quot; alt=&quot;EyjKAO.md.jpg&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>100天机器学习-1</title>
@@ -452,29 +472,6 @@
     
     
       <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>正向传播的向量化实现</title>
-    <link href="http://yoursite.com/2019/03/23/%E6%AD%A3%E5%90%91%E4%BC%A0%E6%92%AD%E7%9A%84%E5%90%91%E9%87%8F%E5%8C%96%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://yoursite.com/2019/03/23/正向传播的向量化实现/</id>
-    <published>2019-03-23T06:51:39.000Z</published>
-    <updated>2019-04-06T10:13:09.799Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)</p></blockquote><p><img src="https://s2.ax1x.com/2019/03/23/AGrwuR.png" alt=""></p><a id="more"></a><p>其实没什么难的，就是几个符号理解起来可能有点费劲，下面简单解释一下：</p><p>从这个式子入手：$z^{(2)}=\Theta^{(1)}*a^{(1)}$</p><p>$z^{(2)}$等于信号$a^{(1)}$在传输过程中乘上响应的权重$\Theta^{(1)}​$，展开来写的话就是左图中等号右边的灰色线框。</p><p>$a^{(1)}$（activation values of layer one）是指第一层中$x_{0}$~$x_{3}$构成的一维<strong>向量</strong>，上标1就是指第一层。</p><p>$\Theta^{(1)}$是指传递过程中不同信号所对应的权重，反应在公式上就是$\Theta^{(1)}_{10}$~$\Theta^{(1)}_{33}$所构成的<strong>矩阵</strong>。</p><p>$\Theta^{(1)}_{10}$下标的10是指，接收信号的神经元为下一层的第一个，发出信号的为这一层的第0个神经元。</p><p>这里额外说一下这个$\Theta^{(1)}​$的维度，如果在第$j​$层有$s_{j}​$个神经元(units)，在第$j+1​$层有$s_{j+1}​$个神经元，那么对应的权重的维度为$s_{j+1}*(s_{j}+1)​$。</p><p>其中$s_{j}+1$是因为上一层在传递时，默认会传递一个$s_{0}=1​$</p><p>以上是传递过程中的，$z^{(2)}$传递到神经元之后，就通过激励函数（图中是S函数）求出需要传递个下一层的信号$a^{(2)}$</p><p>即公式：$a^{(2)}=g(z^{(2)})$</p><p>依次类推，即可求出最终的假设函数$h_{\Theta}(x)$</p><blockquote><p>本文是从信号发出的角度去阐述，但似乎更多文章时站在信号接收的角度，但意思是一样的</p></blockquote><p>参考文章</p><p>[1]. <a href="https://zhuanlan.zhihu.com/p/28299430" target="_blank" rel="noopener">机器学习笔记（2）—— 神经网络</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;神经网络中正向传播(Forward propagation)的向量化(Vectorized implementation)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/03/23/AGrwuR.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
     
   </entry>
   

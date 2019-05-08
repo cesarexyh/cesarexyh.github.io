@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[100天机器学习-1]]></title>
+    <url>%2F2019%2F05%2F08%2F100%E5%A4%A9%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-1%2F</url>
+    <content type="text"><![CDATA[Day-1pd.iloc()用于切分pandas的数据，基于整数位置索引。再通过.values即可返回numpy表示。 12x=data.iloc[:,:-1].valuesy=data.iloc[:,3].values 处理缺失值（missing value）数据集中有些数据的值为NaN。值得一提的是，在numpy中，NaN(Not a Number)属于float类型的。可以使用sklearn.preprocessing中的类Imputer来处理这些缺失值。具体步骤如下： 12345678from sklearn.preprocessing import Imputer# 创立一个imputer对象，参数是对缺失值的处理方式imputer=Imputer(missing_values='NaN',strategy='mean',axis=0)# fit()方法是用数组x去"训练"imputer对象imputer=imputer.fit(x[:,1:3])# transform()是用训练好的对象再对x进行处理x[:,1:3]=imputer.transform(x[:,1:3]) 关于缺失值（missing value）的处理 解析分类数据（encoding categorical data）分类数据是指不用数字而用标签的变量，比如本例中的“Yes”和“No”。为了方便处理，可以用sklearn.preprocessing模块中的LabelEncoder类把他们转换成数字。 12345from sklearn.preprocessing import LabelEncoder,OneHotEncoderlabelencoder_X=LabelEncoder()# fit()给标签编码，并且返回编码后的值x[:,0]=labelencoder_X.fit_transform(x[:,0])]]></content>
+      <tags>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[机器学习笔记|第十周]]></title>
     <url>%2F2019%2F05%2F06%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E5%8D%81%E5%91%A8%2F</url>
     <content type="text"><![CDATA[大规模机器学习学习大数据假设我们有一个高偏差模型，那么大规模的数据的确能够帮助你拟合更好的模型。但是大规模的数据可能导致算法运行的效率低下。 所以在收集大量数据之前，应该考虑用小样本数据是否也能获得较好的拟合效果。 随机梯度下降法如果我们确定需要使用到大量数据，也可以使用随机梯度法(Stochastic gradient descent)来代替之前提到过的批量梯度下降法(batch gradient descent)。 由图中可知，随机梯度法的代价函数为一个单一训练实例的代价，注意这里取的是一个样本，计算代价： ​ $cost\left( \theta, \left( {x}^{(i)} , {y}^{(i)} \right) \right) = \frac{1}{2}\left( {h}_{\theta}\left({x}^{(i)}\right)-{y}^{ {(i)} } \right)^{2}$ 随机梯度下降的具体步骤： 第一步：随机打乱数据 第二步：Repeat (usually anywhere between1-10){ for $i = 1:m${ ​ $\theta:={\theta}_{j}-\alpha\left( {h}_{\theta}\left({x}^{(i)}\right)-{y}^{(i)} \right){ {x}_{j} }^{(i)}$ ​ (for $j=0:n$) ​ } } 注意这一步中，对比批量梯度下降法的每次迭代都需要计算所有样本，随机梯度下降法不需要每次迭代（求$\theta$）时都对所有数据累加求平方和，这大大地减少了计算量。 在大样本情况下，随机梯度下降法加大了迭代过程的效率，但同样，它的下降过程不再沿着“正确的方向”，如下图。最终可能无法得到精确的最小值点，而是在最小值值点附近，但对于模型的预测准确度不会有太大的影响。 小批量梯度下降 在每次迭代时，使用b个样本累加求和，具体来说： Repeat { for $i = 1:m${ ​ $\theta:={\theta}_{j}-\alpha\frac{1}{b}\sum_\limits{k=i}^{i+b-1}\left( {h}_{\theta}\left({x}^{(k)}\right)-{y}^{(k)} \right){ {x}_{j} }^{(k)}$ ​ (for $j=0:n$) ​ $ i +=10 $ ​ } } 通常b的取值在2-100之间。 随机梯度下降收敛随机梯度下降法还有一个好处就是方便观察优化过程中的收敛情况。 可以看到，批量梯度下降法需要计算完所有的样本才能画出图像，这在大样本的情况下是非常低效的。而随机梯度下降法，只需要每次更新$\theta$之前，计算出代价值。再画出前1000次迭代情况即可。 前两张图是正确的迭代过程，通常而言，选择样本数量越多，观测到的曲线就越平缓。 就最后两张图而言，我们可以得出一个结论，如果你得到的曲线没有体现出收敛的趋势（图三），那么可以尝试增加样本，如果还是没有（粉红色线）。那么可能就是特征、算法方面的问题了。 如果曲线有递增趋势，也就是发散。那么可以尝试使用小一点的学习速率。 关于学习速率，我们通常是选取固定值。但其实也可以使用变量：$\alpha = \frac{const1}{iterationNumber + const2}$，这可以迫使我们的算法收敛而不是在最小值周围徘徊。但是一般不需要为了学习速率浪费计算资源，我们也可以得到很好的效果。 在线学习如果你有一个连续的用户流引起的数据流，那么就可以设计一个在线学习机制，来根据数据流学习用户的偏好。 其实这和之前的随机梯度下降主要区别在于，我们的数据是流动的，算法也在不断的学习而不是只用静态的数据集。 Repeat forever (as long as the website is running) { Get $\left(x,y\right)$ corresponding to the current user $\theta:={\theta}_{j}-\alpha\left( {h}_{\theta}\left({x}\right)-{y} \right){ {x}_{j} }$ (for $j=0:n$) } 一旦(x,y)训练完成，我们就可以抛弃它，因为数据是动态的，还会有新的数据源源不断的输入。 减少映射与数据并行之前我们提到，如果用批量梯度下降法来训练大规模数据是非常耗费时间的，但如果我们能将数据分为多个子集，分给不同的计算机运行，最后再将结果汇总求和，这样的方法就叫做减少映射。 例如我们有400个例子，需要使用批量梯度下降法，我们可以把数据分配给4台计算机处理：]]></content>
@@ -94,8 +102,8 @@
     <url>%2F2019%2F04%2F07%2Fsubplots%E7%94%BB%E5%9B%BE%2F</url>
     <content type="text"><![CDATA[matplotlib是python领域中很常见的绘图模块 几乎只在需要用到时查手册，这里记录一些比较常用的函数，有机会再来系统学习一下 以一段画图代码为例 123456789101112131415161718def plot_data(X): '''随机画100个数字''' # np.random.choice(arrange,size),返回ndarray index=np.random.choice(range(5000),100) images=X[index] # 随机选择100个样本 # ax_array为Axes对象 fig,ax_array=plt.subplots(10,10,sharex=True,sharey=True,figsize=(8,8)) for r in range(10): for c in range(10): # matshow() 第一个参数为要显示的矩阵 #Display an array as a matrix in a new figure window ax_array[r,c].matshow(images[r*10+c].reshape(20,20),cmap='gray_r') plt.yticks([]) plt.xticks([]) plt.show() 1.matplotlib.pyplot.subplots()：创建一个figure和一组subplots 参数： nrows，ncols：axes的数量，这里是10*10 sharex，sharey：共享所有axesX轴和y轴的属性，设置True开启 返回值： figure ax：一个或多个axes对象 * axes和subplot的区别：简单来说，如果把figure看做是电脑桌面，那么axes就是可自由移动的图标，subplot则是不可自由移动的图标。 2.matplotlib.pyplot.matshow()：在窗口用矩阵显示一个数组 参数： array-like(M,N)：要显示的(M,N)矩阵]]></content>
       <tags>
-        <tag>matplotlib</tag>
         <tag>python</tag>
+        <tag>matplotlib</tag>
       </tags>
   </entry>
   <entry>
@@ -170,8 +178,8 @@
     <content type="text"><![CDATA[简单介绍一下Numpy中.dot()、*、multiply()和@的区别 1. np.multiply()函数数组/矩阵对应的位置相乘。 2. np.dot()函数2.1. 当数组/矩阵秩为1(即向量)时，执行点积。 2.2. 当数组/矩阵秩大于2时，执行矩阵乘法。 2.3. .dot可以被数组对象调用，也可以通过numpy库调用（被matrix调用可以执行，但会报错）。 3. 星号(*)乘法运算3.1. 对数组执行对应位置相乘。 3.2. 对矩阵执行矩阵乘法。 4. @乘法运算4.1. 对于矩阵乘法而言，完全等价于.dot()。 4.2. 区别在于，当a和b中有一个是标量时，只能用.dot()否则会报错。]]></content>
       <tags>
         <tag>Python</tag>
-        <tag>Numpy</tag>
         <tag>Machine Learning</tag>
+        <tag>Numpy</tag>
       </tags>
   </entry>
   <entry>

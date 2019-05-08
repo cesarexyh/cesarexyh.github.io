@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-08T03:25:01.521Z</updated>
+  <updated>2019-05-08T03:48:14.739Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习笔记|第三周</title>
+    <link href="http://yoursite.com/2019/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%89%E5%91%A8/"/>
+    <id>http://yoursite.com/2019/05/08/机器学习笔记-第三周/</id>
+    <published>2019-05-08T03:42:21.000Z</published>
+    <updated>2019-05-08T03:48:14.739Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p><img src="https://s2.ax1x.com/2019/05/08/Eyzf58.md.jpg" alt="Eyzf58.md.jpg"></p><a id="more"></a><p><img src="https://s2.ax1x.com/2019/05/08/Eyz4PS.md.jpg" alt="Eyz4PS.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/EyzI2Q.md.jpg" alt="EyzI2Q.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/Eyz7Ks.md.jpg" alt="Eyz7Ks.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/EyzLV0.md.jpg" alt="EyzLV0.md.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;逻辑回归&quot;&gt;&lt;a href=&quot;#逻辑回归&quot; class=&quot;headerlink&quot; title=&quot;逻辑回归&quot;&gt;&lt;/a&gt;逻辑回归&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/05/08/Eyzf58.md.jpg&quot; alt=&quot;Eyzf58.md.jpg&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习笔记|第二周</title>
+    <link href="http://yoursite.com/2019/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%8C%E5%91%A8/"/>
+    <id>http://yoursite.com/2019/05/08/机器学习笔记-第二周/</id>
+    <published>2019-05-08T03:35:56.000Z</published>
+    <updated>2019-05-08T03:48:05.591Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="多元变量线性回归"><a href="#多元变量线性回归" class="headerlink" title="多元变量线性回归"></a>多元变量线性回归</h2><p><img src="https://s2.ax1x.com/2019/05/08/EyxPSJ.md.jpg" alt="EyxPSJ.md.jpg"></p><a id="more"></a><p><img src="https://s2.ax1x.com/2019/05/08/EyzdUK.md.jpg" alt="EyzdUK.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/Eyz6KA.md.jpg" alt="Eyz6KA.md.jpg"></p><p><img src="https://s2.ax1x.com/2019/05/08/Eyzgbt.md.jpg" alt="Eyzgbt.md.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;多元变量线性回归&quot;&gt;&lt;a href=&quot;#多元变量线性回归&quot; class=&quot;headerlink&quot; title=&quot;多元变量线性回归&quot;&gt;&lt;/a&gt;多元变量线性回归&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/05/08/EyxPSJ.md.jpg&quot; alt=&quot;EyxPSJ.md.jpg&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习笔记|第一周</title>
@@ -416,57 +456,6 @@
 &lt;p&gt;我们在生活中常常听到“这句话信息量好大。”、“这都是废话，没什么信息量。“，而我们却很少思考，这里的信息量究竟是什么意思？是否可以给出精确定义，甚至，量化它呢？&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/03/26/ANfKbT.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>YJango学习观笔记及感悟</title>
-    <link href="http://yoursite.com/2019/03/25/YJango%E5%AD%A6%E4%B9%A0%E8%A7%82%E7%AC%94%E8%AE%B0%E5%8F%8A%E6%84%9F%E6%82%9F/"/>
-    <id>http://yoursite.com/2019/03/25/YJango学习观笔记及感悟/</id>
-    <published>2019-03-25T10:11:47.000Z</published>
-    <updated>2019-03-29T02:54:03.283Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><a href="https://space.bilibili.com/344849038/video" target="_blank" rel="noopener">b站-YJango</a>，个人还是对这位先生的</p><p>视频地址：<a href="https://space.bilibili.com/344849038/video" target="_blank" rel="noopener">b站-Yjango</a>，个人还是对他表示敬意的，他的视频挺具有启发性。</p><p>本文同样参考了<a href="https://www.zhihu.com/question/305705365/answer/621628417" target="_blank" rel="noopener"> 如何评价知乎用户 YJango 的公众号？ - Makise Chris的回答 - 知乎</a> </p></blockquote><a id="more"></a><h3 id="第一季"><a href="#第一季" class="headerlink" title="第一季"></a>第一季</h3><h4 id="01-何为学习"><a href="#01-何为学习" class="headerlink" title="01.何为学习"></a>01.何为学习</h4><p>学习就是从有限例子中找出规律的过程，而这个规律就是知识。</p><h4 id="02-如何学习"><a href="#02-如何学习" class="headerlink" title="02.如何学习"></a>02.如何学习</h4><p>因为人脑机能原因，单单<strong>记忆</strong>一个知识，显然远远达不到掌握它的水平。</p><p>而首先应该做的是明确<strong>问题（输入）</strong>和<strong>答案（输出）</strong>。</p><p>然后通过大量例子来理清二者的关系。接下来根据你的问题和答案，找出这些例子中符合问题及答案的规律。这两步也就是华罗庚的”先把书读厚（大量例子体会关系），再把书读薄（找出知识来压缩例子）。”</p><p>最后，需要用新的问题来验证你的例子是否正确。</p><h4 id="03-学习误区"><a href="#03-学习误区" class="headerlink" title="03.学习误区"></a>03.学习误区</h4><p>学习误区指什么？见图片黄字。</p><p>学习方式分为两类：（1）运动类：语言、运动（2）思考类：数学、逻辑</p><p>举了个语言的例子：</p><p>错误方式：</p><p><img src="https://s2.ax1x.com/2019/03/24/AYs9G8.png" alt=""></p><p>正确方式：</p><p><img src="https://s2.ax1x.com/2019/03/24/AYrzIP.png" alt=""></p><p>老实说我认为这个观点见仁见智，尤其是摒弃中文作为中间媒介这件事，姑且不论对错，可行性就值得怀疑了。</p><h4 id="04-运用误区"><a href="#04-运用误区" class="headerlink" title="04.运用误区"></a>04.运用误区</h4><p>运动类的学习可以同时进行，比如边走路边聊天；而思考类则不行，只能串行操作，所以当我们遇到一个大的问题（输入）时，如果无法直接得到输出，就需要将这个输入拆分，分别解决。</p><h4 id="05-思维导图"><a href="#05-思维导图" class="headerlink" title="05.思维导图"></a>05.思维导图</h4><p>其功能不在于记忆，而在于克服学习和运用中的误区。</p><p>在构建思维导图的过程中，你会先找到<strong>关键词</strong>，然后问自己它是什么？从而不断的联想起具体的例子，进而分析这些例子的共同输入和输出，找出规律；而当问自己它的作用或目的时，实际在思考输入是怎么变成输出的。输入输出可以代表<strong>一类</strong>事物中任何一种<strong>情况</strong>，因此被称为变量。而从输入变成输出的这一过程称为函数。而确定了这个“函数”，等下一次遇到未知的情况时，利用这个函数就可以解答出输出。随后你会用一个更好的关键词来代表你所找出的关系，一种是动宾结构，因为它描述了输入和函数，也就确定了输出，但当人们开始传播知识时，动宾结构也会名词化。</p><p>还有一种知识本身就是名词，会让你觉得没有输出，但这种知识的输出是分类任务中的类型，描述它的是主谓结构：是或不是/是否属于/属于哪个。</p><p>思维导图最强大的地方在于对知识的拆分，构建出知识网络，而知识网络中有些内容是你已经知道的，即具有重用性，学习新内容时，可以利用这些重用性，加快学习速度。拆分知识既可以用在学习未知知识上，也可以用在运用已有知识上（分而治之）。</p><p>而拆分知识的能力也是一种特殊的知识，称为二阶知识，不同于一般的知识用于描述信息与信息的关系，二阶知识用于描述知识与知识的关系。</p><p>视频中举的例子就是<strong>思维导图</strong>，假设我们需要构建一个有关于思维导图内容的思维导图。</p><p>那么首先，找出关键词——思维导图。然后问自己：思维导图是什么？因此联想出思维导图使用的具体例子：任务清单、知识体系、任务关系…，接着分析这些例子的共同输入——杂乱信息，共同输出——知识网络。而当你问它的作用时，也就是在思考输入是怎么变成输出的。一类事物，这个例子中，假设它代表的是任务清单这一类，那么输入的杂乱信息和输出的知识网络就是任务清单这一类事物的特定情况。而这个“函数”：可以理解为思维导图的画图方法。然后是找动宾结构，这里是压缩信息（其中压缩是函数，信息是输出），当人们开始传递知识时，压缩信息就被名词化成了思维导图。</p><p>知识本身属于名词的没说例子。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://space.bilibili.com/344849038/video&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;b站-YJango&lt;/a&gt;，个人还是对这位先生的&lt;/p&gt;
-&lt;p&gt;视频地址：&lt;a href=&quot;https://space.bilibili.com/344849038/video&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;b站-Yjango&lt;/a&gt;，个人还是对他表示敬意的，他的视频挺具有启发性。&lt;/p&gt;
-&lt;p&gt;本文同样参考了&lt;a href=&quot;https://www.zhihu.com/question/305705365/answer/621628417&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt; 如何评价知乎用户 YJango 的公众号？ - Makise Chris的回答 - 知乎&lt;/a&gt; &lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于记忆方法</title>
-    <link href="http://yoursite.com/2019/03/25/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BF%86%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2019/03/25/关于记忆方法/</id>
-    <published>2019-03-25T09:52:12.000Z</published>
-    <updated>2019-03-25T10:04:58.195Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>阅读了几篇关于记忆方法的文章，有所感悟，结合了一下自己经历，选了几个我认为有长期实践意义的方法，在此记录，此文可能会长期更新，毕竟记忆方法也是要不断调整的。</p></blockquote><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>我认为针对不同问题，应该具有不同的记忆方法。比如：</p><p>单词记忆，那么也许联想类方法比较有用；</p><p>记忆某些抽象概念，如剩余价值的含义，也许更适合用关键词法；</p><p>…</p><p>所以记忆方法不能一概而论，犯教条主义错误。</p><a id="more"></a><h4 id="记忆整体框架"><a href="#记忆整体框架" class="headerlink" title="记忆整体框架"></a>记忆整体框架</h4><p>结构化，也就是常说的<strong>思维导图</strong>，从全局出发，有助于你理清思路，尤其当你面对一个比较庞杂而又相互关联的知识（比如政治一整个章节的内容）。现在很多书籍都会替你整理好，但是请务必要<strong>用自己的方式去整理一遍</strong>，也许有人会说，我自己思考的和书上整理的一样啊，那么也请合上书默写出来。</p><p>实际上你默写也好，自己写也罢，<strong>这里的关键是在这个过程是一定要去==主动思考==（敲重点！）这个庞杂的知识的脉络到底是什么样的。</strong></p><p>思维导图：</p><p><img src="https://s2.ax1x.com/2019/03/25/At22X8.png" alt=""></p><p><img src="https://s2.ax1x.com/2019/03/25/AtRC1x.png" alt=""></p><p>参考资料：<a href="https://zhuanlan.zhihu.com/YJango" target="_blank" rel="noopener">知乎专栏——Yjango</a></p><h4 id="记忆段落-句子内容"><a href="#记忆段落-句子内容" class="headerlink" title="记忆段落/句子内容"></a>记忆段落/句子内容</h4><p>一般来说，我们学习的总是不熟悉的内容，再加上作者和你在表述习惯上的差异，才会导致你无法理解作者想要传达的意思，才会导致只能死记硬背。</p><p>所以同样需要我们用自己的方式理解并记忆作者想要传达给你的意思。那么如何去用自己的语言表述出来呢？</p><p>引用一句话：记忆<strong>书本原有的关键词、知识点</strong>等<strong>“点”信息</strong>，<strong>而后自己去连“点”成“线</strong>”——指的是把这一块的“点”信息串成有逻辑的内容$^{[2]}$。</p><p>举个例子：</p><blockquote><p>类是对一群具有相同特征或者行为的事物的一个统称，是抽象的，不能直接使用。特征被称为”属性“，行为被称为”方法“。</p></blockquote><p>在这个句子中，对我而言，关键词是”类，特征=属性，行为=方法“。所以对我而言只需要记住这几个内容，剩下的用自己的话重复一遍：</p><blockquote><p>类是具有相同的特征和行为的事物的统称，是一个抽象概念。实际运用时，特征又叫做属性，行为又叫方法。</p></blockquote><p><strong>参考资料</strong>：[2].<a href="https://www.zhihu.com/question/50343728" target="_blank" rel="noopener">你有什么值得分享的高效学习方法？</a> 这个问题下最高赞的回答</p><p>我认为这个方法尤其适用于抽象概念——尤其是文科类——的记忆。</p><h4 id="记忆关键词"><a href="#记忆关键词" class="headerlink" title="记忆关键词"></a>记忆关键词</h4><p>联想记忆法，这个方法算是很常见了，但我认为可以看一下这个视频：·<a href="https://weibo.com/1974576991/HmiDNf2ps?type=comment" target="_blank" rel="noopener">TED画图记忆方法</a>。</p><p>视频中提到可以用画图的方式来替代文字记忆，但我认为在记忆大量内容的时候这种方法太低效。不过比起单纯的联想，画图具有更强的可操作性（有时候真是联想不到），而且动笔的过程中又进一步加深了你的思考。所以我认为可以在上一个记忆法中，记忆关键字时，根据需要使用这个方法。</p><p>还是上面的例子，当我们提取关键字后，可能还是会觉得抽象，类是什么？特征和行为又怎么理解？这时候把这几个词语通过联想的方式去理解记忆：</p><p>类，可以看做是制造一样东西（比如飞机）的设计图；属性，就好比飞机都有一对翅膀；方法，就好比飞机如何起飞。还可以接着拓展，比如用类创建一个对象，就相当于用设计图纸去制造一架飞机。</p><p><img src="https://s2.ax1x.com/2019/03/24/AYeagH.png" alt=""></p><p>其实无论哪种方法，归根结底都是要把新的知识转化为自己更熟悉的方式，加以理解并记忆。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;阅读了几篇关于记忆方法的文章，有所感悟，结合了一下自己经历，选了几个我认为有长期实践意义的方法，在此记录，此文可能会长期更新，毕竟记忆方法也是要不断调整的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;我认为针对不同问题，应该具有不同的记忆方法。比如：&lt;/p&gt;
-&lt;p&gt;单词记忆，那么也许联想类方法比较有用；&lt;/p&gt;
-&lt;p&gt;记忆某些抽象概念，如剩余价值的含义，也许更适合用关键词法；&lt;/p&gt;
-&lt;p&gt;…&lt;/p&gt;
-&lt;p&gt;所以记忆方法不能一概而论，犯教条主义错误。&lt;/p&gt;
     
     </summary>
     

@@ -388,18 +388,14 @@
 
       
         
-          
-            <h3 id="Jupyter-notebook的路径"><a href="#Jupyter-notebook的路径" class="headerlink" title="Jupyter notebook的路径"></a>Jupyter notebook的路径</h3><p>1、你打开jupyter notebook时的路径，即为工作路径。注意下图中的黄色字体部分。<br><img src="https://s2.ax1x.com/2019/05/13/E5DD41.png" alt="E5DD41.png" border="0"></p>
-<p>2、注意路径要用斜杠’/‘而不是反斜杠’\\’。</p>
-<h3 id="os-path-join-函数用于路径拼接："><a href="#os-path-join-函数用于路径拼接：" class="headerlink" title="os.path.join()函数用于路径拼接："></a><code>os.path.join()</code>函数用于路径拼接：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">m=os.path.join(<span class="string">'path'</span>,<span class="string">'file_name.txt'</span>)</span><br><span class="line">m</span><br></pre></td></tr></table></figure>
-<pre><code>&#39;path\\file_name.txt&#39;
-</code></pre><p>可以看到输出的是双反斜杠。而我们需要的是斜杠’/‘</p>
-<h4 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m.replace(<span class="string">'\\'</span>,<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>&#39;path/file_name.txt&#39;
-</code></pre><h4 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m=os.path.join(<span class="string">'path/'</span>,<span class="string">'file_name.txt'</span>)</span><br><span class="line">m</span><br></pre></td></tr></table></figure>
-<pre><code>&#39;path/file_name.txt&#39;
-</code></pre>
-          
+          <h3 id="Jupyter-notebook的路径"><a href="#Jupyter-notebook的路径" class="headerlink" title="Jupyter notebook的路径"></a>Jupyter notebook的路径</h3><p>1、你打开jupyter notebook时的路径，即为工作路径。注意下图中的黄色字体部分。<br><img src="https://s2.ax1x.com/2019/05/13/E5DD41.png" alt="E5DD41.png" border="0"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/13/Jupyter-notebook路径/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

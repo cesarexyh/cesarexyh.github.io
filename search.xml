@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Jupyter-notebook路径]]></title>
+    <url>%2F2019%2F05%2F13%2FJupyter-notebook%E8%B7%AF%E5%BE%84%2F</url>
+    <content type="text"><![CDATA[Jupyter notebook的路径1、你打开jupyter notebook时的路径，即为工作路径。注意下图中的黄色字体部分。 2、注意路径要用斜杠’/‘而不是反斜杠’\\’。 os.path.join()函数用于路径拼接：123import osm=os.path.join('path','file_name.txt')m &#39;path\\file_name.txt&#39; 可以看到输出的是双反斜杠。而我们需要的是斜杠’/‘ 解法一：1m.replace('\\','/') &#39;path/file_name.txt&#39; 解法二12m=os.path.join('path/','file_name.txt')m &#39;path/file_name.txt&#39;]]></content>
+      <tags>
+        <tag>python</tag>
+        <tag>Jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[机器学习笔记|第三周]]></title>
     <url>%2F2019%2F05%2F08%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%89%E5%91%A8%2F</url>
     <content type="text"><![CDATA[逻辑回归]]></content>

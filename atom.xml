@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-08T03:48:14.739Z</updated>
+  <updated>2019-05-13T12:44:31.381Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jupyter-notebook路径</title>
+    <link href="http://yoursite.com/2019/05/13/Jupyter-notebook%E8%B7%AF%E5%BE%84/"/>
+    <id>http://yoursite.com/2019/05/13/Jupyter-notebook路径/</id>
+    <published>2019-05-13T12:43:28.000Z</published>
+    <updated>2019-05-13T12:44:31.381Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Jupyter-notebook的路径"><a href="#Jupyter-notebook的路径" class="headerlink" title="Jupyter notebook的路径"></a>Jupyter notebook的路径</h3><p>1、你打开jupyter notebook时的路径，即为工作路径。注意下图中的黄色字体部分。<br><img src="https://s2.ax1x.com/2019/05/13/E5DD41.png" alt="E5DD41.png" border="0"></p><p>2、注意路径要用斜杠’/‘而不是反斜杠’\\’。</p><h3 id="os-path-join-函数用于路径拼接："><a href="#os-path-join-函数用于路径拼接：" class="headerlink" title="os.path.join()函数用于路径拼接："></a><code>os.path.join()</code>函数用于路径拼接：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">m=os.path.join(<span class="string">'path'</span>,<span class="string">'file_name.txt'</span>)</span><br><span class="line">m</span><br></pre></td></tr></table></figure><pre><code>&#39;path\\file_name.txt&#39;</code></pre><p>可以看到输出的是双反斜杠。而我们需要的是斜杠’/‘</p><h4 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m.replace(<span class="string">'\\'</span>,<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure><pre><code>&#39;path/file_name.txt&#39;</code></pre><h4 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m=os.path.join(<span class="string">'path/'</span>,<span class="string">'file_name.txt'</span>)</span><br><span class="line">m</span><br></pre></td></tr></table></figure><pre><code>&#39;path/file_name.txt&#39;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Jupyter-notebook的路径&quot;&gt;&lt;a href=&quot;#Jupyter-notebook的路径&quot; class=&quot;headerlink&quot; title=&quot;Jupyter notebook的路径&quot;&gt;&lt;/a&gt;Jupyter notebook的路径&lt;/h3&gt;&lt;p&gt;1、
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="Jupyter notebook" scheme="http://yoursite.com/tags/Jupyter-notebook/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习笔记|第三周</title>
@@ -438,29 +463,6 @@
     
     
       <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>信息熵</title>
-    <link href="http://yoursite.com/2019/03/29/%E4%BF%A1%E6%81%AF%E7%86%B5/"/>
-    <id>http://yoursite.com/2019/03/29/信息熵/</id>
-    <published>2019-03-29T02:53:40.000Z</published>
-    <updated>2019-03-29T02:53:40.260Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>我们在生活中常常听到“这句话信息量好大。”、“这都是废话，没什么信息量。“，而我们却很少思考，这里的信息量究竟是什么意思？是否可以给出精确定义，甚至，量化它呢？</p></blockquote><p><img src="https://s2.ax1x.com/2019/03/26/ANfKbT.png" alt=""></p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>1984年香农提出了”信息熵“的概念，解决了这个问题。</p><h2 id="信息中的熵"><a href="#信息中的熵" class="headerlink" title="信息中的熵"></a>信息中的熵</h2><blockquote><p>因为熵不只在信息，还在物理等其他领域有定义，虽然他们本质一样，但表达上和所研究的问题上略有差异，这里特作说明。</p></blockquote><p>可以这么理解：当一件事情（宏观态）具有多种情况时，对于观察者而言，其具体情况（微观态）的<strong>不确定度</strong>，称为熵。</p><p>显然这个定义看上去肯定是懵逼的，没事，用一个例子来解释。</p><p>假设我们在做一道单项选择题，这道选择题的答案具有4个选项。那么对你这个观察者而言，这个选择题正确答案的可能选择情况（四种选择情况：选A、选B、选C、选D）就是宏观态，而其中的每一个选择情况就被称为微观态。我们目前并不能确定谁是正确答案，所以其微观态就具有不确定性。那么此时此刻，”选择正确选项”这件事情对你而言，熵为2bit。</p><p>（1）、而正在你陷入迷茫之际，你的好基友小明来到了你的身边，悄悄地对你说：”有50%可能性选C。“</p><p>这条消息中含有的<strong>信息量</strong>，帮助你调整了每个微观态的概率：从等概率（A：25%，B：25%，C：25%，D：25%）调整为（A：16.6%，B：16.6%，C：50%，D：16.6%），而这条消息中含有的信息量为0.21bit，所以才“使用”了这条消息之后，“选出正确选项”这件事情的熵为$2-0.21=1.79bit$</p><p>（2）、这时候，你突然想起来可以直接看参考答案啊，于是你打开了书的最后一页发现——这题的正确答案选C。同样，这条消息含有的信息量同样也帮你调整了概率，这次更直接的把C的概率改为了100%。那么这条消息的信息量为2bit，因为它帮助你完全消除了“选出正确选项”这件事情的不确定性。</p><p>从上面的例子中可以发现，信息量的作用，就是用来消除熵。</p><p>到这里，你应该对熵的概念有了大体的理解，但还有一个问题，就是信息量是如何计算的？</p><h2 id="信息量是如何计算的"><a href="#信息量是如何计算的" class="headerlink" title="信息量是如何计算的"></a>信息量是如何计算的</h2><p>我们都知道，在定义重量的单位时，我们先是选择了一个<strong>参照物</strong>，比如一块砖头，我们把这块砖头的重量定义为1千克，剩下的所有物体的重量都可以利用这块砖头来表示，比如把我和一堆砖头放在天平上，当达到水平状态时，只要数出砖头个数——65个，那么就可以知道我的重量是65kg。</p><p>基于同样的道理，我们先找一个参照物事件——扔硬币！它只有2种等概率情况，即50%正面50%反面（微观态）。它的熵（不确定性）我们记为1bit，那么再回顾一下你的选择题，在刚开始时，它的等概率情况有4种，所以它的熵就是2bit。</p><p>同样推断，如果一件事情的等概率情况有8种，那么它的熵就是4bit…那是不可能的。</p><p>你先仔细想想，什么事情具有8种等概率情况？对的，扔3枚硬币，所以熵是3bit而不是4bit。原因是，扔硬币结果的个数和硬币之间是<strong>指数关系</strong>而不是线性关系。</p><p>所以我们可以总结：<strong>在各个微观态之间是等概率的情况下，把宏观态的熵记为n，微观态的个数记为m，就可以得到 $n=log_{2}m​$</strong></p><p>但问题又来了，如果各个微观态之间不是等概率的情况呢？</p><p>显然无法直接用上面的公式，这里回到“选择题事件”的（1）中，当我们得知了小明给出的消息之后，熵的bit数为：$n=p_{A}<em>log_{2}(1/p_{A})+p_{B}</em>log_{2}(1/p_{B})+p_{C}<em>log_{2}(1/p_{C})+p_{D}</em>log_{2}(1/p_{D})$ </p><p>其中$p$为每个选项的概率。这里对数中概率取倒数的原因：概率的倒数等于其发生在等概率情况的个数。</p><p>计算后熵 $n=1.79bit$ ，则小明的消息中的信息量就是0.21bit 。</p><p><strong>以上的内容均来自 <a href="https://space.bilibili.com/344849038/video" target="_blank" rel="noopener">B站—YJango</a>中10~11期的内容。</strong></p><h2 id="计算熵的公式"><a href="#计算熵的公式" class="headerlink" title="计算熵的公式"></a>计算熵的公式</h2><p>那么可以做出一个总结，如果一个随机变量A有k中可能取值，其中第i种发生的概率为P(i)，那么信息熵的公式为：<img src="https://s2.ax1x.com/2019/03/26/ANwmT0.png" alt=""></p><p>由此也可见，一个取值的概率越低，他的熵就越高，你确定他所需要的信息量就越大。也可以证明，等概率情况下，信息熵的值最大$^{[1]}$。</p><p>而在等概率（每个情况发生的概率都为P(a)）情况下，我们需要了解一个随机变量所需要的信息量，为$L=log_{2}(1/P(a))$，这种说法由R.V.L.哈莱特与1928年提出$^{[2]}$，早于香农，实际上这里求的也就是熵，只不过那时候没这么叫。（见 信息量和信息熵的区别）</p><p>当时看到这里我有一个巨大的疑问，如果按这个公式计算，那么“选择题”中的（1），小明的消息提供的信息量应该为1bit啊怎么会是0.21bit。</p><p>后来我是这么理解的，如果<strong>单独</strong>把”50%的可能性选C”看成随机变量的话，你作为观察者所面对的情况实际上只有 <strong>2种</strong>：选C或者不选C。那么的确熵为1bit。</p><p>而放回到原来的事件中，情况为<strong>4种</strong>，这条信息只不过使得每个情况的概率都改变了，或者说，仅仅是4种情况之间的权重发生了改变，需要通过期望的方式来计算熵（1.79bit），再相减，得出结果（0.21bit）代表了这条信息在<strong>当前所讨论的宏观态下消除的不确定性。</strong></p><p>更进一步说，其实这里隐藏了一个条件，<strong>我们默认把”50%的可能性选C“这件条信息当成是确定的（熵为0而不是单独情况时的1bit）</strong>，并且在宏观态中根据信息调整了微观态的权重，而这时这条信息对这个宏观态产生了影响，使其熵减了0.21bit。</p><h2 id="信息量和信息熵"><a href="#信息量和信息熵" class="headerlink" title="信息量和信息熵"></a>信息量和信息熵</h2><blockquote><p>信息熵就是上面说的熵，用“信息熵”的叫法是为了和信息量对称</p></blockquote><p>信息熵：描述的是一个事件（宏观态）的不确定度，也就是说，信息熵是宏观态的一个<strong>属性</strong>，并不因为观察者而产生变化，比如你知道了一道选择题的答案，那么这道题的信息熵仅仅对你而言是0bit（也就是说你对这道题已经是确定了的），这时另外有人看到了这道选择题，那么对他而言，这道题的信息熵仍然为2bit。</p><p>信息量：你解开一个不确定事件的过程，在这个过程中你不断的获得<strong>信息量</strong>，来消除信息熵。</p><p>二者的本质上存在差异，但其实是角度不同导致的。</p><blockquote><p>比较好的表述是:</p><p>信息熵是</p><p><strong>对于事件A，我们对A不了解的程度</strong>。</p><p>换句话说，</p><p><strong>就是我们还需要多少信息量才能完全了解事件A</strong></p><p>所需要的信息量就是信息熵。</p><p><strong>而信息熵很大的意思是事件A本身所携带的信息量很大。</strong></p></blockquote><p>引用自<a href="https://www.zhihu.com/question/274997106/answer/383102744" target="_blank" rel="noopener">信息熵越大，信息量到底是越大还是越小？ - 捣衣的回答 - 知乎</a></p><h2 id="熵在物理中的运用"><a href="#熵在物理中的运用" class="headerlink" title="熵在物理中的运用"></a>熵在物理中的运用</h2><p>简单来说，热力学第二定律推导出熵增原理：孤立系统的熵永不减少。进而判断宇宙处在一个不断熵增的状态，因此总有一天会达到“热寂寞”</p><p>有兴趣可参考几个视频</p><p><a href="https://www.bilibili.com/video/av31931321?from=search&amp;seid=9987571277393916947" target="_blank" rel="noopener">热力学第二定律是什么？“麦克斯韦妖”是什么鬼？李永乐老师告诉你</a></p><p><a href="https://www.bilibili.com/video/av25408872/?spm_id_from=333.788.videocard.0" target="_blank" rel="noopener">熵到底是什么？一副牌中抽三张为同花的概率是多大？</a></p><p><a href="https://www.bilibili.com/video/av42589628" target="_blank" rel="noopener">【学习观12】阻碍人类永生的原因是？</a></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1].<a href="https://www.zhihu.com/question/22178202/answer/125040625" target="_blank" rel="noopener">信息熵是什么？ - 柯伟辰的回答 - 知乎</a></p><p>[2].<a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E9%87%8F" target="_blank" rel="noopener">信息量—百度百科</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;我们在生活中常常听到“这句话信息量好大。”、“这都是废话，没什么信息量。“，而我们却很少思考，这里的信息量究竟是什么意思？是否可以给出精确定义，甚至，量化它呢？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/03/26/ANfKbT.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Reading" scheme="http://yoursite.com/tags/Reading/"/>
     
   </entry>
   

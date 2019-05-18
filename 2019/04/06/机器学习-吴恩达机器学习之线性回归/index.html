@@ -112,6 +112,7 @@
 <meta property="og:description" content="对《机器学习》这门课程的回顾，系列文章的目的是希望能够把原理和代码实现统一起来，增进理解，所以对一些我认为简单的知识，可能会一笔带过。  前言这里对第一周的内容做一些简单的回顾：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/29/A0dT2V.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/17/EqUnij.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/29/A0BCHe.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/29/A0BCHe.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/02/Aydhpd.md.jpg">
@@ -120,7 +121,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/02/AydLtg.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/02/AydOhQ.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/31/ADOqIS.md.png">
-<meta property="og:updated_time" content="2019-04-06T07:31:33.892Z">
+<meta property="og:updated_time" content="2019-05-17T23:55:03.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习|吴恩达机器学习之线性回归">
 <meta name="twitter:description" content="对《机器学习》这门课程的回顾，系列文章的目的是希望能够把原理和代码实现统一起来，增进理解，所以对一些我认为简单的知识，可能会一笔带过。  前言这里对第一周的内容做一些简单的回顾：">
@@ -401,13 +402,40 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里对第一周的内容做一些简单的回顾：</p>
 <p><img src="https://s2.ax1x.com/2019/03/29/A0dT2V.png" alt=""></p>
 <a id="more"></a>
-<h2 id="线性回归-单变量-one-variable"><a href="#线性回归-单变量-one-variable" class="headerlink" title="线性回归-单变量(one variable)"></a>线性回归-单变量(one variable)</h2><h3 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h3><h5 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h5><p>（1）公式：$h_{\theta}(x)=\theta_{0}+\theta_{1}x​$</p>
+<h2 id="线性回归-单变量-one-variable"><a href="#线性回归-单变量-one-variable" class="headerlink" title="线性回归-单变量(one variable)"></a>线性回归-单变量(one variable)</h2><h3 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h3><h4 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h4><p>（1）公式：$h_{\theta}(x)=\theta_{0}+\theta_{1}x$</p>
 <p>（2）原理：输入一个单变量x，输出预测值</p>
-<h5 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h5><p>（1）公式：$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_{i})-y_{i})^{2}$，又称“平方误差函数”，这里的1/2是方便后面求导时约掉平方。</p>
+<blockquote>
+<p>$\theta_{0}$又叫偏置项，也就是截距。如果没有偏置的话，直线必须经过原点，这就导致很多情况下根本没法拟合。</p>
+</blockquote>
+<p>很显然，我们的目标就是要确定$\theta_{0}$和$\theta_{1}$，但是如何确定呢？</p>
+<blockquote>
+<p>关键在于衡量$h_{\theta}(x)$和$y$之间的差别。</p>
+</blockquote>
+<h4 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h4><p>（1）公式：$J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}$，又称“平方误差函数”，这里的1/2是方便后面求导时约掉平方。计算出参数$\theta_{0}$和$\theta_{1}$需要用迭代的方法，而每次迭代都会代入所有的x和y，因此用向量化的方式来代替循环。</p>
 <p>（2）原理：最小二乘法判断误差。</p>
-<h5 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h5><p>（1）公式：</p>
+<p>由于代价函数是衡量$h_{\theta}(x)$和$y$之间的误差，因此我们的目标就是要找到能<strong>使代价函数值最小</strong>的$\theta_{0}$和$\theta_{1}$。</p>
+<h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>在线性回归问题中，代价函数的图像是凸函数(<strong>convex-function</strong>)，如下图。只要你学过高中数学，你就应该明白黄点处的代价值是最小的（极小值点），也就是说，在黄点处需要满足$\frac{\partial J(\theta_{0}, \theta_{1})}{\partial \theta_{0} }=0$和$\frac{\partial J(\theta_{0}, \theta_{1})}{\partial \theta_{1} }=0$。</p>
+<p>直观来说，就是如何解决从初始值“走”到黄点处。</p>
+<p><img src="https://s2.ax1x.com/2019/05/17/EqUnij.md.png" alt="EqUnij.md.png"></p>
+<p>（1）公式：</p>
 <p><img src="https://s2.ax1x.com/2019/03/29/A0BCHe.png" alt=""></p>
-<p>重复直到收敛。</p>
+<p>一项项来看：</p>
+<ul>
+<li><p>导数项$\frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x_{j}^{(i)}$</p>
+<p>当时我有一个理解不了的地方：</p>
+<blockquote>
+<p>结合图像来看，我们Random initial value的点在左侧，导数小于0，那么似乎公式中就变成减去一个负值</p>
+</blockquote>
+<p>其实这么理解是错误的，梯度看起来像是导数在高维的推广，但二者应该有本质上的区别。梯度是矢量而某点的导数是常量，梯度指向了<strong>数值最大增大方向</strong>，而导数并不指向方向，它仅仅表示了切线的斜率。</p>
+<p>实际应用中一般$\theta_{j},j&gt;=2$，我们不会单独对$\theta_{0}$和$\theta_{1}$求值，把他们向量化是更明智的选择，</p>
+<p>$\left( \begin{array}{c}{\frac{\partial}{\partial \theta_{0}} \operatorname{J}(\theta)} \\ {\frac{\partial}{\partial \theta_{1}} \operatorname{J}(\theta)} \\ {\vdots} \\ {\frac{\partial}{\partial \theta_{n}} \operatorname{J}(\theta)}\end{array}\right)=\frac{1}{m} \mathbf{X}^{T} \cdot(\mathbf{X} \cdot \theta-\mathbf{y})$</p>
+<p>这也就保证了这一项的值必然是个矢量，换句话说，就是求得的一定是梯度。而取负号，意思就是取和数值最大增大方向相反。</p>
+</li>
+<li><p>$\alpha$</p>
+<p>学习速率，直观叫法“步长”。表示的是你每次迭代时移动的位置大小。如果过大，可能会导致函数越过最优点发散；如果过小，将会导致时间开销变大。</p>
+</li>
+</ul>
+<p>最后重复直到收敛。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><strong>在实际代码中，数据都是用矩阵的方式来表示。</strong></p>
 <p>1.导入几个常用库</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  <span class="comment">#画图函数</span></span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"><span class="keyword">from</span> matplotlib.colors <span class="keyword">import</span> LogNorm</span><br></pre></td></tr></table></figure>
@@ -657,7 +685,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -747,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归-单变量-one-variable"><span class="nav-number">2.</span> <span class="nav-text">线性回归-单变量(one variable)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本内容"><span class="nav-number">2.1.</span> <span class="nav-text">基本内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#假设函数"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代价函数"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#梯度下降法"><span class="nav-number">2.1.0.3.</span> <span class="nav-text">梯度下降法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据处理"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">计算函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画图函数"><span class="nav-number">2.2.3.</span> <span class="nav-text">画图函数</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归-多变量-multiple-variables"><span class="nav-number">3.</span> <span class="nav-text">线性回归-多变量(multiple variables)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征缩放-Feature-scaling"><span class="nav-number">3.1.</span> <span class="nav-text">特征缩放(Feature scaling)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归-单变量-one-variable"><span class="nav-number">2.</span> <span class="nav-text">线性回归-单变量(one variable)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本内容"><span class="nav-number">2.1.</span> <span class="nav-text">基本内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.1.1.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代价函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法"><span class="nav-number">2.1.3.</span> <span class="nav-text">梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据处理"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">计算函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画图函数"><span class="nav-number">2.2.3.</span> <span class="nav-text">画图函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归-多变量-multiple-variables"><span class="nav-number">3.</span> <span class="nav-text">线性回归-多变量(multiple variables)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征缩放-Feature-scaling"><span class="nav-number">3.1.</span> <span class="nav-text">特征缩放(Feature scaling)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

@@ -103,13 +103,13 @@
 
 
 
-<meta name="description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周">
+<meta name="description" content="一个名为回归却用于解决分类问题的算法，吴恩达coursera第三周">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习|吴恩达机器学习之逻辑回归">
 <meta property="og:url" content="http://yoursite.com/2019/04/03/机器学习-吴恩达机器学习之逻辑回归/index.html">
 <meta property="og:site_name" content="空博客">
-<meta property="og:description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周">
+<meta property="og:description" content="一个名为回归却用于解决分类问题的算法，吴恩达coursera第三周">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/Ac02QJ.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcBilQ.png">
@@ -122,10 +122,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcD4PK.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/03/AcD7KH.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/06/AWJzAf.md.png">
-<meta property="og:updated_time" content="2019-04-13T05:44:50.048Z">
+<meta property="og:updated_time" content="2019-05-18T03:05:40.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习|吴恩达机器学习之逻辑回归">
-<meta name="twitter:description" content="一个名为回归确用于解决分类的算法，吴恩达coursera第三周">
+<meta name="twitter:description" content="一个名为回归却用于解决分类问题的算法，吴恩达coursera第三周">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/04/03/Ac02QJ.png">
 
 
@@ -398,7 +398,7 @@
 
       
         <blockquote>
-<p>一个名为回归确用于解决分类的算法，吴恩达coursera第三周</p>
+<p>一个名为回归却用于解决分类问题的算法，吴恩达coursera第三周</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="逻辑回归-Logic-Regression"><a href="#逻辑回归-Logic-Regression" class="headerlink" title="逻辑回归(Logic Regression)"></a>逻辑回归(Logic Regression)</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p>（1）常规读取数据的方法，值得注意的是<code>X = data.iloc[:, :-1].values</code>中<code>.values</code>作用是将<code>DataFrame</code>转化为<code>ndarray</code>。根据手册，更推荐使用<code>.to_numpy()</code>。</p>
@@ -441,7 +441,7 @@
 <p>因为过拟合是由于特征项过多引起的，减少特征的数量固然可以，还有一种方法就是正则化：<strong>减小$\theta_{j}$的值。</strong></p>
 <p><img src="https://s2.ax1x.com/2019/04/03/AcDRV1.md.png" alt="AcDRV1.md.png"></p>
 <p>由图中可以看出，线性回归算法中添加两个正则化项——也叫惩罚项，1000$\theta_{3}$和1000$\theta_{4}$。上图可以看出，在利用优化算法求解参数时，要想让代价函数值变小，会使得$\theta_{3}$和$\theta_{4}$变得非常小，也就导致了$\theta_{3}x^{3}$和$\theta_{4}x^{4}$非常小，那么图中右边的假设函数就近似与左边的函数了。</p>
-<p>实际操作中，我们很多时候并不知道究竟应该惩罚哪一项，所以实际上除了$\theta_{0}​$（全是1），所有项都会惩罚。</p>
+<p>实际操作中，我们很多时候并不知道究竟应该惩罚哪一项，所以实际上除了$\theta_{0}$（全是1），所有项都会惩罚。</p>
 <p>回到逻辑回归算法上也是一样的</p>
 <p>（2）公式：</p>
 <p><img src="https://s2.ax1x.com/2019/04/03/AcD4PK.md.png" alt="AcD4PK.md.png"></p>
@@ -650,7 +650,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

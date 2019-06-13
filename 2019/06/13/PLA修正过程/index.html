@@ -103,13 +103,13 @@
 
 
 
-<meta name="description" content="最近在看林轩田机器学习基石，作为对ML基础的进一步学习。在2-Learning to Answer Yes_No中，以一个例子来总结解释一下PLA（感知学习算法）的修正过程，以及一些证明。 PLAPLA的主要思想：逐步修正。 图中坐标原点位于正方形中心位置，样本数据线性可分，决策边界满足$w^{T}x=0$，注意下面谈到的$w$和$x$都是向量。 step-0：初始化$w=0$  step-1：第">
+<meta name="description" content="最近在看林轩田机器学习基石，作为对ML基础的进一步学习。在2-Learning to Answer Yes_No中，以一个例子来总结解释一下PLA（感知学习算法）的修正过程，以及一些证明。 PLAPLA的主要思想：逐步修正。 图中坐标原点位于正方形中心位置，样本数据线性可分，决策边界满足$w^{T}x=0$，注意下面谈到的$w$和$x$都是向量。 step-0：初始化$w=0$">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PLA修正过程">
 <meta property="og:url" content="http://yoursite.com/2019/06/13/PLA修正过程/index.html">
 <meta property="og:site_name" content="空博客">
-<meta property="og:description" content="最近在看林轩田机器学习基石，作为对ML基础的进一步学习。在2-Learning to Answer Yes_No中，以一个例子来总结解释一下PLA（感知学习算法）的修正过程，以及一些证明。 PLAPLA的主要思想：逐步修正。 图中坐标原点位于正方形中心位置，样本数据线性可分，决策边界满足$w^{T}x=0$，注意下面谈到的$w$和$x$都是向量。 step-0：初始化$w=0$  step-1：第">
+<meta property="og:description" content="最近在看林轩田机器学习基石，作为对ML基础的进一步学习。在2-Learning to Answer Yes_No中，以一个例子来总结解释一下PLA（感知学习算法）的修正过程，以及一些证明。 PLAPLA的主要思想：逐步修正。 图中坐标原点位于正方形中心位置，样本数据线性可分，决策边界满足$w^{T}x=0$，注意下面谈到的$w$和$x$都是向量。 step-0：初始化$w=0$">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/11/VcQCTg.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/11/Vcllb8.png">
@@ -119,10 +119,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/11/VggQnx.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/11/Vgg8AO.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/11/V2CdYT.md.png">
-<meta property="og:updated_time" content="2019-06-13T13:51:50.198Z">
+<meta property="og:updated_time" content="2019-06-13T14:51:27.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PLA修正过程">
-<meta name="twitter:description" content="最近在看林轩田机器学习基石，作为对ML基础的进一步学习。在2-Learning to Answer Yes_No中，以一个例子来总结解释一下PLA（感知学习算法）的修正过程，以及一些证明。 PLAPLA的主要思想：逐步修正。 图中坐标原点位于正方形中心位置，样本数据线性可分，决策边界满足$w^{T}x=0$，注意下面谈到的$w$和$x$都是向量。 step-0：初始化$w=0$  step-1：第">
+<meta name="twitter:description" content="最近在看林轩田机器学习基石，作为对ML基础的进一步学习。在2-Learning to Answer Yes_No中，以一个例子来总结解释一下PLA（感知学习算法）的修正过程，以及一些证明。 PLAPLA的主要思想：逐步修正。 图中坐标原点位于正方形中心位置，样本数据线性可分，决策边界满足$w^{T}x=0$，注意下面谈到的$w$和$x$都是向量。 step-0：初始化$w=0$">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/06/11/VcQCTg.png">
 
 
@@ -399,6 +399,7 @@
 <p>图中坐标原点位于正方形中心位置，样本数据线性可分，决策边界满足$w^{T}x=0$，注意下面谈到的$w$和$x$都是向量。</p>
 <p><strong>step-0</strong>：初始化$w=0$</p>
 <p><img src="https://s2.ax1x.com/2019/06/11/VcQCTg.png" alt="VcQCTg.png"></p>
+<a id="more"></a>
 <p><strong>step-1</strong>：第一次更新，选择样本点$x_{1}$如图所示，记为黑点。更新$w_{t+1}=w_{t}+y*x$，这里圈圈代表y为正，$w_{t}=0$，因此$w_{t+1}=x$。</p>
 <p><img src="https://s2.ax1x.com/2019/06/11/Vcllb8.png" alt="Vcllb8.png"></p>
 <p>又因为$w_{t}x=0$，所以可以画出第一条决策边界如下图。</p>

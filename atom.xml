@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-20T08:28:12.298Z</updated>
+  <updated>2019-06-22T15:40:35.528Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单理解P,NP,NPC,NPH</title>
+    <link href="http://yoursite.com/2019/06/22/%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3P-NP-NPC-NPH/"/>
+    <id>http://yoursite.com/2019/06/22/简单理解P-NP-NPC-NPH/</id>
+    <published>2019-06-22T15:37:10.000Z</published>
+    <updated>2019-06-22T15:40:35.528Z</updated>
+    
+    <content type="html"><![CDATA[<p>0.<strong>复杂度</strong>：时间复杂度不是表示一个程序的运行时间，而是当问题规模扩大之后，程序需要的时间增长的有多快。</p><p>例如：四则运算，无论数据变得多大，程序的时间复杂度都为o(1);冒泡排序，数据扩大2倍，时间变4倍，程序的时间复杂度为o($n^2$)</p><p><strong>P问题</strong>:Polynomial-Problem,有一个确定型图灵机在多项式内解决的问题。</p><p><strong>NP问题</strong>:Non-deteministic polynomial(非确定性多项式) problem,能在多项式时间内<strong>验证</strong>某个猜想答案的正确性，但可能在无法再多项式时间内解决。比如：数独，很容易就确定一个答案是否正确，但确找不到一个公式来描述其规律。</p><p>所以现在面临的困难就是：P=NP？翻译过来就是能多项式时间内验证一个问题，是否能在多项式时间内解决一个问题？这也是千禧年世界七大数学难题之一。目前数学界倾向于不等，其中很重要的原因就是发现了NP-Complete。</p><p><strong>NP-Complete</strong>:需要满足两个条件：1.它本身是个NP问题。2.所有的NP问题都可以<a href="https://baike.baidu.com/item/%E7%BA%A6%E5%8C%96%E6%80%A7/19056493?fr=aladdin" target="_blank" rel="noopener">约化</a>到NP-complete。也就是说如果能证明NP-Complete=P，那么就基本可以证明NP=P。某种意义上说，NP-Complete问题就是NP问题中最难的那类。</p><p>比如：3SAT问题</p><p><strong>NP-hard</strong>：只需要满足NP-Complete的第二个条件。所以NP-hard要比NP-Complete范围更广，复杂度可能更高。比如：Turing Halting Problem。</p><p><img src="https://s2.ax1x.com/2019/06/22/Z9bJgO.png" alt="Z9bJgO.png"></p><p><strong>参考资料</strong></p><p>(1) <a href="http://www.matrix67.com/blog/archives/105" target="_blank" rel="noopener">什么是P问题、NP问题和NPC问题</a></p><p>(2)<a href="https://www.zhihu.com/question/27039635/answer/408025594" target="_blank" rel="noopener">怎么理解 P 问题和 NP 问题？ - Kimmi Meow的回答 - 知乎</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;0.&lt;strong&gt;复杂度&lt;/strong&gt;：时间复杂度不是表示一个程序的运行时间，而是当问题规模扩大之后，程序需要的时间增长的有多快。&lt;/p&gt;
+&lt;p&gt;例如：四则运算，无论数据变得多大，程序的时间复杂度都为o(1);冒泡排序，数据扩大2倍，时间变4倍，程序的时间复杂度为o(
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+      <category term="Decision tree" scheme="http://yoursite.com/tags/Decision-tree/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习基石7|The VC Dimension</title>
@@ -437,27 +463,6 @@
     
     
       <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>matplotlib坐标原点不重合</title>
-    <link href="http://yoursite.com/2019/04/15/matplotlib%E5%9D%90%E6%A0%87%E5%8E%9F%E7%82%B9%E4%B8%8D%E9%87%8D%E5%90%88/"/>
-    <id>http://yoursite.com/2019/04/15/matplotlib坐标原点不重合/</id>
-    <published>2019-04-15T02:22:16.000Z</published>
-    <updated>2019-04-24T07:37:43.663Z</updated>
-    
-    <content type="html"><![CDATA[<p>用matplotlib画图时会遇到原点不重合在左下角的情况</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig,ax=plt.subplots(figsize=(<span class="number">8</span>,<span class="number">5</span>))</span><br><span class="line">    ax.plot(range(<span class="number">1</span>,<span class="number">13</span>),error_train,label=<span class="string">"Train"</span>)</span><br><span class="line">    ax.plot(range(<span class="number">1</span>,<span class="number">13</span>),error_cv,label=<span class="string">"Cross Validation"</span>,color=<span class="string">"green"</span>)</span><br><span class="line">    ax.legend()</span><br><span class="line">    plt.xlabel(<span class="string">"Number of training examples"</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'error'</span>)</span><br><span class="line">    plt.title(<span class="string">'Learning curve of linear regression'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure><a id="more"></a><p><img src="https://s2.ax1x.com/2019/04/15/AXb0a9.md.png" alt="AXb0a9.md.png"></p><p>只需要添加两行代码即可</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.ylim(bottom=<span class="number">0</span>)</span><br><span class="line">plt.xlim(left=<span class="number">0</span>)</span><br></pre></td></tr></table></figure><p><img src="https://s2.ax1x.com/2019/04/15/AXqoTJ.md.png" alt="AXqoTJ.md.png"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;用matplotlib画图时会遇到原点不重合在左下角的情况&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;fig,ax=plt.subplots(figsize=(&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ax.plot(range(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;),error_train,label=&lt;span class=&quot;string&quot;&gt;&quot;Train&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ax.plot(range(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;),error_cv,label=&lt;span class=&quot;string&quot;&gt;&quot;Cross Validation&quot;&lt;/span&gt;,color=&lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ax.legend()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    plt.xlabel(&lt;span class=&quot;string&quot;&gt;&quot;Number of training examples&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    plt.ylabel(&lt;span class=&quot;string&quot;&gt;&#39;error&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    plt.title(&lt;span class=&quot;string&quot;&gt;&#39;Learning curve of linear regression&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    plt.show()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
     
   </entry>
   

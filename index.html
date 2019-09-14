@@ -318,6 +318,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/操作系统笔记-PV操作/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JQK/许阳航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/14/操作系统笔记-PV操作/" itemprop="url">操作系统—生产者与消费者</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-14T23:03:30+08:00">
+                2019-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>天勤计算机考研笔记</p>
+</blockquote>
+<p>PV操作中经典的<strong>生成者(producer)和消费者(consumer)问题</strong>：</p>
+<p><img src="https://s2.ax1x.com/2019/09/14/nyLIq1.png" alt="nyLIq1.png"></p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>生产者—消费者问题，实际上就是二者共用了一块缓冲区（题中的仓库），所以生产者之间和消费者之间是互斥的关系，但同时生产者消费者之间又是协同的关系，所以将其归类为进程同步问题。</p>
+<h1 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h1><p>根据问题，我们很容易写出下面的代码，其中的<code>item</code>即“产品”。</p>
+<p><a href="https://imgchr.com/i/nyONe1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/nyONe1.md.png" alt="nyONe1.md.png"></a></p>
+<p>但执行之后可能会产生一个很严重的问题：因为程序是并发执行的，所以很可能导致<code>producer()</code>进程执行到某条语句的时候，因为调度的原因，cpu被分配给了<code>consumer()</code>进程。严重情况下，可能会导致二者都进入阻塞状态，如下图情况：</p>
+<p><a href="https://imgchr.com/i/nyzaGV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/nyzaGV.md.png" alt="nyzaGV.md.png"></a></p>
+<p>这种情况也称为<strong>死锁</strong>。</p>
+<p>发生这种情况的根本原因，是因为对于<code>producer</code>和<code>consumer</code>这两个进程而言，本题中的“仓库”是<strong>临界资源</strong>，（访问仓库的代码<code>putItemIntoBuffer()</code>称为<strong>临界区</strong>），多个进程同时访问临界资源，就可能导致问题，这个问题也叫<strong>竞争条件(Race condition)</strong>。</p>
+<h1 id="解决方案1-1—同步问题"><a href="#解决方案1-1—同步问题" class="headerlink" title="解决方案1.1—同步问题"></a>解决方案1.1—同步问题</h1><p>为了解决竞争条件问题，就引入了信号量。</p>
+<p>其实方案1中的<code>itemCount</code>也是信号，但它仅仅解决了是否阻塞/唤醒合作进程，没能说明具体阻塞/唤醒几个进程，也就是说没能体现出<strong>量</strong>的概念。</p>
+<p>所以我们换个方式，对于<code>producer</code>，我们关注仓库中还有多少个空位置<code>empty</code>，而对于<code>consumer</code>则关注仓库中已放入多少个产品<code>full</code>。这就达到不再使用临界资源的情况。如下图所示：</p>
+<p><a href="https://imgchr.com/i/n6PrNj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/n6PrNj.md.png" alt="n6PrNj.md.png"></a></p>
+<p>从图中可以看出，<code>producer</code>实际上是在不断消耗空位置个数，如果cpu始终在执行<code>producer</code>，那么<code>empty</code>被消耗为空，<code>producer</code>被阻塞，继续执行的话<code>empty</code>小于0，其绝对值就等于被阻塞的进程数。</p>
+<p>同理，<code>full&lt;0</code>的绝对值就是<code>consumer</code>被阻塞的进程数。</p>
+<blockquote>
+<p>注意：这里当empty和full都大于0时，表示的是空位数和产品数。但是当二者小于0时，代表的是阻塞的producer和consumer！！！</p>
+</blockquote>
+<p>从上面可以看出，<code>empty</code>和<code>full</code>存在逻辑上相反的关系，即$empty=n-full$，但是在各自的进程中，其过程又具有相似性，因此我们可以抽象出一个值，记为<code>value</code>，其结构体如下图所示：</p>
+<p><a href="https://imgchr.com/i/n6RpuD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/n6RpuD.md.png" alt="n6RpuD.md.png"></a></p>
+<p>图中的两个函数就是<strong>PV操作</strong>。</p>
+<p>接下来就可以改写<code>producer</code>和<code>consumer</code>的代码：</p>
+<p><a href="https://imgchr.com/i/n6Rev8" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/n6Rev8.md.png" alt="n6Rev8.md.png"></a></p>
+<p>先来看<code>producer()</code>：</p>
+<p>P操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(empty);</span><br></pre></td></tr></table></figure>
+<p>传入参数<code>empty</code>，如果<code>empty</code>自减后小于0，则说明仓库中没有空位置，则把当前的<code>producer</code>阻塞掉；如果<code>empty</code>自减后大于0，则说明仓库中仍然有位置，则继续执行当前进程：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">putItemIntoBuffer();<span class="comment">//往仓库中加入一个商品</span></span><br></pre></td></tr></table></figure>
+<p>再执行V操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V(full)</span><br></pre></td></tr></table></figure>
+<p>当前的进程使用完了临界资源，则需要将<code>full</code>+1，即释放了一个资源，例子中也就是产品数+1。值得注意的是若<code>full</code>+1&lt;=0，那说明<code>consumer</code>之前有阻塞。</p>
+<blockquote>
+<p><strong>S小于0应该是说没有临界资源可供使用，为什么还要唤醒进程？</strong></p>
+<p>V原语操作的本质在于：一个进程使用完临界资源后，释放临界资源，使S加1，以通知其它的进程，这个时候如果S&lt;0，表明有进程阻塞在该类资源上，因此要从阻塞队列里唤醒一个进程来“转手”该类资源。比如，有两个某类资源，四个进程A、B、C、D要用该类资源，最开始S=2，当A进入，S=1，当B进入S=0，表明该类资源刚好用完， 当C进入时S=-1，表明有一个进程被阻塞了，D进入，S=-2。当A用完该类资源时，进行V操作，S=-1，释放该类资源，因为S&lt;0，表明有进程阻塞在该类资源上，于是唤醒一个。</p>
+</blockquote>
+<p>上面这段话，结合第一个引用中的内容更好理解。</p>
+<p><strong>这里之前理解上还有个小误区，唤醒了<code>consumer</code>的进程是进入就绪态而不是执行态，因此当前的进程——这里是<code>producer</code>，还是需要继续执行直到完成。</strong></p>
+<p>右边<code>consumer</code>的操作和<code>producer</code>类似。</p>
+<h1 id="解决方案1-2—互斥问题"><a href="#解决方案1-2—互斥问题" class="headerlink" title="解决方案1.2—互斥问题"></a>解决方案1.2—互斥问题</h1><p>方案1.1解决了同步问题，但仍然存在互斥问题。即我们假设<code>putItemIntoBuffer（）</code>函数中的代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Buffer[i]=item;</span><br><span class="line">i++;</span><br></pre></td></tr></table></figure>
+<p>这样如果当<code>producer-1</code>执行到第一行语句时，cpu发生了调度，此时又有个进程<code>producer-2</code>执行了第一行语句，那么显然<code>Buffer[i]</code>中的元素就被覆盖掉了。</p>
+<p>为了处理这个问题，我们只需要在一个进程执行上面两行代码时，不允许任何其他进程介入即可，如下图：</p>
+<p><a href="https://imgchr.com/i/n6xKqH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/n6xKqH.md.png" alt="n6xKqH.md.png"></a></p>
+<p>注意一下<code>empty</code>、<code>full</code>和<code>mutex</code>的初值。</p>
+<p>最后得出一些小结论：</p>
+<p><a href="https://imgchr.com/i/n6xUsg" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/n6xUsg.md.png" alt="n6xUsg.md.png"></a></p>
+<p><a href="https://imgchr.com/i/n6x0ds" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/n6x0ds.md.png" alt="n6x0ds.md.png"></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	
+	
+	<div>
+  
+	</div>
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/简单理解P-NP-NPC-NPH/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1488,136 +1663,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/机器学习笔记-第一周/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JQK/许阳航">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="空博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/08/机器学习笔记-第一周/" itemprop="url">机器学习笔记|第一周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T10:35:39+08:00">
-                2019-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="绪论和单变量线性回归"><a href="#绪论和单变量线性回归" class="headerlink" title="绪论和单变量线性回归"></a>绪论和单变量线性回归</h2><p><img src="https://s2.ax1x.com/2019/05/08/EyjKAO.md.jpg" alt="EyjKAO.md.jpg"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/08/机器学习笔记-第一周/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	
-	
-	<div>
-  
-	</div>
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1670,7 +1715,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1692,7 +1737,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

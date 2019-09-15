@@ -103,13 +103,13 @@
 
 
 
-<meta name="description" content="天勤计算机考研笔记  PV操作中经典的生成者(producer)和消费者(consumer)问题：  问题分析生产者—消费者问题，实际上就是二者共用了一块缓冲区（题中的仓库），所以生产者之间和消费者之间是互斥的关系，但同时生产者消费者之间又是协同的关系，所以将其归类为进程同步问题。 解决方案1根据问题，我们很容易写出下面的代码，其中的item即“产品”。  但执行之后可能会产生一个很严重的问题：">
+<meta name="description" content="天勤计算机考研笔记  PV操作中经典的生成者(producer)和消费者(consumer)问题：">
 <meta name="keywords" content="OS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统—生产者与消费者">
 <meta property="og:url" content="http://yoursite.com/2019/09/14/操作系统笔记-PV操作/index.html">
 <meta property="og:site_name" content="空博客">
-<meta property="og:description" content="天勤计算机考研笔记  PV操作中经典的生成者(producer)和消费者(consumer)问题：  问题分析生产者—消费者问题，实际上就是二者共用了一块缓冲区（题中的仓库），所以生产者之间和消费者之间是互斥的关系，但同时生产者消费者之间又是协同的关系，所以将其归类为进程同步问题。 解决方案1根据问题，我们很容易写出下面的代码，其中的item即“产品”。  但执行之后可能会产生一个很严重的问题：">
+<meta property="og:description" content="天勤计算机考研笔记  PV操作中经典的生成者(producer)和消费者(consumer)问题：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/14/nyLIq1.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/14/nyONe1.md.png">
@@ -120,10 +120,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/14/n6xKqH.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/14/n6xUsg.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/14/n6x0ds.md.png">
-<meta property="og:updated_time" content="2019-09-14T15:03:30.386Z">
+<meta property="og:updated_time" content="2019-09-15T00:04:08.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统—生产者与消费者">
-<meta name="twitter:description" content="天勤计算机考研笔记  PV操作中经典的生成者(producer)和消费者(consumer)问题：  问题分析生产者—消费者问题，实际上就是二者共用了一块缓冲区（题中的仓库），所以生产者之间和消费者之间是互斥的关系，但同时生产者消费者之间又是协同的关系，所以将其归类为进程同步问题。 解决方案1根据问题，我们很容易写出下面的代码，其中的item即“产品”。  但执行之后可能会产生一个很严重的问题：">
+<meta name="twitter:description" content="天勤计算机考研笔记  PV操作中经典的生成者(producer)和消费者(consumer)问题：">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/09/14/nyLIq1.png">
 
 
@@ -400,6 +400,7 @@
 </blockquote>
 <p>PV操作中经典的<strong>生成者(producer)和消费者(consumer)问题</strong>：</p>
 <p><img src="https://s2.ax1x.com/2019/09/14/nyLIq1.png" alt="nyLIq1.png"></p>
+<a id="more"></a>
 <h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>生产者—消费者问题，实际上就是二者共用了一块缓冲区（题中的仓库），所以生产者之间和消费者之间是互斥的关系，但同时生产者消费者之间又是协同的关系，所以将其归类为进程同步问题。</p>
 <h1 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h1><p>根据问题，我们很容易写出下面的代码，其中的<code>item</code>即“产品”。</p>
 <p><a href="https://imgchr.com/i/nyONe1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/09/14/nyONe1.md.png" alt="nyONe1.md.png"></a></p>
